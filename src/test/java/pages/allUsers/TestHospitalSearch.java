@@ -21,9 +21,10 @@ public class TestHospitalSearch extends BaseTest {
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {
         return new Object[][]{
-                {"поліклініка", 2},
+//                {"поліклініка", 2},
+                {"polik", 1},
                 {"hosp", 3},
-                {"абрвал", 0}
+                {"qwerty", 0}
         };
     }
 

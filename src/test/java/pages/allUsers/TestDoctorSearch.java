@@ -21,7 +21,7 @@ public class TestDoctorSearch extends BaseTest {
         return new Object[][]{
                 {"hous", 1},
                 {"hou", 1},
-                {"абрвал", 0}
+                {"qwerty", 0}
         };
     }
 
