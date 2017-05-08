@@ -37,37 +37,37 @@ public class TestDoctorSearch extends BaseTest {
 
     @Test(dataProvider = "SearchProvider")
     public void testFindDoctorNotAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        DoctorSearchResultPage doctorSearchResult = header.findDoctor(searchWord);
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        DoctorSearchResultPage doctorSearchResult = notAuthorizedHeader.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected);
     }
 
     @Test(dataProvider = "SearchProvider")
     public void testFindDoctorAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
         BaseNavigation.login("admin@hospitals.ua", "1111");
         Thread.sleep(1000);
-        DoctorSearchResultPage doctorSearchResult = header.findDoctor(searchWord);
+        DoctorSearchResultPage doctorSearchResult = notAuthorizedHeader.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected);
     }
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationEng() throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        header.changeLanguageToUa();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToUa();
         Thread.sleep(1000);
-        header.fillDoctorInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getDoctorSearchError().getText(), properties.getProperty("lineToShort"));
+        notAuthorizedHeader.fillDoctorInput("ho");
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getDoctorSearchError().getText(), properties.getProperty("lineToShort"));
     }
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationUa() throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        header.changeLanguageToEn();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToEn();
         Thread.sleep(1000);
-        header.fillDoctorInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getDoctorSearchError().getText(), properties.getProperty("lineToShort"));
+        notAuthorizedHeader.fillDoctorInput("ho");
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getDoctorSearchError().getText(), properties.getProperty("lineToShort"));
     }
 }

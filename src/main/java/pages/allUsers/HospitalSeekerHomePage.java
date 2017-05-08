@@ -15,7 +15,7 @@ public class HospitalSeekerHomePage implements PageInitializer {
 
     //Temporary field
     public NotAuthorizedHeader notAuthorizedHeader;
-    public DoctorHeader header;
+   // public DoctorHeader header;
 
 
     public LoginPage moveToLoginPage(){

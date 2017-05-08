@@ -38,11 +38,19 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/ru.yandex.qatools.allure/allure-testng-adaptor -->
+
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-jvm-deps</artifactId>
             <version>1.0.5</version>
         </dependency>
+<!--
+        <dependency>
+        <groupId>info.cukes</groupId>
+        <artifactId>cucumber-jvm-deps</artifactId>
+        <version>1.2.0</version>
+        </dependency>
+-->
         <dependency>
             <groupId>info.cukes</groupId>
             <artifactId>cucumber-java</artifactId>

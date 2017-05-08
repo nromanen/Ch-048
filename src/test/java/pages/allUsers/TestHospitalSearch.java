@@ -21,7 +21,6 @@ public class TestHospitalSearch extends BaseTest {
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {
         return new Object[][]{
-//                {"поліклініка", 2},
                 {"polik", 1},
                 {"hosp", 3},
                 {"qwerty", 0}
@@ -40,38 +39,38 @@ public class TestHospitalSearch extends BaseTest {
 
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalNotAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        HospitalSearchResultPage hospitalSearchResult = header.findHospital(searchWord);
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        HospitalSearchResultPage hospitalSearchResult = notAuthorizedHeader.findHospital(searchWord);
         Thread.sleep(1000);
         assertEquals(hospitalSearchResult.countOfHospital(), expected);
     }
 
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
         BaseNavigation.login("admin@hospitals.ua", "1111");
         Thread.sleep(1000);
-        HospitalSearchResultPage hospitalSearchResult = header.findHospital(searchWord);
+        HospitalSearchResultPage hospitalSearchResult = notAuthorizedHeader.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected);
     }
 
     @Test(groups = "InputValidation")
     public void testFindHospitalInputValidationUa() throws Exception {
-        BaseHeader header = new BaseHeader();
-        header.changeLanguageToUa();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToUa();
         Thread.sleep(1000);
-        header.fillHospitalInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
+        notAuthorizedHeader.fillHospitalInput("ho");
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
     }
 
     @Test(groups = "InputValidation")
     public void testFindHospitalInputValidationEng() throws Exception {
-        BaseHeader header = new BaseHeader();
-        header.changeLanguageToEn();
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToEn();
         Thread.sleep(1000);
-        header.fillHospitalInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
+        notAuthorizedHeader.fillHospitalInput("ho");
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
     }
 }

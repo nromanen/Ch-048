@@ -12,6 +12,7 @@ import utils.BrowserWrapper;
  * Created by Evgen on 05.04.2017.
  */
 public class NotAuthorizedHeader extends  BaseHeader implements PageInitializer{
+
     public NotAuthorizedHeader() {
         pageInitialization();
     }

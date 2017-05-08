@@ -1,5 +1,6 @@
 package stepDefinition;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.*;
 import org.testng.Assert;
 import pages.manager.HospitalsPage;
@@ -113,5 +114,6 @@ public class DoctorSearchSteps  {
     public void show_rows_in_the_table_in_initial_condition() throws Throwable {
         Assert.assertEquals(managerDashBordPage.getNumberOfRows(), numberOfRows);
     }
+
 
 }
