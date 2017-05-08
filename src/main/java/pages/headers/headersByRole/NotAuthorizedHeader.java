@@ -1,8 +1,8 @@
 package pages.headers.headersByRole;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageInitializer;
 import pages.anonymous.LoginPage;
 import pages.headers.BaseHeader;
 import utils.BrowserWrapper;
@@ -11,7 +11,11 @@ import utils.BrowserWrapper;
 /**
  * Created by Evgen on 05.04.2017.
  */
-public class NotAuthorizedHeader extends BaseHeader {
+public class NotAuthorizedHeader extends  BaseHeader implements PageInitializer{
+
+    public NotAuthorizedHeader() {
+        pageInitialization();
+    }
 
     @FindBy(css = "a[href='/HospitalSeeker/login']")
     protected WebElement login;
@@ -23,11 +27,9 @@ public class NotAuthorizedHeader extends BaseHeader {
         }catch (Exception e){
             e.printStackTrace();
         }
-        return new LoginPage(driver);
+        return new LoginPage();
     }
 
-    public NotAuthorizedHeader(WebDriver driver) {
-        super(driver);
-    }
+
 
 }

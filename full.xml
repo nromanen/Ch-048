@@ -1,0 +1,248 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+  <admintokenconfig id="1" token="RESET_PASSWORD_TOKEN_EXPIRATION" value="25"/>
+  <admintokenconfig id="2" token="VERIFICATION_TOKEN_EXPIRATION" value="36"/>
+  <admintokenconfig id="3" token="REMEMBER_ME_TOKEN_EXPIRATION" value="48"/>
+  <admintokenconfig id="4" token="FILE_MAX_SIZE" value="204800"/>
+  <appointment/>
+  <carditem id="1000" complaint="qwerhj" date="2017-03-29 11:51:00.343" prescription="sdfghj" result="ertfgh" patientcard_id="4" doctorinfo_id="3"/>
+  <department id="1" hospitals_id="1" name_id="1"/>
+  <department id="2" hospitals_id="1" name_id="2"/>
+  <department id="3" hospitals_id="1" name_id="3"/>
+  <department id="4" hospitals_id="2" name_id="1"/>
+  <department id="5" hospitals_id="2" name_id="2"/>
+  <department id="6" hospitals_id="5" name_id="3"/>
+  <department id="7" hospitals_id="3" name_id="1"/>
+  <department id="8" hospitals_id="3" name_id="2"/>
+  <department id="47" description="" hospitals_id="3" name_id="3"/>
+  <department id="56" description="sdfsdfsdfdf" hospitals_id="2" name_id="4"/>
+  <department_doctorinfo departments_id="1" doctors_id="1"/>
+  <department_doctorinfo departments_id="1" doctors_id="2"/>
+  <department_doctorinfo departments_id="2" doctors_id="3"/>
+  <department_doctorinfo departments_id="2" doctors_id="4"/>
+  <department_doctorinfo departments_id="3" doctors_id="5"/>
+  <department_doctorinfo departments_id="4" doctors_id="6"/>
+  <department_doctorinfo departments_id="5" doctors_id="7"/>
+  <department_doctorinfo departments_id="6" doctors_id="8"/>
+  <department_doctorinfo departments_id="7" doctors_id="9"/>
+  <department_doctorinfo departments_id="8" doctors_id="10"/>
+  <departmentname id="1" en="Therapistician" ua="Терапевтичне" imagepath="service1.png"/>
+  <departmentname id="2" en="Diagnostician" ua="Діагностичне" imagepath="service2.png"/>
+  <departmentname id="3" en="Oncologian" ua="Онкологічне" imagepath="service3.png"/>
+  <departmentname id="4" en="Infectician" ua="Інфекційне" imagepath="service4.png"/>
+  <diagnosispanel id="1" laboratory_id="1"/>
+  <diagnosispanel id="2" laboratory_id="1"/>
+  <diagnosispanel id="3" laboratory_id="1"/>
+  <diagnosispanel_test/>
+  <diagnosispanellocalization id="1" name="Hormonal panel" diagnosispanel_id="1" language_id="1"/>
+  <diagnosispanellocalization id="2" name="Гормональна панель" diagnosispanel_id="1" language_id="2"/>
+  <diagnosispanellocalization id="3" name="Infectious panel" diagnosispanel_id="2" language_id="1"/>
+  <diagnosispanellocalization id="4" name="Інфекційна панель" diagnosispanel_id="2" language_id="2"/>
+  <diagnosispanellocalization id="5" name="Non-invasive method of assessing liver panel" diagnosispanel_id="3" language_id="1"/>
+  <diagnosispanellocalization id="6" name="Панель неінвазивних методів оцінки стану печінки" diagnosispanel_id="3" language_id="2"/>
+  <doctorinfo id="1" specialization="THERAPIST" userdetails_id="6" category="INTERN"/>
+  <doctorinfo id="2" specialization="GYNECOLOGIST" userdetails_id="7" category="JUNIOR"/>
+  <doctorinfo id="3" specialization="ENDOCRINOLOGIST" userdetails_id="8" category="SPECIALIST"/>
+  <doctorinfo id="4" specialization="PEDIATRICIAN" userdetails_id="9" category="INTERN"/>
+  <doctorinfo id="5" specialization="ONCOLOGIST" userdetails_id="10" category="JUNIOR"/>
+  <doctorinfo id="6" specialization="DENTIST" userdetails_id="11" category="SPECIALIST"/>
+  <doctorinfo id="7" specialization="NEUROLOGIST" userdetails_id="12" category="INTERN"/>
+  <doctorinfo id="8" specialization="NEUROLOGIST" userdetails_id="13" category="SPECIALIST"/>
+  <doctorinfo id="9" specialization="THERAPIST" userdetails_id="14" category="JUNIOR"/>
+  <doctorinfo id="10" specialization="ENDOCRINOLOGIST" userdetails_id="15" category="INTERN"/>
+  <doctorinfo id="11" specialization="ONCOLOGIST" userdetails_id="16" category="SPECIALIST"/>
+  <doctorinfo id="16" specialization="THERAPIST" category="INTERN"/>
+  <doctorinfo id="17" specialization="THERAPIST" category="INTERN"/>
+  <doctorinfo id="18" specialization="THERAPIST" category="INTERN"/>
+  <events id="30" end_date="2017-03-29 17:00:00.0" id_dhtmlx="1490675946045" pattern="" start_date="2017-03-29 12:00:00.0" text="658" type="" scheduler_id="50"/>
+  <events id="31" end_date="2017-03-30 14:00:00.0" id_dhtmlx="1490675946046" pattern="" start_date="2017-03-30 11:00:00.0" text="New event" type="" scheduler_id="50"/>
+  <events id="32" end_date="2017-03-30 18:00:00.0" id_dhtmlx="1490675946047" pattern="" start_date="2017-03-30 16:00:00.0" text="New event" type="" scheduler_id="50"/>
+  <events id="33" end_date="2017-04-04 05:00:00.0" id_dhtmlx="1491197460933" pattern="" start_date="2017-04-04 04:00:00.0" text="8797" type="" scheduler_id="51"/>
+  <events id="34" end_date="2017-04-05 03:00:00.0" id_dhtmlx="1491197460934" pattern="" start_date="2017-04-05 02:00:00.0" text="New evekkfkgknt" type="" scheduler_id="51"/>
+  <events id="36" end_date="2017-04-04 05:00:00.0" id_dhtmlx="1491198713605" pattern="" start_date="2017-04-04 04:00:00.0" text="Vasyl" type="" scheduler_id="53"/>
+  <events id="37" end_date="2017-04-04 12:00:00.0" id_dhtmlx="1491199195212" pattern="" start_date="2017-04-04 11:00:00.0" text="New event" type="" scheduler_id="53"/>
+  <feedback id="1" date="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcOBQAAB+AGCBcOFw3yjoB4" message="xcvbg" consumer_id="8" producer_id="17"/>
+  <feedbacks id="2" date="2017-03-27 09:10:24.018" message="Why Jr.?" status="NEW" consumer_id="5" producer_id="57"/>
+  <feedbacks id="3" date="2017-03-29 10:23:13.726" message="cool" status="NEW" consumer_id="2" producer_id="6"/>
+  <feedbacks id="4" date="2017-04-03 09:26:41.307" message="uuuy" status="NEW" consumer_id="7" producer_id="7"/>
+  <hospital id="1" building="137" city="Chernivtsi" country="Ukraine" street="Holovna St" description="Description for hospital1" imagepath="Hospital_1.jpg" latitude="48.2794394" longitude="25.943196899999975" name="Chernivtsi Regional Clinical Hospital"/>
+  <hospital id="2" building="11" city="Chernivtsi" country="Ukraine" street="Lesi Ukrainky St" description="Description for hospital2" imagepath="Hospital_2.jpg" latitude="48.2909805" longitude="25.929598499999997" name="Miska Poliklinika"/>
+  <hospital id="3" building="185В" city="Chernivtsi" country="Ukraine" street="Ruska St" description="" imagepath="Hospital_3.jpg" latitude="48.2836641" longitude="25.973487500000033" name="Angelholm"/>
+  <hospital id="4" building="218" city="Chernivtsi" country="Ukraine" street="Holovna St" description="" imagepath="Hospital_4.jpg" latitude="48.2556514" longitude="25.957666399999994" name="Міська дитяча поліклініка №7"/>
+  <hospital id="5" building="9Б" city="Чернівці" country="Украина" street="вулиця Івасюка1" description="" imagepath="" latitude="48.26034689999999" longitude="25.94705440000007" name="ппппппппп"/>
+  <hospital id="6" building="2" city="Чернівці" country="Украина" street="вулиця Ольги Гузар" description="ehreththt" imagepath="" latitude="48.275737" longitude="25.93991900000003" name="zrhhrthrth"/>
+  <hospital id="8" building="226Б" city="Чернівці" country="Украина" street="вулиця Руська" description="" imagepath="adda9a1b25329454.png" latitude="48.278616" longitude="25.977360999999974" name="newHospital"/>
+  <hospital id="10" building="Прут" city="Чернівецька область" country="dsdsdsdsd" street="Unnamed Road" description="" imagepath="addab15283c51794.png" latitude="48.27740559999999" longitude="26.04857149999998" name="aaaaa"/>
+  <hospital id="16" building="2" city="Львів" country="Украина" street="вулиця Бібліотечна" description="" imagepath="" latitude="49.83551199999999" longitude="24.018460000000005" name="fdfdfg"/>
+  <hospital id="17" building="16-24" city="Чернівці" country="Украина" street="бульвар Героїв Крут" description="" imagepath="" latitude="48.25403439999999" longitude="25.95195309999997" name="fdsdsfdsfdsfdsf"/>
+  <hospital id="18" building="2" city="Чернівці" country="Украина" street="Фастівська вулиця" description="" imagepath="148b09977dea8c04.jpg" latitude="48.2845035" longitude="25.97346349999998" name="лікарня"/>
+  <hospital_users hospital_id="4" managers_id="3"/>
+  <hospital_users hospital_id="2" managers_id="2"/>
+  <hospital_users hospital_id="1" managers_id="4"/>
+  <hospital_users hospital_id="3" managers_id="4"/>
+  <laboratory id="1" description="laboratory for hospital1" hospital_id="1"/>
+  <language id="1" name="en"/>
+  <language id="2" name="ua"/>
+  <password_reset_tokens/>
+  <patientcard id="3" patientinfo_id="3"/>
+  <patientcard id="4" patientinfo_id="4"/>
+  <patientcard id="5" patientinfo_id="5"/>
+  <patientcard id="6" patientinfo_id="6"/>
+  <patientcard id="7" patientinfo_id="7"/>
+  <patientcard id="8" patientinfo_id="8"/>
+  <patientcard id="9" patientinfo_id="9"/>
+  <patientinfo id="3" patientcard_id="3" userdetail_id="31"/>
+  <patientinfo id="4" patientcard_id="4" userdetail_id="21"/>
+  <patientinfo id="5" patientcard_id="5" userdetail_id="25"/>
+  <patientinfo id="6" patientcard_id="6" userdetail_id="17"/>
+  <patientinfo id="7" patientcard_id="7" userdetail_id="18"/>
+  <patientinfo id="8" patientcard_id="8" userdetail_id="49"/>
+  <patientinfo id="9" patientcard_id="9" userdetail_id="30"/>
+  <persistent_logins series="eaA+moYoA+XEqrkiX0KjNg==" last_used="2017-03-29 10:20:10.056" token="1IEBQCmzBCK8gDbC/wEDHQ==" username="doctor.gh@hospitals.ua"/>
+  <persistent_logins series="J2rAgutXcGTJNd2UPVkX7w==" last_used="2017-03-29 11:59:59.89" token="qqT/G0L4IHm0vbC1J2814g==" username="doctor.lc@hospitals.ua"/>
+  <persistent_logins series="W6pYvNJS58EONcBz9XD/kw==" last_used="2016-09-28 15:21:56.415" token="77/kG83uGGksJojMttooZA==" username="a@a.co"/>
+  <relativesinfo/>
+  <role id="1" type="ADMIN"/>
+  <role id="2" type="PATIENT"/>
+  <role id="3" type="MANAGER"/>
+  <role id="4" type="DOCTOR"/>
+  <role_users users_id="1" role_id="1"/>
+  <role_users users_id="2" role_id="3"/>
+  <role_users users_id="3" role_id="3"/>
+  <role_users users_id="4" role_id="3"/>
+  <role_users users_id="5" role_id="3"/>
+  <role_users users_id="6" role_id="4"/>
+  <role_users users_id="7" role_id="2"/>
+  <role_users users_id="8" role_id="4"/>
+  <role_users users_id="9" role_id="4"/>
+  <role_users users_id="10" role_id="4"/>
+  <role_users users_id="11" role_id="4"/>
+  <role_users users_id="12" role_id="4"/>
+  <role_users users_id="13" role_id="4"/>
+  <role_users users_id="14" role_id="4"/>
+  <role_users users_id="15" role_id="4"/>
+  <role_users users_id="16" role_id="4"/>
+  <role_users users_id="17" role_id="2"/>
+  <role_users users_id="18" role_id="2"/>
+  <role_users users_id="19" role_id="2"/>
+  <role_users users_id="20" role_id="2"/>
+  <role_users users_id="21" role_id="2"/>
+  <role_users users_id="22" role_id="2"/>
+  <role_users users_id="23" role_id="2"/>
+  <role_users users_id="24" role_id="2"/>
+  <role_users users_id="25" role_id="2"/>
+  <role_users users_id="26" role_id="2"/>
+  <role_users users_id="28" role_id="2"/>
+  <role_users users_id="29" role_id="2"/>
+  <role_users users_id="30" role_id="2"/>
+  <role_users users_id="31" role_id="2"/>
+  <role_users users_id="32" role_id="4"/>
+  <role_users users_id="34" role_id="2"/>
+  <role_users users_id="45" role_id="4"/>
+  <role_users users_id="49" role_id="2"/>
+  <role_users users_id="50" role_id="2"/>
+  <role_users users_id="56" role_id="2"/>
+  <role_users users_id="57" role_id="2"/>
+  <role_users users_id="58" role_id="1"/>
+  <role_users users_id="59" role_id="2"/>
+  <scheduler id="50" app_size="15" day_end="18" day_start="10" week_size="5" doctorinfo_id="3"/>
+  <scheduler id="51" app_size="15" day_end="24" day_start="0" week_size="5" doctorinfo_id="6"/>
+  <scheduler id="53" app_size="15" day_end="24" day_start="0" week_size="5" doctorinfo_id="7"/>
+  <test id="1" name="Пакет №1 (Тиреоїдний: ТТГ, Т4 віл., АМСт) (Тиреотропний гормон (ТТГ); Тироксин вільний (T4 вільний); Антимікросомальні антитіла (АМС тиреоїдна))" diagnosispanel_id="1" description="Основной антиген микросомальной фракции тиреоцитов — тиреоидная пероксидаза.&#xD;&#xA;Микросомы расположены внутри эпителиальных клеток, окружающих тиреоидные фолликулы. При патологии они становятся антигенами, на них синтезируются антитела, которые повреждают кл" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="2" name="Пакет №181 (Ендокринне здоров&apos;я) (Тиреотропний гормон (ТТГ); Паратгормон (ПТГ); Глікований гемоглобін (HbA1c))" diagnosispanel_id="1" description="Тиреоглобулин — матрица для синтеза тиреоидных гормонов, представляет собой гликопротеид, состоящий из двух идентичных субъединиц с молекулярным весом по 330 кДа. Он синтезируется фолликулярными тироцитами и транспортируется в коллоид. В области апикально" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="3" name="Пакет №2 (Тиреоїдний: ТТГ, Т3 віл., Т4 віл.) (Тиреотропний гормон (ТТГ); Тироксин вільний (T4 вільний); Трийодтиронин вільний (T3 вільний))" diagnosispanel_id="1" description="Рецидивирующий рост доброкачественных и злокачественных опухолей ЩЖ сопровождается повышением уровня ТГ у большинства больных. Следует учитывать, что увеличение концентрации ТГ в крови при раке щитовидной железы наблюдается лишь у трети больных.&#xD;&#xA;&#xD;&#xA;Эпител" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="4" name="Пакет №131 (Первинний скринінг на гепатит В) (Вірус гепатиту B (HBV), HBsAg (австралійський антиген); Вірус гепатиту B (HBV), HBcorAg, антитіла сумарні" diagnosispanel_id="2" description="Референтные значения, R: &#xD;&#xA;R (коэффициент позитивности) - это оптическая плотность образца / критическую оптическую плотность. &#xD;&#xA;Вирус гепатита A (HAV), антитела IgM, Индекс: &#xD;&#xA;&lt; 1,0 - отрицательный результат =&gt; 1,0 - положительный результат &#xD;&#xA;Вирус гепат" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="5" name="Пакет №131 (Первинний скринінг на гепатит В) (Вірус гепатиту B (HBV), HBsAg (австралійський антиген); Вірус гепатиту B (HBV), HBcorAg, антитіла сумарні)" diagnosispanel_id="2" description="HBsAg — это поверхностный антиген, известный как «австралийский антиген», появляется одним из первых уже в конце инкубационного периода (параллельно с выявлением ДНК вируса в крови) и на 2 недели раньше HBcor-IgM. Обнаруживается в крови в течение 4 — 7 не" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="6" name="Цитомегаловірус (CMV), антитіла IgG" diagnosispanel_id="2" description="Маркер острой стадии инфекционного процесса (первичного инфицирования или реактивации)&#xD;&#xA;Дифференциальная диагностика этиологии инфекционного процесса при: клинике синдрома мононуклеоза, лихорадке неясного генеза, пневмонии, гепатите, энцефалите, менингоэн" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="7" name="Вірус Varicella Zoster (3 тип герпесу, VZV), антитіла IgA " diagnosispanel_id="2" description="Инфекции, вызванные вирусом простого герпеса 1 и 2 типа. Вирусы простого герпеса — наиболее известные представители герпесвирусов, так как вызывают поражения практически у каждого человека. Имеются две разновидности вируса простого герпеса — ВПГ-1 (лабиал" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="8" name="Розрахунок ФіброМакса" diagnosispanel_id="3" description="Важным условием обеспечения качества лабораторного исследования крови является взятие материала натощак, в утреннее время (до 12:00).&#xD;&#xA;За 12 часов до исследования следует исключить прием алкоголя, курение, прием пищи, ограничить физическую активность.&#xD;&#xA;Ут" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <test id="9" name="ФіброМакс (Холестерин; Глюкоза (сироватка); Білірубін загальний; γ-глутаматтрансфераза (ГГТ, GGT); Тригліцериди; Гаптоглобін; Аланінамінотрансфераза/PYP; Аполіпопротеїн А-1; α-2-макроглобулін; Аспартатамінотрансфераза/PYP; Неінвазивна оцінка ризику захвор" diagnosispanel_id="3" description="Непосредственное влияние в момент сдачи венозной крови на результаты биохимических анализов, входящих в данный тест, имеют гемолиз крови, острый гепатит, острое воспаление, внепеченочный холестаз, синдром Жильбера.&#xD;&#xA;Детям до 14 лет тест не выполняется" workschedule="7:00-16.00,                            &#xD;&#xA;,&#xD;&#xA;7:00-15:00,&#xD;&#xA;7:00-16:00,&#xD;&#xA;7:00-15:00,&#xD;&#xA;8:00-12:00, ,"/>
+  <testresult id="109" datetest="2016-11-11" result="Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Test Result Tes" patientcard_id="7" test_id="2"/>
+  <testresult id="126" datetest="2016-11-24" test_id="1"/>
+  <testresult id="127" datetest="2016-11-29" test_id="1"/>
+  <testresult id="128" datetest="2016-11-23" test_id="4"/>
+  <testresult id="138" datetest="2016-11-22" patientcard_id="7" test_id="7"/>
+  <testresult id="158" datetest="2016-12-09" patientcard_id="7" test_id="8"/>
+  <testresult id="159" datetest="2016-11-28" patientcard_id="7" test_id="2"/>
+  <testresult id="160" datetest="2016-12-20" patientcard_id="7" test_id="5"/>
+  <translator/>
+  <userdetail id="1" firstname="Lars" gender="MALE" lastname="Urlich" user_id="1"/>
+  <userdetail id="2" firstname="James" gender="MALE" lastname="Hatfield" user_id="2"/>
+  <userdetail id="3" firstname="Kurt" gender="MALE" lastname="Kobein" user_id="3"/>
+  <userdetail id="4" firstname="Kirk" gender="MALE" lastname="Hammet" user_id="4"/>
+  <userdetail id="5" firstname="James" gender="MALE" lastname="Nusted" user_id="5"/>
+  <userdetail id="6" firstname="Gregory" gender="MALE" imagepath="gh.jpg" lastname="House" user_id="6"/>
+  <userdetail id="7" firstname="Eric" gender="MALE" imagepath="ef.jpg" lastname="Foreman" user_id="7"/>
+  <userdetail id="8" firstname="Lisa" gender="FEMALE" imagepath="lc.jpg" lastname="Cuddy" user_id="8"/>
+  <userdetail id="9" firstname="Rhemy" gender="FEMALE" imagepath="rh.jpg" lastname="Hadley" user_id="9"/>
+  <userdetail id="10" firstname="James" gender="MALE" imagepath="jw.jpg" lastname="Wilson" user_id="10"/>
+  <userdetail id="11" firstname="Chester" gender="MALE" imagepath="cb.jpg" lastname="Benington" user_id="11"/>
+  <userdetail id="12" firstname="Chris" gender="MALE" imagepath="ct.jpg" lastname="Terk" user_id="12"/>
+  <userdetail id="13" firstname="Jhon" gender="MALE" imagepath="jd.jpg" lastname="Dorian" user_id="13"/>
+  <userdetail id="14" firstname="Jhared" gender="MALE" imagepath="jl.jpg" lastname="Leto" user_id="14"/>
+  <userdetail id="15" firstname="Mike" gender="MALE" imagepath="ms.jpg" lastname="Shinoda" user_id="15"/>
+  <userdetail id="16" firstname="Marshal" gender="MALE" imagepath="mm.jpg" lastname="Matters" user_id="16"/>
+  <userdetail id="17" firstname="Charles" gender="MALE" lastname="Darvin" user_id="17"/>
+  <userdetail id="18" firstname="Ilay" gender="MALE" lastname="Nails" user_id="18"/>
+  <userdetail id="19" firstname="Michael" gender="MALE" lastname="Luter" user_id="19"/>
+  <userdetail id="20" firstname="Richard" gender="MALE" lastname="Rorshek" user_id="20"/>
+  <userdetail id="21" address="fffffffffffffff" birthdate="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcHAwAAB+AJB3g=" firstname="Sam" gender="MALE" imagepath="" lastname="Ferdinand" phone="+38 (222) 222-2222" user_id="21"/>
+  <userdetail id="22" firstname="Tim" gender="MALE" lastname="Jonson" user_id="22"/>
+  <userdetail id="23" firstname="Nicolas" gender="MALE" lastname="Cage" user_id="23"/>
+  <userdetail id="24" firstname="Silvestr" gender="MALE" lastname="Stalone" user_id="24"/>
+  <userdetail id="25" address="qqqqqqqq" birthdate="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcHAwAAB+AJBXg=" firstname="Thomas" gender="MALE" imagepath="" lastname="Auginas" phone="+38 (222) 222-2222" user_id="25"/>
+  <userdetail id="26" firstname="Rhene" gender="MALE" lastname="Descartes" user_id="26"/>
+  <userdetail id="28" firstname="Dante" gender="MALE" lastname="Aligeri" user_id="28"/>
+  <userdetail id="29" firstname="Grover" gender="MALE" lastname="Cleveland" user_id="29"/>
+  <userdetail id="30" firstname="Oscar" gender="MALE" lastname="Whield" user_id="30"/>
+  <userdetail id="31" address="ds" birthdate="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcHAwAAB+AJHHg=" firstname="Queen" gender="FEMALE" imagepath="" lastname="Marie" phone="+38 (433) 333-3333" user_id="31"/>
+  <userdetail id="32" address="Stokholm, abrakadabra 10, lenin prosp, stalin prov, jizni boli" birthdate="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcHAwAAB+AFH3g=" firstname="Asdsdw" gender="FEMALE" lastname="Dadesdfs" phone="+38 (095) 435-7132" user_id="32"/>
+  <userdetail id="34" user_id="34"/>
+  <userdetail id="36" address="dddddd" birthdate="rO0ABXNyAA1qYXZhLnRpbWUuU2VylV2EuhsiSLIMAAB4cHcHAwAAB+AJG3g=" firstname="Dadsf" gender="MALE" imagepath="" lastname="Basdf" phone="+38 (222) 222-2222"/>
+  <userdetail id="40" user_id="49"/>
+  <userdetail id="41" user_id="50"/>
+  <userdetail id="47" user_id="56"/>
+  <userdetail id="48" user_id="57"/>
+  <userdetail id="49" user_id="58"/>
+  <userdetail id="50" user_id="59"/>
+  <users id="1" email="admin@hospitals.ua" enabled="true" password="$2a$10$N3rWp7etmNY23Zf6kFNLV.D/sT0tSJ9jHRiS0xEgiCtI2L.OQbBqi" userdetails_id="1"/>
+  <users id="2" email="manager.jh@hospitals.ua" enabled="true" password="$2a$10$xEHQ5YGjKO0.CED2gkMBsOK7eR555Zo9XAkYKjGJTQcyxHgpAWV7e" userdetails_id="2"/>
+  <users id="3" email="manager.kk@hospitals.ua" enabled="true" password="$2a$10$Y8Ou0AQGW/6UuLB6d0cqhOGZXOVzfmH.0pJnWTYjEHPXjEICAqE9u" userdetails_id="3"/>
+  <users id="4" email="manager.kh@hospitals.ua" enabled="true" password="$2a$10$2mZHnyUAbDsX8341uT1UT.fYNzey/q/TYtoOVQreYDrJsxP7v1N/K" userdetails_id="4"/>
+  <users id="5" email="manager.jn@hospitals.ua" enabled="true" password="$2a$10$bP/ijok5uiAGC4UsSp/QIujdYXT5ixCwnKkndTYW.1ml3m349w0lS" userdetails_id="5"/>
+  <users id="6" email="doctor.gh@hospitals.ua" enabled="true" password="$2a$10$FbRxp4PdXuFHK7kU8hemMezGFc.iGXH6Bs5z6gZCImhh8YM3ZJn2K" userdetails_id="6"/>
+  <users id="7" email="doctor.ef@hospitals.ua" enabled="true" password="$2a$10$Ah7jCL.GYHPWHXxQ4TPsJOok178L.SrKYIo5n3QmTy74LV1M0Clqi" userdetails_id="7"/>
+  <users id="8" email="doctor.lc@hospitals.ua" enabled="true" password="$2a$10$RjUyAGgaT0RW9wYXAJPGjuG1ooXdpBjI/4bQwmTbvMteimyiAjbum" userdetails_id="8"/>
+  <users id="9" email="doctor.rh@hospitals.ua" enabled="true" password="$2a$10$jyvm38NWsC3WDklbGTxMRurM6SNULHlOSOFFqPGTGp2.c.UZTpxJC" userdetails_id="9"/>
+  <users id="10" email="doctor.jw@hospitals.ua" enabled="true" password="$2a$10$18snRZ9iaK7iets6IN8XmOxTZiEebBCtUMLpY3/i72Nfk40iqbn2W" userdetails_id="10"/>
+  <users id="11" email="doctor.cb@hospitals.ua" enabled="true" password="$2a$10$eNhH/O6Gb/Kzoxc7fZZJYOA9HQuYB6Pz4mrG/DJd35zHk0Nu7.32y" userdetails_id="11"/>
+  <users id="12" email="doctor.ct@hospitals.ua" enabled="true" password="$2a$10$o3apAm429gfS2jRto.sHyOWAtQ..WgYC3HvThm3/8ZApV2gVqyTbO" userdetails_id="12"/>
+  <users id="13" email="doctor.jd@hospitals.ua" enabled="true" password="$2a$10$ZbbcxIGBQFE8IxcB4GI7BeDH/kmTvMmonbCL7z0aMDglrK.6U65aW" userdetails_id="13"/>
+  <users id="14" email="doctor.jl@hospitals.ua" enabled="true" password="$2a$10$bhW4V1uVETEQ/YSC3yQPm.lGPavROHB/fmzBtW0k3ppdZlABoMiiO" userdetails_id="14"/>
+  <users id="15" email="doctor.ms@hospitals.ua" enabled="true" password="$2a$10$Hazi7OuRrnnLd6gmNWLCpOYr6dksKORDM4Xl.hB3YXbE/wl6YgA46" userdetails_id="15"/>
+  <users id="16" email="doctor.mm@hospitals.ua" enabled="true" password="$2a$10$xeVfrEqprRSHSqo8yb/AWutiqEkLlVaNmrsWUxy5kYF5ksFcW17Iu" userdetails_id="16"/>
+  <users id="17" email="patient.cd@hospitals.ua" enabled="true" password="$2a$10$lH5Sg.gocRCIuO17BV1BW.sUjVvPTXA7UokUsWtt7ODSOuRNMVhGW" userdetails_id="17"/>
+  <users id="18" email="patient.in@hospitals.ua" enabled="true" password="$2a$10$ZNCZEfFLA/TZFuhk3aL1b.2KraEr7mSLGk5hWp9KliuBY8B5quryq" userdetails_id="18"/>
+  <users id="19" email="patient.ml@hospitals.ua" enabled="true" password="$2a$10$wtRRo7Q6O.wPv8E/7M4kMebWHgdFf0GZYotCj3nBUYR2HLxQFqPMm" userdetails_id="19"/>
+  <users id="20" email="patient.rr@hospitals.ua" enabled="true" password="$2a$10$DLdRb91MrBBhNxEr5AYXrOuSn5LieZFSXrVE7RZWEbglkdfsvptsm" userdetails_id="20"/>
+  <users id="21" email="patient.sf@hospitals.ua" enabled="true" password="$2a$10$4TW.tWhaI4xoSGPZhA4iseizzcRpQB/yNessm204M7o0qXgsdJYm." userdetails_id="21"/>
+  <users id="22" email="patient.tj@hospitals.ua" enabled="true" password="$2a$10$AqrcRbvJTENvc2bXHU0vReNy9vO1Bnz8cW2C5.ONPkTRCtG9jmgiC" userdetails_id="22"/>
+  <users id="23" email="patient.nc@hospitals.ua" enabled="true" password="$2a$10$TyN8NQEj8Pl7JbABIK67lOxLCssjO2K.7Qu3xKpesbs9dqczDWENa" userdetails_id="23"/>
+  <users id="24" email="patient.ss@hospitals.ua" enabled="true" password="$2a$10$sjTOOUGvQ1qDZhRoPGYPYukYhQe6iTdF6/1xDqzBFVD2HHv5k2weS" userdetails_id="24"/>
+  <users id="25" email="patient.ta@hospitals.ua" enabled="true" password="$2a$10$2DEn8BQLvFy/.QPqJ1T9TOty5Hc4YVxABAz4HbWpJJDu0RajTc9VK" userdetails_id="25"/>
+  <users id="26" email="patient.rd@hospitals.ua" enabled="true" password="$2a$10$oRca1dIpFtruJW41JR.YXeg2XHSZpldCIlJcx/.rTvdOjBtP2M2Zy" userdetails_id="26"/>
+  <users id="28" email="patient.da@hospitals.ua" enabled="true" password="$2a$10$VJHmXNE7mA.RB/QpDhS3EuIlS6TAWOZO6HO3C0foMxR4TFwG6lQKe" userdetails_id="28"/>
+  <users id="29" email="patient.gc@hospitals.ua" enabled="true" password="$2a$10$nacXREY6RA3cwDlkRkAwM.lZoYwOgXYrfL.Eb13gX74lfqRqRi/VG" userdetails_id="29"/>
+  <users id="30" email="patient.ow@hospitals.ua" enabled="true" password="$2a$10$kGlMyGxVTCNltxtaxJPTweQKbZqzNzdqMIlDKxGPaMF704IyiJiRm" userdetails_id="30"/>
+  <users id="31" email="patient.qm@hospitals.ua" enabled="true" password="$2a$10$HRcBNI0bChY15zEhKAErKOWdcQHoxaFSd4MdqPDhDpEVmD8Mw.FJO" userdetails_id="31"/>
+  <users id="32" email="ilay888@yandex.ua" enabled="true" password="$2a$10$j7Yu/kB1c/az2GChgZEj4eLerIFtiD66Z2e/BfZwagky0CXJquga2" userdetails_id="32"/>
+  <users id="34" email="a@a.co" enabled="true" password="$2a$10$tPXfII2a8Pnp4ACKioOXQeZKmpCGV.PCwH3mLnp8I6IiNuvxCfjp2" userdetails_id="34"/>
+  <users id="45" email="a@a.com" enabled="true" password="$2a$10$Pa.m/FUg8Mt6btTnDHgP6us93ZJs4rHiLxwgpTWwTI7UqzkSHl8cS" userdetails_id="36"/>
+  <users id="49" email="lesiakoval12@gmail.com" enabled="true" password="$2a$10$rwP1z3jY4oOe0Myrqt8At.vCnX7CQmaMsTjBJ5pedH8TMYHXFL7Pa" userdetails_id="40"/>
+  <users id="50" email="julia.nedzelskaya@gmail.com" enabled="true" password="$2a$10$sgkKnflCMcVOqgZwZKw0lucwdUuCroII7EN1AQZonmbwzgJ3h6h6W" userdetails_id="41"/>
+  <users id="56" email="julia.nedzelskaya1@gmail.com" enabled="true" password="$2a$10$DfrHvq2aWyNkyYWgdpvMJuazTMuFi8RMgmq6TokO/PdURWRe8wpYi" userdetails_id="47"/>
+  <users id="57" email="dimakrylyuk@gmail.com" enabled="true" password="$2a$10$/mernx9jinZ.a2TRnzn4Me3s7Xjxluh2PkeGlHZimy74.b4TZeimS" userdetails_id="48"/>
+  <users id="58" email="a@gmail.com" enabled="true" password="$2a$10$HDbO0fCgdARfKA.DTTs8aeFos3Xc8hAWUo7o6Tdf/RSa/Fn1chEd6" userdetails_id="49"/>
+  <users id="59" email="vgantyuk@gmail.com" enabled="true" password="$2a$10$PQ4oAKQ4NoQ62CO6haYoEuvGNYk1e1h1OAwypLeYbg7mQ7dGstpZS" userdetails_id="50"/>
+  <verifications_tokens/>
+</dataset>

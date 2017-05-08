@@ -1,0 +1,5 @@
+<root>
+    <item name='org.dbunit.operation.DeleteAllOperation DeleteAllOperation()'>
+        <annotation name='java.lang.Deprecated'/>
+    </item>
+</root>

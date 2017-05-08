@@ -1,16 +1,17 @@
 package pages.patient;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
+import pages.headers.headersByRole.PatientHeader;
 
 
 /**
  * Created by gregtar on 06.04.17.
  */
-public class StudiesPage extends BasePage {
+public class StudiesPage implements PageInitializer {
 
+    PatientHeader patientHeader;
     @FindBy(xpath = "/html/body/section/div/div/ul/li[1]/a")
     private WebElement resultOfStudiesTab;
 
@@ -20,7 +21,8 @@ public class StudiesPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"menu2\"]/div/div[2]/div/h3")
     private WebElement futureStudiesLabel;
 
-    public StudiesPage(WebDriver driver) {
-        super(driver);
+    public StudiesPage() {
+        this.patientHeader = new PatientHeader();
+        pageInitialization();
     }
 }

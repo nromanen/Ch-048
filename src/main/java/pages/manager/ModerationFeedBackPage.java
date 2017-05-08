@@ -3,77 +3,87 @@ package pages.manager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
+import utils.BrowserWrapper;
 
 
 /**
  * Created by radga on 06.04.2017.
  */
-public class ModerationFeedBackPage extends BasePage {
+public class ModerationFeedBackPage implements PageInitializer {
     public ManagerHeader managerHeader;
 
     @FindBy(css = "input[value=\"remove\"]")
-    private WebDriver removeAfterDecideButton;
+    private WebElement removeAfterDecideButton;
 
     @FindBy(css = "input[value=\"NEW\"]")
-    private WebDriver newButton;
+    private WebElement newButton;
 
     @FindBy(css = "input[value=\"OK\"]")
-    private WebDriver okButton;
+    private WebElement okButton;
 
     @FindBy(css = "input[value=\"BAD\"]")
-    private WebDriver badButton;
+    private WebElement badButton;
 
     @FindBy(id = "searchButton")
-    private WebDriver searchButton;
+    private WebElement searchButton;
 
     //Feedback 1
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[1]/span")
-    private WebDriver patientOneName;
+    private WebElement patientOneName;
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[1]/div/span")
-    private WebDriver patienOneDateOfCreation;
+    private WebElement patienOneDateOfCreation;
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[2]")
-    private WebDriver patientOneFeedbackBody;
+    public WebElement patientOneFeedbackBody;
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[3]/div/label[1]")
-    private WebDriver patientOneOkButton;
+    private WebElement patientOneOkButton;
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[3]/div/label[2]")
-    private WebDriver patientOneBlockButton;
+    private WebElement patientOneBlockButton;
 
     @FindBy(xpath = "//*[@id=\"2\"]/div[3]/span")
-    private WebDriver patientOneDoctorName;
+    private WebElement patientOneDoctorName;
 
     //Feedback 2
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[1]/span")
-    private WebDriver patientTwoName;
+    private WebElement patientTwoName;
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[1]/div/span")
-    private WebDriver patienTwoDateOfCreation;
+    private WebElement patienTwoDateOfCreation;
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[2]")
-    private WebDriver patientTwoFeedbackBody;
+    private WebElement patientTwoFeedbackBody;
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[3]/div/label[1]")
-    private WebDriver patientTwoOkButton;
+    private WebElement patientTwoOkButton;
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[3]/div/label[2]")
-    private WebDriver patientTwoBlockButton;
+    private WebElement patientTwoBlockButton;
 
     @FindBy(xpath = "//*[@id=\"5\"]/div[3]/span")
-    private WebDriver patientTwoDoctorName;
+    private WebElement patientTwoDoctorName;
+
+
 
 
     @FindBy(xpath = "/html/body/section/a")
     private WebElement backToTopButton;
 
-    public ModerationFeedBackPage(WebDriver driver){
-        super(driver);
-        managerHeader = new ManagerHeader(driver);
+
+    public ModerationFeedBackPage  confirmFeedback(){
+        patientOneOkButton.click();
+        BrowserWrapper.refreshPage();
+        return new ModerationFeedBackPage();
+    }
+
+    public ModerationFeedBackPage(){
+        managerHeader = new ManagerHeader();
+        pageInitialization();
     }
 }

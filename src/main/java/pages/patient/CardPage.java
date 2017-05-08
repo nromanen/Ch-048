@@ -1,16 +1,17 @@
 package pages.patient;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
+import pages.headers.headersByRole.PatientHeader;
 
 
 /**
  * Created by gregtar on 06.04.17.
  */
-public class CardPage extends BasePage {
+public class CardPage implements PageInitializer {
 
+    PatientHeader patientHeader;
     @FindBy(id = "headingOne")
     private WebElement diagnosisLabel;
 
@@ -24,7 +25,8 @@ public class CardPage extends BasePage {
 
 
 
-    public CardPage(WebDriver driver) {
-        super(driver);
+    public CardPage() {
+        this.patientHeader = new PatientHeader();
+        pageInitialization();
     }
 }

@@ -1,14 +1,13 @@
 package pages.doctor;
 
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.DoctorHeader;
 import utils.BrowserWrapper;
 
-public class PatientsCardPage extends BasePage {
+public class PatientsCardPage implements PageInitializer {
     public DoctorHeader header;
 
     @FindBy(css = "a.btn.btn-info")
@@ -20,9 +19,8 @@ public class PatientsCardPage extends BasePage {
     @FindBy (xpath = "//*[@id=\"headingOne\"]/h4/span[2]/a")
     private WebElement editRecord;
 
-    public PatientsCardPage(WebDriver driver) {
-        super(driver);
-        this.header = new DoctorHeader(driver);
+    public PatientsCardPage() {
+        this.header = new DoctorHeader();
     }
     public boolean checkRecord(){
         return BrowserWrapper.isElementPresent(patientRecords);
@@ -33,5 +31,6 @@ public class PatientsCardPage extends BasePage {
     }
     public void editButtonClick(){
         editRecord.click();
+        pageInitialization();
     }
 }

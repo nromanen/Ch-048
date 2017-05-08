@@ -1,14 +1,16 @@
 package pages.patient;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
+import pages.headers.headersByRole.PatientHeader;
 
 /**
  * Created by gregtar on 06.04.17.
  */
-public class MyAppointmentPage extends BasePage {
+public class MyAppointmentPage implements PageInitializer {
+    PatientHeader patientHeader;
+
     @FindBy(id = "dhx_minical_icon")
     private WebElement calendarIcon;
 
@@ -43,7 +45,9 @@ public class MyAppointmentPage extends BasePage {
     //
 
 
-    public MyAppointmentPage(WebDriver driver) {
-        super(driver);
+    public MyAppointmentPage() {
+        patientHeader= new PatientHeader();
+        pageInitialization();
+
     }
 }

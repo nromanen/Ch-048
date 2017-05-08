@@ -1,0 +1,1253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jmeterTestPlan version="1.2" properties="3.2" jmeter="3.2 r1790748">
+  <hashTree>
+    <TestPlan guiclass="TestPlanGui" testclass="TestPlan" testname="Hospital Seeker" enabled="true">
+      <stringProp name="TestPlan.comments">This test plan was created by the BlazeMeter JSON to JMX convertor V.1.5.222. Please contact support@blazemeter.com for further support.</stringProp>
+      <boolProp name="TestPlan.functional_mode">false</boolProp>
+      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
+      <elementProp name="TestPlan.user_defined_variables" elementType="Arguments">
+        <collectionProp name="Arguments.arguments"/>
+      </elementProp>
+      <stringProp name="TestPlan.user_define_classpath"></stringProp>
+    </TestPlan>
+    <hashTree>
+      <AuthManager guiclass="AuthPanel" testclass="AuthManager" testname="HTTP Authorization Manager" enabled="true">
+        <collectionProp name="AuthManager.auth_list"/>
+      </AuthManager>
+      <hashTree/>
+      <CookieManager guiclass="CookiePanel" testclass="CookieManager" testname="HTTP Cookie Manager" enabled="true">
+        <collectionProp name="CookieManager.cookies"/>
+        <boolProp name="CookieManager.clearEachIteration">true</boolProp>
+        <stringProp name="CookieManager.implementation">org.apache.jmeter.protocol.http.control.HC4CookieHandler</stringProp>
+      </CookieManager>
+      <hashTree/>
+         <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="doctors_accounts" enabled="true">
+                  <stringProp name="filename">csv/createUser.csv</stringProp>
+                  <stringProp name="fileEncoding">utf-8</stringProp>
+                  <stringProp name="variableNames">login,password,confirmPassword,role</stringProp>
+                  <boolProp name="ignoreFirstLine">false</boolProp>
+                  <stringProp name="delimiter">;</stringProp>
+                  <boolProp name="quotedData">false</boolProp>
+                  <boolProp name="recycle">true</boolProp>
+                  <boolProp name="stopThread">false</boolProp>
+                  <stringProp name="shareMode">shareMode.all</stringProp>
+                </CSVDataSet>
+                <hashTree/>
+      <CacheManager guiclass="CacheManagerGui" testclass="CacheManager" testname="HTTP Cache Manager" enabled="true">
+        <boolProp name="clearEachIteration">true</boolProp>
+        <boolProp name="useExpires">false</boolProp>
+      </CacheManager>
+      <hashTree/>
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Thread Group" enabled="true">
+        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" enabled="true">
+          <boolProp name="LoopController.continue_forever">false</boolProp>
+          <stringProp name="LoopController.loops">1</stringProp>
+        </elementProp>
+        <stringProp name="ThreadGroup.num_threads">1</stringProp>
+        <stringProp name="ThreadGroup.ramp_time">1</stringProp>
+        <longProp name="ThreadGroup.start_time">1363247040000</longProp>
+        <longProp name="ThreadGroup.end_time">1363247040000</longProp>
+        <boolProp name="ThreadGroup.scheduler">false</boolProp>
+        <stringProp name="ThreadGroup.duration">0</stringProp>
+        <stringProp name="ThreadGroup.delay">0</stringProp>
+      </ThreadGroup>
+      <hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">0.0</stringProp>
+            <stringProp name="ConstantTimer.delay">0.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">156.0</stringProp>
+            <stringProp name="ConstantTimer.delay">312.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/mapsearch" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/mapsearch</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">535.6</stringProp>
+            <stringProp name="ConstantTimer.delay">1071.2</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/mapsearch</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">50.0</stringProp>
+            <stringProp name="ConstantTimer.delay">100.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/login" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/login</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/mapsearch</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">286.0</stringProp>
+            <stringProp name="ConstantTimer.delay">572.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/login</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">50.800000000000004</stringProp>
+            <stringProp name="ConstantTimer.delay">101.60000000000001</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/login</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">1381.2</stringProp>
+            <stringProp name="ConstantTimer.delay">2762.4</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker//spinner.html" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker//spinner.html</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html, */*; q=0.01</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/login</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">66.8</stringProp>
+            <stringProp name="ConstantTimer.delay">133.6</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/login" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+                <stringProp name="Argument.value">1111</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="_csrf" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">_csrf</stringProp>
+                <stringProp name="Argument.value">a20bc781-67b0-4b66-8000-058ca53d8a47</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="email" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">email</stringProp>
+                <stringProp name="Argument.value">admin@hospitals.ua</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="${_csrf.parameterName}" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">${_csrf.parameterName}</stringProp>
+                <stringProp name="Argument.value">${_csrf.token}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/login</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/login</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">2179.2000000000003</stringProp>
+            <stringProp name="ConstantTimer.delay">4358.400000000001</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/users?status=true" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="status" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">status</stringProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/users</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/login</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">38.400000000000006</stringProp>
+            <stringProp name="ConstantTimer.delay">76.80000000000001</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">d75a18a4-d578-4dae-af36-0ce1b9cbece9</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/users?status=true</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">60.0</stringProp>
+            <stringProp name="ConstantTimer.delay">120.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/newUser" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/newUser</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/users?status=true</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">3707.6000000000004</stringProp>
+            <stringProp name="ConstantTimer.delay">7415.200000000001</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">d75a18a4-d578-4dae-af36-0ce1b9cbece9</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/newUser</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">122.4</stringProp>
+            <stringProp name="ConstantTimer.delay">244.8</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">d75a18a4-d578-4dae-af36-0ce1b9cbece9</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/newUser</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">12.0</stringProp>
+            <stringProp name="ConstantTimer.delay">24.0</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/newUser" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="userRoles" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">userRoles</stringProp>
+                <stringProp name="Argument.value">${role}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="password" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">password</stringProp>
+                <stringProp name="Argument.value">${password}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="${_csrf.parameterName}" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">${_csrf.parameterName}</stringProp>
+                <stringProp name="Argument.value">${_csrf.token}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="_userRoles" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">_userRoles</stringProp>
+                <stringProp name="Argument.value">1</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="confirmPassword" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">confirmPassword</stringProp>
+                <stringProp name="Argument.value">${confirmPassword}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="_csrf" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">_csrf</stringProp>
+                <stringProp name="Argument.value">d75a18a4-d578-4dae-af36-0ce1b9cbece9</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="_enabled" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">_enabled</stringProp>
+                <stringProp name="Argument.value">on</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="email" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">email</stringProp>
+                <stringProp name="Argument.value">${email}</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+              <elementProp name="enabled" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">enabled</stringProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/newUser</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/x-www-form-urlencoded</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/newUser</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">8373.6</stringProp>
+            <stringProp name="ConstantTimer.delay">16747.2</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/users?status=true" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments">
+              <elementProp name="status" elementType="HTTPArgument">
+                <boolProp name="HTTPArgument.always_encode">true</boolProp>
+                <stringProp name="Argument.name">status</stringProp>
+                <stringProp name="Argument.value">true</stringProp>
+                <stringProp name="Argument.metadata">=</stringProp>
+                <boolProp name="HTTPArgument.use_equals">true</boolProp>
+              </elementProp>
+            </collectionProp>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/users</stringProp>
+          <stringProp name="HTTPSampler.method">GET</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Upgrade-Insecure-Requests" elementType="Header">
+                <stringProp name="Header.name">Upgrade-Insecure-Requests</stringProp>
+                <stringProp name="Header.value">1</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/newUser</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, sdch, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">52.800000000000004</stringProp>
+            <stringProp name="ConstantTimer.delay">105.60000000000001</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+        <HTTPSamplerProxy guiclass="HttpTestSampleGui" testclass="HTTPSamplerProxy" testname="https://localhost:8443/HospitalSeeker/admin/getparams/messages" enabled="true">
+          <elementProp name="HTTPsampler.Arguments" elementType="Arguments" guiclass="HTTPArgumentsPanel" testclass="Arguments" enabled="true">
+            <collectionProp name="Arguments.arguments"/>
+          </elementProp>
+          <stringProp name="HTTPSampler.domain">localhost</stringProp>
+          <stringProp name="HTTPSampler.port">8443</stringProp>
+          <stringProp name="HTTPSampler.protocol">https</stringProp>
+          <stringProp name="HTTPSampler.contentEncoding"></stringProp>
+          <stringProp name="HTTPSampler.path">HospitalSeeker/admin/getparams/messages</stringProp>
+          <stringProp name="HTTPSampler.method">POST</stringProp>
+          <boolProp name="HTTPSampler.follow_redirects">true</boolProp>
+          <boolProp name="HTTPSampler.auto_redirects">false</boolProp>
+          <boolProp name="HTTPSampler.use_keepalive">true</boolProp>
+          <boolProp name="HTTPSampler.DO_MULTIPART_POST">false</boolProp>
+          <boolProp name="HTTPSampler.image_parser">true</boolProp>
+          <boolProp name="HTTPSampler.concurrentDwn">true</boolProp>
+          <stringProp name="HTTPSampler.concurrentPool">2</stringProp>
+          <stringProp name="HTTPSampler.embedded_url_re"></stringProp>
+          <stringProp name="HTTPSampler.connect_timeout"></stringProp>
+          <stringProp name="HTTPSampler.response_timeout"></stringProp>
+        </HTTPSamplerProxy>
+        <hashTree>
+          <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header manager" enabled="true">
+            <collectionProp name="HeaderManager.headers">
+              <elementProp name="Accept" elementType="Header">
+                <stringProp name="Header.name">Accept</stringProp>
+                <stringProp name="Header.value">*/*</stringProp>
+              </elementProp>
+              <elementProp name="Origin" elementType="Header">
+                <stringProp name="Header.name">Origin</stringProp>
+                <stringProp name="Header.value">https://localhost:8443</stringProp>
+              </elementProp>
+              <elementProp name="X-CSRF-TOKEN" elementType="Header">
+                <stringProp name="Header.name">X-CSRF-TOKEN</stringProp>
+                <stringProp name="Header.value">d75a18a4-d578-4dae-af36-0ce1b9cbece9</stringProp>
+              </elementProp>
+              <elementProp name="X-Requested-With" elementType="Header">
+                <stringProp name="Header.name">X-Requested-With</stringProp>
+                <stringProp name="Header.value">XMLHttpRequest</stringProp>
+              </elementProp>
+              <elementProp name="User-Agent" elementType="Header">
+                <stringProp name="Header.name">User-Agent</stringProp>
+                <stringProp name="Header.value">Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36</stringProp>
+              </elementProp>
+              <elementProp name="Content-Type" elementType="Header">
+                <stringProp name="Header.name">Content-Type</stringProp>
+                <stringProp name="Header.value">application/json</stringProp>
+              </elementProp>
+              <elementProp name="Referer" elementType="Header">
+                <stringProp name="Header.name">Referer</stringProp>
+                <stringProp name="Header.value">https://localhost:8443/HospitalSeeker/admin/users?status=true</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Encoding" elementType="Header">
+                <stringProp name="Header.name">Accept-Encoding</stringProp>
+                <stringProp name="Header.value">gzip, deflate, br</stringProp>
+              </elementProp>
+              <elementProp name="Accept-Language" elementType="Header">
+                <stringProp name="Header.name">Accept-Language</stringProp>
+                <stringProp name="Header.value">ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4</stringProp>
+              </elementProp>
+            </collectionProp>
+          </HeaderManager>
+          <hashTree/>
+          <UniformRandomTimer guiclass="UniformRandomTimerGui" testclass="UniformRandomTimer" testname="Uniform Random Timer" enabled="true">
+            <stringProp name="RandomTimer.range">119.2</stringProp>
+            <stringProp name="ConstantTimer.delay">238.4</stringProp>
+          </UniformRandomTimer>
+          <hashTree/>
+        </hashTree>
+      </hashTree>
+    </hashTree>
+    <WorkBench guiclass="WorkBenchGui" testclass="WorkBench" testname="WorkBench" enabled="true">
+      <boolProp name="WorkBench.save">true</boolProp>
+    </WorkBench>
+    <hashTree/>
+  </hashTree>
+</jmeterTestPlan>
