@@ -15,7 +15,7 @@ public class BaseNavigation {
 
     public static void login(String email, String password) {
         HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        LoginPage loginPage = hospitalSeekerHomePage.header.loginButton();
+        LoginPage loginPage = hospitalSeekerHomePage.notAuthorizedHeader.loginButton();
         loginPage.authorization(email, password);
     }
 
