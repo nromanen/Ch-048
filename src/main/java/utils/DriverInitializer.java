@@ -36,7 +36,6 @@ public class DriverInitializer {
 
     private static final String WINDOWS_IE_WEBDRIVER_PATH = "src/main/resources/drivers/MicrosoftWebDriver.exe";
 
-
     private static volatile WebDriver driver;
 
     private static void setSystemProperties() {
@@ -82,7 +81,7 @@ public class DriverInitializer {
                 break;
         }
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 
     }
 

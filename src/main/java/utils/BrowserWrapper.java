@@ -13,10 +13,9 @@ import java.util.concurrent.TimeUnit;
  */
 public class BrowserWrapper {
 
-    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(),30,250);
+    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 30, 250);
 
-
-    public static String getTitle(){
+    public static String getTitle() {
         return DriverInitializer.instance().getTitle();
     }
 
@@ -44,7 +43,6 @@ public class BrowserWrapper {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
 
-
     public static void waitUntilElementIsPresent(By locator) {
         wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
@@ -54,7 +52,6 @@ public class BrowserWrapper {
         dropdown.selectByVisibleText(text);
     }
 
-
     public static void sleep(int Seconds) {
         try {
             Thread.sleep(Seconds * 1000);
@@ -63,18 +60,16 @@ public class BrowserWrapper {
         }
     }
 
-
-    public static void waitForPage(Long l){
+    public static void waitForPage(Long l) {
         DriverInitializer.instance().manage().timeouts().pageLoadTimeout(l, TimeUnit.SECONDS);
     }
 
-    public static void refreshPage(){
+    public static void refreshPage() {
         DriverInitializer.instance().navigate().refresh();
     }
 
-    public static boolean isAlertPresent(){
+    public static boolean isAlertPresent() {
         boolean foundAlert;
-        WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 2);
         try {
             wait.until(ExpectedConditions.alertIsPresent());
             foundAlert = true;
@@ -84,58 +79,54 @@ public class BrowserWrapper {
         return foundAlert;
     }
 
-    public static void confirmAlert(){
+    public static void conformAlert() {
         waitUntilAlertIsPresent();
         Alert alert = DriverInitializer.instance().switchTo().alert();
         alert.dismiss();
     }
 
-
-
-
-    public static void doubleClickJs(WebElement element){
+    public static void doubleClickJs(WebElement element) {
         JavascriptExecutor js = (JavascriptExecutor) DriverInitializer.instance();
         String doubleClickJS = "if(document.createEvent){var evObj = document.createEvent('MouseEvents');evObj.initEvent('dblclick',true, false); arguments[0].dispatchEvent(evObj);} else if(document.createEventObject){ arguments[0].fireEvent('ondblclick');}window.stop();";
         js.executeScript(doubleClickJS, element);
     }
-    public static void tripleClick(WebElement element){
-       for (int i=0;i<3;i++) {
-           clickWithStaleException(element);
-       }
+
+    public static void tripleClick(WebElement element) {
+        for (int i = 0; i < 3; i++) {
+            clickWithStaleException(element);
+        }
 
     }
 
-
-
-    public static boolean clickWithStaleException(WebElement element){
+    public static boolean clickWithStaleException(WebElement element) {
         boolean result = false;
         int attempts = 0;
-        while(attempts < 5) {
+        while (attempts < 5) {
             try {
                 element.click();
                 result = true;
                 break;
-            } catch(StaleElementReferenceException e) {
+            } catch (StaleElementReferenceException e) {
             }
             attempts++;
         }
         return result;
     }
 
-
-    public static boolean isSorted(List<String> list){
+    public static boolean isSorted(List<String> list) {
         String previous = "";
 
-        for (final String current: list) {
-            if (current.compareTo(previous) < 0)
+        for (final String current : list) {
+            if (current.compareTo(previous) < 0) {
                 return false;
+            }
             previous = current;
         }
 
         return true;
     }
 
-    public static void waitUntilElementNotStale(WebElement element){
+    public static void waitUntilElementNotStale(WebElement element) {
         wait.until(ExpectedConditions.not(ExpectedConditions.stalenessOf(element)));
     }
 }

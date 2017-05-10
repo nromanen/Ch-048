@@ -10,6 +10,7 @@ import pages.allUsers.HospitalSeekerHomePage;
 import pages.doctor.WorkSchedulerPage;
 import pages.headers.headersByRole.DoctorHeader;
 import utils.BaseNavigation;
+import utils.BrowserWrapper;
 
 
 /**
@@ -20,14 +21,13 @@ public class WorkSchedulerDoctorSteps {
     public static final String DOCTOR_PASSWORD = "1111";
     WorkSchedulerPage workSchedulerPage;
     public static final int EXPECTED_WEEK_SIZE = 6;
-    public static final int EXPECTED_MONTH_SIZE = 12;
+
 
     @Given("^DOCTOR is on work scheduler page$")
     public void DOCTOR_is_on_work_scheduler_page() throws Throwable {
-        HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsDoctor(DOCTOR_LOGIN,DOCTOR_PASSWORD);
+      HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsDoctor(DOCTOR_LOGIN,DOCTOR_PASSWORD);
+        workSchedulerPage.header.scheduleButtonClick();
 
-        DoctorHeader header = new DoctorHeader();
-        workSchedulerPage = header.scheduleButtonClick();
     }
     @When("^DOCTOR press button \"Day\"$")
     public void DOCTOR_press_button_Day() throws Throwable{

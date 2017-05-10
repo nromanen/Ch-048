@@ -13,49 +13,46 @@ import pages.manager.HospitalsPage;
  */
 public class BaseNavigation {
 
-
-    public static void login( String email, String password) {
-        BrowserWrapper.sleep(2);
+    public static void login(String email, String password) {
         HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
         LoginPage loginPage = hospitalSeekerHomePage.header.loginButton();
         loginPage.authorization(email, password);
     }
 
-
     public static HospitalSeekerHomePage logout() {
         AuthorizedHeader authorizedHeader = new AuthorizedHeader();
         authorizedHeader.profileButtonClick();
-        return authorizedHeader.logoutButtonClick();
+        HospitalSeekerHomePage hospitalSeekerHomePage = authorizedHeader.logoutButtonClick();
+        BrowserWrapper.waitUntilElementVisible(hospitalSeekerHomePage.getHomePageImage());
+        return hospitalSeekerHomePage;
     }
 
-
-    public static AllUsersPage loginAsAdmin( String email, String password) {
-        login( email, password);
+    public static AllUsersPage loginAsAdmin(String email, String password) {
+        login(email, password);
         return new AllUsersPage();
     }
 
-    public static HospitalsPage loginAsManager(String email, String password)  {
+    public static HospitalsPage loginAsManager(String email, String password) {
         login(email, password);
         return new HospitalsPage();
     }
 
-    public static HospitalSeekerHomePage loginAsDoctor(String email, String password)  {
+    public static HospitalSeekerHomePage loginAsDoctor(String email, String password) {
         login(email, password);
-        return new HospitalSeekerHomePage() ;
+        return new HospitalSeekerHomePage();
     }
 
-    public static HospitalSeekerHomePage loginAsPatient(String email, String password)  {
+    public static HospitalSeekerHomePage loginAsPatient(String email, String password) {
         login(email, password);
-        return new HospitalSeekerHomePage() ;
+        return new HospitalSeekerHomePage();
     }
 
-    public static void changeLanguage(String lang){
+    public static void changeLanguage(String lang) {
         BaseHeader baseHeader = new BaseHeader();
-        if(lang.equals("ukr")){
+        if (lang.equals("ukr")) {
             baseHeader.changeLanguageToUa();
-        }else {
+        } else {
             baseHeader.changeLanguageToEn();
         }
     }
-
 }

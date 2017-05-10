@@ -11,7 +11,7 @@ import utils.BrowserWrapper;
 /**
  * Created by Evgen on 05.04.2017.
  */
-public class NotAuthorizedHeader extends  BaseHeader implements PageInitializer{
+public class NotAuthorizedHeader extends BaseHeader implements PageInitializer {
     public NotAuthorizedHeader() {
         pageInitialization();
     }
@@ -19,16 +19,15 @@ public class NotAuthorizedHeader extends  BaseHeader implements PageInitializer{
     @FindBy(css = "a[href='/HospitalSeeker/login']")
     protected WebElement login;
 
-    public LoginPage loginButton(){
+    public LoginPage loginButton() {
         try {
             BrowserWrapper.waitUntilElementVisible(login);
+            BrowserWrapper.waitUntilElementNotStale(login);
             login.click();
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return new LoginPage();
     }
-
-
 
 }

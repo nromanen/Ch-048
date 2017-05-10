@@ -59,9 +59,10 @@ public class WorkSchedulerPage implements PageInitializer {
     public void dayTabButtonClick (){
         dayTabButton.click();
     }
-    public void weekTabButtonClick(){
+    public WorkSchedulerPage weekTabButtonClick(){
         BrowserWrapper.waitUntilElementClickable(weekTabButton);
         weekTabButton.click();
+        return new WorkSchedulerPage();
     }
     public void monthTabButtonClick(){
         monthTabButton.click();

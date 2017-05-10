@@ -213,6 +213,7 @@ public class SchedulerPage implements PageInitializer {
 
     public void createEventCalendar(String text){
         nextButtonClick();
+        BrowserWrapper.waitUntilElementVisible(monthElement);
         BrowserWrapper.doubleClickJs(monthElement);
         BrowserWrapper.waitUntilElementVisible(detailedEditorField);
         detailedEditorField.sendKeys(text);

@@ -65,7 +65,6 @@ public class TestPatientRecord extends BaseTest {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.sortByFirstNameButton();
-        BrowserWrapper.sleep(4);
         String first_patient_after_sort = listPatientPage.getDataFromTable(1, 3);
         Assert.assertEquals(first_patient_after_sort, FIRST_PATIENT);
         logger.info("Test pass");
@@ -75,7 +74,6 @@ public class TestPatientRecord extends BaseTest {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.sortByLastNameButton();
-        BrowserWrapper.sleep(3);
         String first_patient_after_sort = listPatientPage.getDataFromTable(1, 4);
         Assert.assertEquals(first_patient_after_sort, SECOND_PATIENT);
         logger.info("Test pass");

@@ -17,54 +17,57 @@ import static org.testng.Assert.assertEquals;
  */
 public class TestHospitalSearch extends BaseTest {
 
-    @DataProvider(name = "SearchProvider")
-    public static Object[][] parametrizedData() {
-        return new Object[][]{
-                {"поліклініка", 2},
-                {"hosp", 3},
-                {"абрвал", 0}
-        };
-    }
+    public static final String TOO_SHORT_SEARCH_WORD = "ho";
 
     @AfterMethod(alwaysRun = true)
-    public void afterMethod() throws Exception{
+    public void afterMethod() throws Exception {
         DriverInitializer.deleteAllCookies();
     }
 
     @Test(dataProvider = "SearchProvider")
-    public void testFindHospitalNotAuthorizedUser(String searchWord, int expected) {
-        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.header.findHospital(searchWord);
-        BrowserWrapper.sleep(1);
+    public void testFindHospitalNotAuthorizedUser(String searchWord, int expected) throws Exception {
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        HospitalSearchResultPage hospitalSearchResult = notAuthorizedHeader.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected);
     }
 
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) throws Exception {
-        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        AllUsersPage allUsersPage = BaseNavigation.loginAsAdmin("admin@hospitals.ua", "1111");
-        BrowserWrapper.sleep(1);
-        HospitalSearchResultPage hospitalSearchResult = allUsersPage.header.findHospital(searchWord);
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        BaseNavigation.login(ADMIN_LOGIN, ADMIN_PASSWORD);
+        HospitalSearchResultPage hospitalSearchResult = notAuthorizedHeader.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected);
+        BaseNavigation.logout();
     }
 
     @Test(groups = "InputValidation")
     public void testFindHospitalInputValidationUa() throws Exception {
-        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        hospitalSeekerHomePage.header.changeLanguageToUa();
-        BrowserWrapper.sleep(1);
-        hospitalSeekerHomePage.header.fillHospitalInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
-        assertEquals(hospitalSeekerHomePage.header.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToUa();
+        notAuthorizedHeader.fillHospitalInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getHospitalSearchError().getText(),
+                     properties.getProperty("search.validation.line.too.short")
+                    );
     }
 
     @Test(groups = "InputValidation")
     public void testFindHospitalInputValidationEng() throws Exception {
-        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        hospitalSeekerHomePage.header.changeLanguageToEn();
-        BrowserWrapper.sleep(1);
-        hospitalSeekerHomePage.header.fillHospitalInput("ho");
-        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
-        assertEquals(hospitalSeekerHomePage.header.getHospitalSearchError().getText(), properties.getProperty("lineToShort"));
+        NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
+        notAuthorizedHeader.changeLanguageToEn();
+        notAuthorizedHeader.fillHospitalInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(notAuthorizedHeader);
+        assertEquals(notAuthorizedHeader.getHospitalSearchError().getText(),
+                     properties.getProperty("search.validation.line.too.short")
+                    );
+    }
+
+    @DataProvider(name = "SearchProvider")
+    public static Object[][] parametrizedData() {
+        return new Object[][]{
+                {"polik", 1},
+                {"hosp", 3},
+                {"qwerty", 0}
+        };
     }
 }

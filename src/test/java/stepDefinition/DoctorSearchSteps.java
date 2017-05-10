@@ -19,7 +19,7 @@ public class DoctorSearchSteps  {
     public static final String NUMBER_DOCTORS_PER_PAGE = "20";
     public static final int EXPECTED_NUMBER_OF_DOCTORS_PER_PAGE= 20;
     public static final String SPECIALIZATION = "Dentist";
-    public static final String SPECIALIZATION_COLUMN = "specialization";
+    public static final String SPECIALIZATION_COLUMN = "Specialization";
     public static final String DOCTOR_EMAIL = "doctor.cb@hospitals.ua";
     public static final String EMAIL = "Email";
     public static final String FIRST_NAME = "First Name";

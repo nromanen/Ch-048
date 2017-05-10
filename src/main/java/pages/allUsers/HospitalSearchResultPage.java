@@ -7,8 +7,7 @@ import pages.headers.headersByRole.NotAuthorizedHeader;
 
 import java.util.List;
 
-
-public class HospitalSearchResultPage implements PageInitializer{
+public class HospitalSearchResultPage implements PageInitializer {
     public NotAuthorizedHeader notAuthorizedHeader;
 
     public HospitalSearchResultPage() {

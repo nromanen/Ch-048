@@ -8,7 +8,6 @@ import utils.BrowserWrapper;
 
 import java.util.List;
 
-
 /**
  * Created by Yana on 06.04.2017.
  */
@@ -52,7 +51,7 @@ public class DoctorSearchResultPage implements PageInitializer {
         return doctorNameAtList.size();
     }
 
-    public DoctorInfoPage goToDoctorInfoPage(){
+    public DoctorInfoPage goToDoctorInfoPage() {
         BrowserWrapper.sleep(3);
         firstDoctorImage.click();
         BrowserWrapper.sleep(5);

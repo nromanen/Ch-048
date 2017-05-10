@@ -42,10 +42,10 @@ public class ListPatientPage implements PageInitializer {
     @FindBy(css = "a[href=\"/HospitalSeeker/patients?page=1&sortBy=email&order=true\"] i")
     private WebElement sortEmailPatients;
 
-    @FindBy(xpath = "a[href=\"/HospitalSeeker/patients?page=1&sortBy=lastName&order=true\"] i")
+    @FindBy(css = "a[href=\"/HospitalSeeker/patients?page=1&sortBy=firstName&order=true\"] i")
     private WebElement sortByFirstName;
 
-    @FindBy(xpath = "a[href=\"/HospitalSeeker/patients?page=1&sortBy=firstName&order=true\"] i")
+    @FindBy(css = "a[href=\"/HospitalSeeker/patients?page=1&sortBy=lastName&order=true\"] i")
     private WebElement sortByLastName;
 
     @FindBy(partialLinkText = "patient.ta@hospitals.ua")
@@ -76,10 +76,13 @@ public class ListPatientPage implements PageInitializer {
     public void sortByFirstNameButton(){
         BrowserWrapper.waitUntilElementClickable(sortByFirstName);
         sortByFirstName.click();
+        BrowserWrapper.sleep(3);
+
     }
     public void sortByLastNameButton(){
         BrowserWrapper.waitUntilElementClickable(sortByLastName);
         sortByLastName.click();
+        BrowserWrapper.sleep(3);
 
     }
     public WebDriver getDriver(){
