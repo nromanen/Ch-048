@@ -3,7 +3,9 @@ package pages.headers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
-import pages.allUsers.*;
+import pages.allUsers.DoctorSearchResultPage;
+import pages.allUsers.HospitalSearchResultPage;
+import pages.allUsers.HospitalSeekerHomePage;
 import utils.BrowserWrapper;
 
 
@@ -78,10 +80,6 @@ public class BaseHeader implements PageInitializer {
         return new HospitalSeekerHomePage();
     }
 
-    public MapSearchPage toMapOfHospitals() {
-        nearestHospital.click();
-        return new MapSearchPage();
-    }
 
     public BaseHeader changeLanguageToUa() {
         changeLanguageIco.click();

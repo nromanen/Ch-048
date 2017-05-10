@@ -27,7 +27,7 @@ public class DriverInitializer {
     private static final String WINDOWS_IE_WEBDRIVER = "webdriver.edge.driver";
 
     private static final String LINUX_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriverLinux";
-    private static final String MAC_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriver";
+    private static final String MAC_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriverMac";
     private static final String WINDOWS_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriver.exe";
 
     private static final String MAC_CHROME_WEBDRIVER_PATH = "src/main/resources/drivers/chromedriverMac";

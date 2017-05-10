@@ -1,12 +1,13 @@
 package utils;
 
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Listeners;
 import pages.headers.BaseHeader;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Properties;
 
 
@@ -34,7 +35,7 @@ public class BaseTest {
     public void before() {
         DriverInitializer.getToUrl(BASE_URL);
         String s = System.getProperty("test.language");
-        BaseNavigation.changeLanguage(s);
+      //  BaseNavigation.changeLanguage(s);
     }
 
 
