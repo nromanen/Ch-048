@@ -70,8 +70,6 @@ public class AddNewHospitalPage implements PageInitializer {
 
 
     public void addNewHospitalPhoto() throws AWTException {
-        //why you use hard path to image??
-        //may be setClipboardData("src/main/resources/RhodeIslandHosp14_360_360_90.jpg");
         setClipboardData("D:\\RhodeIslandHosp14_360_360_90.jpg");
         Robot robot = new Robot();
         robot.delay(500);
