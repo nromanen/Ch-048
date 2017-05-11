@@ -1,23 +1,23 @@
 package pages.admin;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.AdminHeader;
+import utils.DriverInitializer;
 
 
 /**
  * Created by Evgen on 09.04.2017.
  */
-public class HospitalsManagersPage extends BasePage {
+public class HospitalsManagersPage implements PageInitializer {
 
     public AdminHeader header;
 
-    public HospitalsManagersPage(WebDriver driver) {
-        super(driver);
-        this.header = new AdminHeader(driver);
+    public HospitalsManagersPage() {
+        this.header = new AdminHeader();
+        pageInitialization();
     }
 
     public AdminHeader adminHeader;
@@ -26,17 +26,13 @@ public class HospitalsManagersPage extends BasePage {
     @FindBy(css = "tbody")
     private WebElement table;
 
-    private WebElement selectManager;
-
-    private WebElement deleteManager;
-
     public void changeManager(int rowNumber, String name) {
-        selectManager = driver.findElement(By.xpath("tbody tr[" + rowNumber + "] td[3] select"));
+        WebElement selectManager = DriverInitializer.instance().findElement(By.xpath("tbody tr[" + rowNumber + "] td[3] select"));
         selectManager.findElement(By.linkText(name));
     }
 
     public void deleteManager(int rowNumber) {
-      deleteManager = driver.findElement(By.cssSelector("tbody tr[" + rowNumber + "] btn btn-danger"));
+      WebElement deleteManager = DriverInitializer.instance().findElement(By.cssSelector("tbody tr[" + rowNumber + "] btn btn-danger"));
       deleteManager.click();
     }
 }

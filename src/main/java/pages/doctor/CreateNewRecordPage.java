@@ -1,14 +1,15 @@
 package pages.doctor;
 
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.DoctorHeader;
 
-public class CreateNewRecordPage extends BasePage {
+public class CreateNewRecordPage implements PageInitializer {
+
     public DoctorHeader header;
+
     @FindBy(className = "label[for=\"complaint\"]")
     private WebElement complaintLabel;
 
@@ -34,23 +35,25 @@ public class CreateNewRecordPage extends BasePage {
     private WebElement prescription;
 
 
-    public CreateNewRecordPage(WebDriver driver) {
-        super(driver);
-        this.header = new DoctorHeader(driver);
+    public CreateNewRecordPage() {
+        this.header = new DoctorHeader();
+        pageInitialization();
     }
 
     public void inputComplaint(String value){
+        complaint.clear();
         complaint.sendKeys(value);
     }
 
     public void inputResult(String value){
+        result.clear();
         result.sendKeys(value);
     }
 
     public void inputPrescription(String value){
+        prescription.clear();
         prescription.sendKeys(value);
     }
-
 
     public void inputRecord(String complaint, String result, String prescription ){
         inputComplaint(complaint);
@@ -59,14 +62,9 @@ public class CreateNewRecordPage extends BasePage {
         submitButtonClick();
     }
 
-
-    public PatientsCardPage backButtonClick (){
-        backButton.click();
-        return new PatientsCardPage(driver);
-    }
     public PatientsCardPage submitButtonClick(){
         submitButton.click();
-        return new PatientsCardPage(driver);
+        return new PatientsCardPage();
     }
 
 }

@@ -1,16 +1,16 @@
 package pages.doctor;
 
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.DoctorHeader;
+import utils.BrowserWrapper;
 
 import java.util.List;
 
-public class WorkSchedulerPage extends BasePage {
+public class WorkSchedulerPage implements PageInitializer {
 
     public DoctorHeader header;
 
@@ -44,17 +44,25 @@ public class WorkSchedulerPage extends BasePage {
     @FindAll(@FindBy(className = "dhx_scale_hour"))
     private List<WebElement> tabelRows;
 
+    @FindAll({@FindBy(css = "div.dhx_scale_holder"),
+            @FindBy(css = "div.dhx_scale_holder_now")})
+    private List<WebElement> tableColumns;
+
+    @FindAll(@FindBy(css = "div.dhx_scale_ignore"))
+    private List<WebElement> tableIgnoredColumns;
 
 
-    public WorkSchedulerPage(WebDriver driver) {
-        super(driver);
-        this.header = new DoctorHeader(driver);
+    public WorkSchedulerPage( ) {
+        this.header = new DoctorHeader();
+        pageInitialization();
     }
     public void dayTabButtonClick (){
         dayTabButton.click();
     }
-    public void weekTabButtonClick(){
+    public WorkSchedulerPage weekTabButtonClick(){
+        BrowserWrapper.waitUntilElementClickable(weekTabButton);
         weekTabButton.click();
+        return new WorkSchedulerPage();
     }
     public void monthTabButtonClick(){
         monthTabButton.click();
@@ -70,6 +78,9 @@ public class WorkSchedulerPage extends BasePage {
     }
     public void todayButtonClick(){
         todayButton.click();
+    }
+    public int getDaysNumber(){
+        return tableColumns.size() - tableIgnoredColumns.size() - 1;
     }
 
 }

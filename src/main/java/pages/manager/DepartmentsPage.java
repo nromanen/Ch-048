@@ -1,22 +1,22 @@
 package pages.manager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
+import utils.DriverInitializer;
 
 
 /**
  * Created by ytomktc on 06.04.2017.
  */
-public class DepartmentsPage extends BasePage {
+public class DepartmentsPage implements PageInitializer {
 
     public ManagerHeader managerHeader;
+
     @FindBy(xpath = "/html/body/section/div/div/h1")
     private WebElement departmentsLabel;
-    private WebElement departmentsText;
 
     @FindBy(xpath = "//*[@id=\"allDepartment\"]/thead/tr/th[1]")
     private WebElement nameText;
@@ -40,20 +40,21 @@ public class DepartmentsPage extends BasePage {
     private WebElement backToTopButton;
 
     public WebElement viewButton(int i) {
-        return driver.findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child  a:first-child"));
+        return DriverInitializer.instance().findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child  a:first-child"));
     }
 
     public WebElement editButton(int i) {
-        return driver.findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child #ediDepartment"));
+        return DriverInitializer.instance().findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child #ediDepartment"));
     }
     public WebElement scheduleButton(int i) {
-        return driver.findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child a:last-child"));
+        return DriverInitializer.instance().findElement(By.cssSelector("tbody tr:nth-child(" + i + ") td:last-child a:last-child"));
     }
 
 
 
-    public DepartmentsPage(WebDriver driver) {
-        super(driver);
-        managerHeader = new ManagerHeader(driver);
+    public DepartmentsPage() {
+        managerHeader = new ManagerHeader();
+        pageInitialization();
+
     }
 }

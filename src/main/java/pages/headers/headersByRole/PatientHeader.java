@@ -1,39 +1,51 @@
 package pages.headers.headersByRole;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageInitializer;
+import pages.patient.CardPage;
+import utils.BrowserWrapper;
 
 
 /**
  * Created by Evgen on 06.04.2017.
  */
-public class PatientHeader extends AuthorizedHeader {
+public class PatientHeader extends AuthorizedHeader implements PageInitializer {
 
-    public PatientHeader(WebDriver driver) {
-        super(driver);
+    public PatientHeader() {
+        pageInitialization();
     }
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/a")
+    @FindBy(xpath = "//li[4]/a")
     private WebElement actions;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[1]/a")
+    @FindBy(css = "a[href=\"/HospitalSeeker/card\"]")
     private WebElement card;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[2]/a")
+    @FindBy(css = "a[href=\"/HospitalSeeker/appointments\"]")
     private WebElement appointments;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[3]/a")
+    @FindBy(css = "a[href=\"/HospitalSeeker/laboratory\"]")
     private WebElement studies;
 
+    @FindBy(linkText = "Thomas Auginas")
+    private WebElement patientProfileName;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[5]/a")
-    private WebElement profile;
+    public CardPage goToCardPage() {
+        BrowserWrapper.sleep(1);
+        BrowserWrapper.waitUntilElementClickable(actions);
+        actions.click();
+//        BrowserWrapper.waitUntilElementClickable(card);
+        card.click();
+        return new CardPage();
+    }
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[5]/ul/li[1]/a")
-    private WebElement myProfile;
+    public boolean isActionsButtonPresent() {
+        return BrowserWrapper.isElementPresent(actions);
+    }
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[5]/ul/li[3]/a")
-    private WebElement logOut;
+    public String getPatientProfileName() {
+       return patientProfileName.getText();
+    }
 
 }

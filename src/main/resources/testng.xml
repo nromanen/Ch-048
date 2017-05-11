@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="Suite">
+    <test name="Hospitalseaker">
+        <groups>
+            <define name="All">
+                <include name="Add hospital"/>
+                <include name="Edit/Delete hospital"/>
+                <include name="Successfully"/>
+                <include name="smokeTest"/>
+                <include name="unSuccessfully"/>
+                <include name="eventCreation"/>
+                <include name="miscellaneous"/>
+                <include name="InputValidation"/>
+            </define>
+
+            <run>
+                <include name="All"/>
+            </run>
+
+        </groups>
+
+        <classes>
+            <class name="pages.admin.AddUserPageTest"/>
+            <class name="pages.manager.SchedulerPageTest"/>
+            <class name="pages.allUsers.TestHospitalSearch"/>
+            <class name="pages.allUsers.TestDoctorSearch"/>
+            <class name="pages.admin.AllUsersPage"/>
+            <class name="pages.admin.AddHospitalTest" />
+            <class name="pages.admin.AddUserPageTest" />
+            <class name="pages.manager.SchedulerPageTest" />
+            <class name="pages.allUsers.TestHospitalSearch" />
+            <class name="pages.allUsers.TestDoctorSearch" />
+        </classes>
+
+    </test>
+
+</suite>

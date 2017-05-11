@@ -1,21 +1,21 @@
 package pages.allUsers;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageInitializer;
+import pages.headers.headersByRole.NotAuthorizedHeader;
 
 import java.util.List;
 
+public class HospitalSearchResultPage implements PageInitializer {
+    public NotAuthorizedHeader notAuthorizedHeader;
 
-public class HospitalSearchResultPage extends BasePage {
- //   public BaseHeader header;
-
-
-    public HospitalSearchResultPage(WebDriver driver) {
-        super(driver);
+    public HospitalSearchResultPage() {
+        notAuthorizedHeader = new NotAuthorizedHeader();
+        pageInitialization();
     }
 
-    @FindBy(css = "[class='filter-col'])")
+    @FindBy(className = "filter-col")
     private WebElement hospitalPerPage;
 
     @FindBy(id = "perpage")
@@ -24,23 +24,19 @@ public class HospitalSearchResultPage extends BasePage {
     @FindBy(css = ".card.panel.panel-default.text-xs-right")
     private List<WebElement> hospitalNameAtList;
 
-    @FindBy(css = "[class='about-img']")
+    @FindBy(className = "about-img")
     private List<WebElement> hospitalPhotoAtList;
 
-    @FindBy(css = "[class='img-responsive']")
+    @FindBy(className = "img-responsive")
     private List<WebElement> hospitalLogoAtList;
 
     @FindBy(css = ".cd-top")
-    private WebDriver onTop;
-    //css = "[class='cd-top active cd-is-visible']" (cd-top active cd-is-visible)
+    private WebElement onTop;
 
-    @FindBy(css = "[class='pagination pagination-lg']")
-    private WebDriver pageNavigation;
+    @FindBy(className = "pagination pagination-lg")
+    private WebElement pageNavigation;
 
-    // для теста
     public int countOfHospital() {
-        // driver.get("https://localhost:8443/HospitalSeeker/" + urlHospitalSearch + searchWord);
-        //   ExpectedConditions.visibilityOfAllElements(hospitalNameAtList);
         return hospitalNameAtList.size();
     }
 }

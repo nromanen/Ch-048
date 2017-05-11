@@ -1,17 +1,16 @@
 package pages.manager;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
 
 
 /**
  * Created by radga on 06.04.2017.
  */
-public class AddNewDoctorPage extends BasePage {
+public class AddNewDoctorPage implements PageInitializer {
     public ManagerHeader managerHeader;
 
     @FindBy(className = "h1.text-center")
@@ -26,7 +25,7 @@ public class AddNewDoctorPage extends BasePage {
     @FindBy(id = "email")
     private WebElement emailTextField;
 
-    @FindBy(xpath = "//*[@id=\"registerNewUser\"]/div[1]/div[2]/div/figure/a")
+    @FindBy(css = "figure a")
     private WebElement imageHolder;
 
     @FindBy(xpath = "//*[@id=\"registerNewUser\"]/div[2]/div[1]/div[1]")
@@ -79,7 +78,6 @@ public class AddNewDoctorPage extends BasePage {
 
     @FindBy(id = "datepicker")
     private WebElement dadePicker;
-    //Ask about calendr
 
     @FindBy(xpath = "//*[@id=\"registerNewUser\"]/div[7]/div[3]/div")
     private WebElement phoneLabel;
@@ -137,8 +135,8 @@ public class AddNewDoctorPage extends BasePage {
     }
 
 
-    public AddNewDoctorPage(WebDriver driver){
-        super(driver);
-        managerHeader = new ManagerHeader(driver);
+    public AddNewDoctorPage(){
+        managerHeader = new ManagerHeader();
+        pageInitialization();
     }
 }

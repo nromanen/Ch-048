@@ -1,63 +1,56 @@
 package pages.headers.headersByRole;
 
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import pages.PageInitializer;
 import pages.manager.AddNewDoctorPage;
-import pages.manager.HospitalsPage;
+import pages.manager.ManagerDashBordPage;
 import pages.manager.ModerationFeedBackPage;
+import utils.BrowserWrapper;
 
 
 /**
  * Created by Evgen on 06.04.2017.
  */
-public class ManagerHeader extends AuthorizedHeader {
+public class ManagerHeader extends AuthorizedHeader implements PageInitializer {
 
-    public ManagerHeader(WebDriver driver) {
-        super(driver);
+    public ManagerHeader() {
+        pageInitialization();
     }
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/a")
+    @FindBy(css ="div#bs-example-navbar-collapse-1 ul li:nth-child(4)")
     private WebElement actions;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[1]/a")
+    @FindBy(css = "a[href=\"/HospitalSeeker/manage/hospitals]")
     private WebElement hospitals;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[2]/a")
+    @FindBy(css = "a[href=\"/HospitalSeeker/newDoctor]")
     private WebElement addDoctor;
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[4]/ul/li[3]/a")
-    private WebElement feedbacks;
+    @FindBy(css = "a[href=\"/HospitalSeeker/moderationFeedbacks]")
+    private WebElement feedbackManagePage;
+
+    @FindBy(xpath = "//*[@id=\"dropdawn\"]/li[3]/a")
+    private WebElement getFeedbackManagePageIco;
 
 
-    @FindBy(xpath = "/html/body/nav/div[1]/div[2]/ul/li[5]/a")
-    private WebElement profile;
 
-    @FindBy(xpath = "//a[contains(@href, '#')])[2]")
-    private WebElement myProfile;
-
-    @FindBy(xpath = "//ul[@id='dropdawn']/li[2]/a/span)[2]")
-    private WebElement logOut;
-
-    public void logOut() throws InterruptedException {
-        Thread.sleep(1000);
-        myProfile.click();
-        logOut.click();
-    }
 
     public AddNewDoctorPage addNewDoctorPage() {
         addDoctor.click();
-        return new AddNewDoctorPage(driver);
+        return new AddNewDoctorPage();
     }
 
-    public HospitalsPage managePage() {
+    public ManagerDashBordPage managePage() {
         hospitals.click();
-        return new HospitalsPage(driver);
+        return new ManagerDashBordPage();
     }
 
-    public ModerationFeedBackPage feedBackPage() {
-        feedbacks.click();
-        return new ModerationFeedBackPage(driver);
+    public ModerationFeedBackPage  feedBackPage() {
+        actions.click();
+        BrowserWrapper.sleep(2);
+        getFeedbackManagePageIco.click();
+        return new ModerationFeedBackPage();
     }
 
 

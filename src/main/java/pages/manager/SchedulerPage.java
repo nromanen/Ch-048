@@ -3,11 +3,10 @@ package pages.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
-import pages.allUsers.BasePage;
+import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
 import utils.BrowserWrapper;
 
@@ -15,14 +14,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SchedulerPage extends BasePage {
+public class SchedulerPage implements PageInitializer {
 
     private static final int DEFAULT_NUMBER_OF_DAYS = 5;
     private static final String DEFAULT_BEGINNING_HOUR = "0 00";
     private static final String DEFAULT_ENDING_HOUR = "23 00";
 
     public ManagerHeader managerHeader;
-    @FindBy(xpath = "/html/body/section/div/div/div[3]/div/form/div[2]/p")
+    @FindBy(css = "div.pull-left")
     private WebElement doctorNameLabel;
 
     @FindBy(css = "label[for=\"workWeekSize\"]")
@@ -79,7 +78,7 @@ public class SchedulerPage extends BasePage {
 
 
     @FindBy(css = "div.dhx_scale_holder_now")
-    private WebElement nowColumb;
+    private WebElement nowColumn;
 
     @FindBy(css = "div.dhx_scale_holder")
     private WebElement tableColumn;
@@ -87,8 +86,8 @@ public class SchedulerPage extends BasePage {
     @FindAll(@FindBy(css = "div.dhx_scale_ignore"))
     private List<WebElement> tableIgnoredColumns;
 
-    @FindAll(@FindBy(className = "dhx_scale_hour"))
-    private List<WebElement> tabelRows;
+    @FindAll(@FindBy(className = "div.dhx_scale_hour"))
+    private List<WebElement> tableRows;
 
     @FindAll(@FindBy(css = "div.dhx_body"))
     private List<WebElement> eventBodys;
@@ -96,17 +95,14 @@ public class SchedulerPage extends BasePage {
     @FindAll(@FindBy(css = "div.dhx_cal_event"))
     private List<WebElement> events;
 
-//    @FindBy(css= "div.dhx_cal_editor")
-//    private WebElement eventInput;
-
-    @FindBy(xpath = "//textarea[contains(@class,'editor')]")
+    @FindBy(css = "textarea.dhx_cal_editor")
     private WebElement eventInput;
 
     @FindBy(css = "div.dhx_menu_icon.icon_save")
     private WebElement saveEvent;
 
     @FindBy(css = "div.icon_cancel")
-    public WebElement cancelEvent;
+    private WebElement cancelEvent;
 
     @FindBy(css = "div.icon_details")
     private WebElement detaisEvent;
@@ -133,63 +129,50 @@ public class SchedulerPage extends BasePage {
     private WebElement saveDetailedChanges;
 
     @FindBy(css = "div.dhx_scale_hour:first-child")
-    public WebElement beginningHour;
+    private WebElement beginningHour;
 
     @FindBy(css = "div.dhx_scale_hour:last-child")
-    public WebElement endHour;
+    private WebElement endHour;
 
-    @FindBy(xpath = "/html/body/div[3]/div[2]/div[1]/div")
-    public WebElement eventDeleteConfirmation;
+    @FindBy(css = "div.dhtmlx_ok_button")
+    private WebElement eventDeleteConfirmation;
 
     @FindBy(css = "div.dhx_event_resize")
     public WebElement resizeButton;
 
 
     @FindAll(@FindBy(css = "div.dhx_cal_event_line_start"))
-    public List<WebElement> monthElements;
+    private List<WebElement> monthElements;
 
     @FindBy(css = "div.dhx_month_body")
-    public WebElement monthElement;
+    private WebElement monthElement;
 
     @FindBy(css = "div.dhx_mini_calendar")
-    public WebElement calendarBody;
+    private WebElement calendarBody;
 
     @FindBy(css = "div.gray_section")
-    public List<WebElement> notActiveRows;
+    private List<WebElement> notActiveRows;
 
 
-    public WebElement getColumn(int i){
-        if(i< tableColumns.size()-tableIgnoredColumns.size()) {
-            WebElement element = driver.findElement(By.cssSelector("div.dhx_scale_holder:nth-child(" + i + ")"));
-            return element;
-        }
-        return null;
-    }
 
-   public void nextDayClick(){
+   public void nextButtonClick(){
         while(notActiveRows.size()>0){
             BrowserWrapper.waitUntilElementVisible(nextButton);
             nextButton.click();
         }
    }
 
-    public void nextButtonClick()  {
-       BrowserWrapper.waitUntilElementVisible(nextButton);
-        nextButton.click();
-    }
-    public void setAppointment(String text, int column)  {
-
-        BrowserWrapper.doubleClick(driver,getColumn(column));
-        BrowserWrapper.waitUntilElementVisible(eventInput);
-        eventInput.sendKeys(text);
-        BrowserWrapper.waitUntilElementVisible(saveButton);
-        saveEvent.click();
-
-    }
-    public void setAppointment(String text)  {
-
+    public void createAppointment(String text)  {
+       nextButtonClick();
        inputEvent(text);
        saveEventClick();
+       saveButtonClick();
+    }
+    public void createAppointmentWithoutSave(String text)  {
+        nextButtonClick();
+        inputEvent(text);
+        saveEventClick();
+
     }
 
     public boolean checkMiniCalendarVisibility(){
@@ -197,16 +180,15 @@ public class SchedulerPage extends BasePage {
     }
 
     public void inputEvent(String text) {
-        BrowserWrapper.doubleClick(driver, tableColumn);
+        BrowserWrapper.doubleClickJs(tableColumn);
         BrowserWrapper.waitUntilElementVisible(eventInput);
         eventInput.sendKeys(text);
     }
 
 
-
-
     public void saveEventClick(){
         BrowserWrapper.waitUntilElementVisible(saveButton);
+        BrowserWrapper.sleep(1);
         saveEvent.click();
     }
 
@@ -214,23 +196,30 @@ public class SchedulerPage extends BasePage {
         events.get(0).findElement(By.cssSelector("div.dhx_title")).click();
     }
     public void deleteEventButtonClick(){
+        callEventContext();
         eventDelete.click();
         BrowserWrapper.waitUntilElementClickable(eventDeleteConfirmation);
         eventDeleteConfirmation.click();
+        saveButtonClick();
     }
 
     public void editEventText(String text){
+        callEventContext();
         editEvent.click();
         eventInput.sendKeys(text);
         saveEvent.click();
+        saveButtonClick();
     }
 
 
     public void createEventCalendar(String text){
-        BrowserWrapper.doubleClick(driver, monthElement);
+        nextButtonClick();
+        BrowserWrapper.waitUntilElementVisible(monthElement);
+        BrowserWrapper.doubleClickJs(monthElement);
         BrowserWrapper.waitUntilElementVisible(detailedEditorField);
         detailedEditorField.sendKeys(text);
         saveDetailedChanges.click();
+        saveButtonClick();
     }
 
 
@@ -251,9 +240,11 @@ public class SchedulerPage extends BasePage {
     public boolean checkDefaultConditionScheduler(){
         boolean result = false;
         try {
-            result = beginningHour.getText().equals(DEFAULT_BEGINNING_HOUR)
-                    && endHour.getText().endsWith(DEFAULT_ENDING_HOUR)
-                    && getDaysNumber() == DEFAULT_NUMBER_OF_DAYS;
+            BrowserWrapper.waitUntilElementNotStale(beginningHour);
+            boolean r1 = beginningHour.getText().equals(DEFAULT_BEGINNING_HOUR);
+            BrowserWrapper.waitUntilElementNotStale(endHour);
+            boolean r2 = endHour.getText().equals(DEFAULT_ENDING_HOUR);
+            result = r1 && r2 && getDaysNumber() == DEFAULT_NUMBER_OF_DAYS;
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -261,7 +252,7 @@ public class SchedulerPage extends BasePage {
     }
 
     public void setDayDuration(String begin, String end){
-        BrowserWrapper.waitUntilElementClickable(workDayBeginAtSelector);
+        BrowserWrapper.waitUntilElementVisible(workDayBeginAtSelector);
         BrowserWrapper.selectDropdown(workDayBeginAtSelector, begin);
         BrowserWrapper.waitUntilElementClickable(workDayEndAtSelector);
         BrowserWrapper.selectDropdown(workDayEndAtSelector, end);
@@ -302,10 +293,12 @@ public class SchedulerPage extends BasePage {
     }
 
     private boolean checkBeginAtHourSelector(){
+        BrowserWrapper.waitUntilElementNotStale(beginningHour);
         return BrowserWrapper.isElementPresent(beginningHour);
     }
 
     private boolean checkEndAtHourSelector() {
+        BrowserWrapper.waitUntilElementNotStale(endHour);
         return BrowserWrapper.isElementPresent(endHour);
     }
 
@@ -361,6 +354,10 @@ public class SchedulerPage extends BasePage {
         return true;
     }
 
+    public boolean isEventOnCalendarTab(String event){
+        return getEventsCalendar().stream().anyMatch(e -> e.contains(event));
+    }
+
     public List<String> getEventsCalendar(){
         List<String> list = new ArrayList<>();
 
@@ -372,6 +369,18 @@ public class SchedulerPage extends BasePage {
         }
 
         return list;
+    }
+
+    public boolean isEventsPresentOnCalendar(){
+        return getEventsCalendar().size()>0;
+    }
+    public boolean isEventsPresent(){
+        return getEvents().size() > 0;
+    }
+
+
+    public boolean isEventOnWeekTab(String event){
+        return getEvents().stream().anyMatch(e -> e.contains(event));
     }
 
     public List<String> getEvents(){
@@ -396,17 +405,7 @@ public class SchedulerPage extends BasePage {
     public void cancelButtonClick(){
         BrowserWrapper.waitUntilElementVisible(cancelEvent);
         cancelEvent.click();
-    }
-    public void workDayBeginAtSelector(String value){
-        BrowserWrapper.selectDropdown(workDayBeginAtSelector, value);
-    }
-
-    public void workDayEndAtSelector(String value){
-        BrowserWrapper.selectDropdown(workDayEndAtSelector, value);
-    }
-
-    public void apointmentSizeSelector(String value){
-        BrowserWrapper.selectDropdown(apointmentSizeSelector, value);
+        saveButtonClick();
     }
 
     public void saveButtonClick(){
@@ -415,7 +414,7 @@ public class SchedulerPage extends BasePage {
     }
 
     public void dayTabButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(dayTabButton);
+        BrowserWrapper.waitUntilElementClickable(dayTabButton);
         dayTabButton.click();
     }
 
@@ -442,13 +441,13 @@ public class SchedulerPage extends BasePage {
     }
 
     public boolean checkTodayPresence(){
-       return BrowserWrapper.isElementPresent(nowColumb);
+       return BrowserWrapper.isElementPresent(nowColumn);
     }
 
 
 
-    public SchedulerPage(WebDriver driver) {
-        super(driver);
-        managerHeader = new ManagerHeader(driver);
+    public SchedulerPage(){
+        managerHeader = new ManagerHeader();
+        pageInitialization();
     }
 }
