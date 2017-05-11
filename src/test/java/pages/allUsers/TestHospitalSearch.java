@@ -3,10 +3,9 @@ package pages.allUsers;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.admin.AllUsersPage;
+import pages.headers.headersByRole.NotAuthorizedHeader;
 import utils.BaseNavigation;
 import utils.BaseTest;
-import utils.BrowserWrapper;
 import utils.DriverInitializer;
 
 import static org.testng.Assert.assertEquals;

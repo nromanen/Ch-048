@@ -41,7 +41,7 @@ public class FeedbackCreatingSteps {
     public void i_sign_in_as_a_PATIENT_and_move_to_the_current_doctorInfoPage() throws Throwable {
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
         BrowserWrapper.sleep(2);
-        hospitalSeekerHomePage.header.findDoctor(CURRENT_DOCTOR_SURNAME);
+        hospitalSeekerHomePage.notAuthorizedHeader.findDoctor(CURRENT_DOCTOR_SURNAME);
         doctorInfoPage = doctorSearchResultPage.goToDoctorInfoPage();
     }
 
