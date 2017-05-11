@@ -6,60 +6,43 @@ import pages.PageInitializer;
 import pages.allUsers.*;
 import utils.BrowserWrapper;
 
-
 /**
  * Created by Evgen on 05.04.2017.
  */
 public class BaseHeader implements PageInitializer {
 
-    public BaseHeader(){
-        pageInitialization();
-    }
-
-    @FindBy(className = "img-responsive logo")
-    protected WebElement logo;
-
-    @FindBy(css = "a[href$='/HospitalSeeker/']")
-    protected WebElement home;
-
-    @FindBy(css = "a[href$='/HospitalSeeker/mapsearch']")
-    protected WebElement nearestHospital;
+    private static final int SLEEP_TIMEOUT = 2;
 
     @FindBy(css = "img.localization-flag")
     protected WebElement changeLanguageIco;
-
-    @FindBy(css = "a[href$='/HospitalSeeker/?lang=ua']")
-    protected WebElement uaLanguage;
-
-    @FindBy(css = "a[href$='/HospitalSeeker/?lang=en']")
-    protected WebElement enLanguage;
-
-    @FindBy(css = "a[href=\"#toggle-search\"]")
-    protected WebElement searchButton;
-
-    @FindBy(id = "select_hospital_search")
-    protected WebElement hospitalSearchField;
-
-    @FindBy(id = "select_hospital_search-error")
-    protected WebElement hospitalSearchError;
-
-    @FindBy(id = "select_hospital_search_button")
-    protected WebElement hospitalSearchButton;
-
-    @FindBy(id = "select_doctor_search")
-    protected WebElement doctorSearchField;
-
-    @FindBy(id = "select_doctor_search-error")
-    private WebElement doctorSearchError;
-
     @FindBy(id = "select_doctor_search_button")
     protected WebElement doctorSearchButton;
-
-    @FindBy(xpath = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[7]/a")
-    private WebElement searchLogo;
-
+    @FindBy(id = "select_doctor_search")
+    protected WebElement doctorSearchField;
+    @FindBy(css = "a[href$='?lang=en']")
+    protected WebElement enLanguage;
+    @FindBy(css = "a[href$='/HospitalSeeker/']")
+    protected WebElement home;
+    @FindBy(id = "select_hospital_search_button")
+    protected WebElement hospitalSearchButton;
+    @FindBy(id = "select_hospital_search-error")
+    protected WebElement hospitalSearchError;
+    @FindBy(id = "select_hospital_search")
+    protected WebElement hospitalSearchField;
+    @FindBy(className = "img-responsive logo")
+    protected WebElement logo;
+    @FindBy(css = "a[href$='/HospitalSeeker/mapsearch']")
+    protected WebElement nearestHospital;
+    @FindBy(css = "a[href=\"#toggle-search\"]")
+    protected WebElement searchButton;
+    @FindBy(css = "a[href$='?lang=ua']")
+    protected WebElement uaLanguage;
+    @FindBy(id = "select_doctor_search-error")
+    private WebElement doctorSearchError;
     @FindBy(id = "select_doctor_search_button")
     private WebElement doctorSearchFieldButton;
+    @FindBy(xpath = "//*[@id=\"bs-example-navbar-collapse-1\"]/ul/li[7]/a")
+    private WebElement searchLogo;
 
     public WebElement getChangeLanguageIco() {
         return changeLanguageIco;
@@ -73,17 +56,8 @@ public class BaseHeader implements PageInitializer {
         return hospitalSearchError;
     }
 
-    public HospitalSeekerHomePage toHomePage() {
-        home.click();
-        return new HospitalSeekerHomePage();
-    }
-
-
-
-    public BaseHeader changeLanguageToUa() {
-        changeLanguageIco.click();
-        uaLanguage.click();
-        return new BaseHeader();
+    public BaseHeader(){
+        pageInitialization();
     }
 
     public BaseHeader changeLanguageToEn() {
@@ -92,33 +66,51 @@ public class BaseHeader implements PageInitializer {
         return this;
     }
 
+    public BaseHeader changeLanguageToUa() {
+        changeLanguageIco.click();
+        uaLanguage.click();
+        return new BaseHeader();
+    }
+  
+    /*public MapSearchPage toMapOfHospitals() {
+        nearestHospital.click();
+        return new MapSearchPage();
+    }*/
+
+      public void fillDoctorInput(String doctorName) {
+        fillInput(doctorName, doctorSearchField);
+    }
+
+    public void fillHospitalInput(String hospitalName) {
+        fillInput(hospitalName, hospitalSearchField);
+    }
+
+    public void fillInput(String inputText, WebElement inputField) {
+        BrowserWrapper.sleep(SLEEP_TIMEOUT );
+        searchButton.click();
+        BrowserWrapper.waitUntilElementVisible(inputField);
+        inputField.clear();
+        inputField.sendKeys(inputText);
+    }
+
+    public DoctorSearchResultPage findDoctor(String doctorName) {
+        fillDoctorInput(doctorName);
+        BrowserWrapper.waitUntilElementClickable(doctorSearchButton);
+        doctorSearchButton.click();
+        BrowserWrapper.sleep(SLEEP_TIMEOUT );
+        return new DoctorSearchResultPage();
+    }
+
     public HospitalSearchResultPage findHospital(String hospitalName) {
         fillHospitalInput(hospitalName);
         BrowserWrapper.waitUntilElementClickable(hospitalSearchButton);
         hospitalSearchButton.click();
+        BrowserWrapper.sleep(SLEEP_TIMEOUT );
         return new HospitalSearchResultPage();
     }
 
-    public void fillHospitalInput(String hospitalName) {
-        searchButton.click();
-        BrowserWrapper.waitUntilElementVisible(hospitalSearchField);
-        hospitalSearchField.clear();
-        hospitalSearchField.sendKeys(hospitalName);
-    }
-
-    public  DoctorSearchResultPage findDoctor(String doctorName) {
-        BrowserWrapper.sleep(2);
-        fillDoctorInput(doctorName);
-        BrowserWrapper.waitUntilElementClickable(doctorSearchButton);
-        doctorSearchButton.click();
-        return new DoctorSearchResultPage();
-    }
-
-    public void fillDoctorInput(String doctorName) {
-        searchButton.click();
-        BrowserWrapper.waitUntilElementVisible(doctorSearchField);
-        doctorSearchField.clear();
-        doctorSearchField.sendKeys(doctorName);
-        BrowserWrapper.waitForPage(10L);
+    public HospitalSeekerHomePage toHomePage() {
+        home.click();
+        return new HospitalSeekerHomePage();
     }
 }

@@ -33,7 +33,7 @@ public class BaseTest {
     public void before() {
         DriverInitializer.getToUrl(BASE_URL);
         String s = System.getProperty("test.language");
-      //  BaseNavigation.changeLanguage(s);
+        //BaseNavigation.changeLanguage(s);
     }
 
     @AfterClass(alwaysRun = true)

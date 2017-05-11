@@ -53,6 +53,7 @@ public class DoctorSearchResultPage implements PageInitializer {
 
     public DoctorInfoPage goToDoctorInfoPage() {
         BrowserWrapper.sleep(3);
+        BrowserWrapper.waitUntilElementVisible(firstDoctorImage);
         firstDoctorImage.click();
         BrowserWrapper.sleep(5);
         return new DoctorInfoPage();

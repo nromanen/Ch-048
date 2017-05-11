@@ -17,6 +17,7 @@ import pages.manager.HospitalsPage;
 import pages.manager.ModerationFeedBackPage;
 import utils.BaseNavigation;
 import utils.BrowserWrapper;
+import utils.databaseutil.UserDAO;
 
 
 public class FeedbackCreatingSteps {
@@ -39,6 +40,7 @@ public class FeedbackCreatingSteps {
 
     @When("^i sign in as a PATIENT and move to the current doctorInfoPage$")
     public void i_sign_in_as_a_PATIENT_and_move_to_the_current_doctorInfoPage() throws Throwable {
+        UserDAO.deleteAllFeedbacks();
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
         BrowserWrapper.sleep(2);
         hospitalSeekerHomePage.notAuthorizedHeader.findDoctor(CURRENT_DOCTOR_SURNAME);

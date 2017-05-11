@@ -91,6 +91,14 @@ public class UserDAO {
         }
     }
 
+    public static void deleteAllFeedbacks(){
+        try {
+            Statement statement = DatabaseOperations.connectToDatabase().createStatement();
+            statement.executeUpdate("TRUNCATE  feedbacks");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static boolean getStatusByEmail(String email) {
         List<String> list = getEnableUsersEmails();

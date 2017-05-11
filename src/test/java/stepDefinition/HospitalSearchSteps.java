@@ -3,7 +3,6 @@ package stepDefinition;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import pages.allUsers.HospitalSearchResultPage;
-import utils.BrowserWrapper;
 
 import static org.testng.Assert.assertEquals;
 
