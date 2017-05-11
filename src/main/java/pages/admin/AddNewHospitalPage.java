@@ -88,7 +88,7 @@ public class AddNewHospitalPage implements PageInitializer {
     }
 
     public void addressData(String text) {
-        BrowserWrapper.waitUntilElementClickable(addressInputField);
+        BrowserWrapper.waitUntilElementVisible(addressInputField);
         addressInputField.clear();
         addressInputField.sendKeys(text);
     }
@@ -122,11 +122,13 @@ public class AddNewHospitalPage implements PageInitializer {
     }
 
     public void addHospitalName(String text) {
+        BrowserWrapper.waitUntilElementClickable(fillButton);
         nameInputField.clear();
         nameInputField.sendKeys(text);
     }
 
     public void addHospitalDescription(String text) {
+        BrowserWrapper.waitUntilElementClickable(fillButton);
         descriptionInputField.clear();
         descriptionInputField.sendKeys(text);
     }
@@ -152,11 +154,16 @@ public class AddNewHospitalPage implements PageInitializer {
    }
 
    public void addNewHospital(String address, String name, String description) {
-       addressData(address);
+       BrowserWrapper.sleep(2);
+        addressData(address);
+       BrowserWrapper.sleep(2);
        addHospitalName(name);
        addHospitalDescription(description);
+       BrowserWrapper.sleep(2);
        pushFillButton();
+       BrowserWrapper.sleep(2);
        pushFindButton();
+       BrowserWrapper.sleep(2);
        pushSaveButton();
    }
 }

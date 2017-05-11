@@ -175,7 +175,9 @@
                 <artifactId>jmeter-analysis-maven-plugin</artifactId>
                 <version>1.0.4</version>
                 <configuration>
-                    <source>${project.build.directory}/jmeter/results/DoctorPatientCarExploration.jtl</source>
+                    <source>${project.build.directory}/jmeter/results/*.jtl</source>
+                    <targetDirectory>${project.build.directory}/results</targetDirectory>
+                    <processAllFilesFound>true</processAllFilesFound>
                 </configuration>
                 <executions>
                     <execution>
@@ -186,49 +188,6 @@
                         </goals>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>de.codecentric</groupId>
-                <artifactId>jmeter-graph-maven-plugin</artifactId>
-                <version>0.1.0</version>
-                <executions>
-                    <execution>
-                        <id>create-graph-threads</id>
-                        <goals>
-                            <goal>create-graph</goal>
-                        </goals>
-                        <phase>verify</phase>
-                    </execution>
-                </executions>
-                <configuration>
-                    <inputFile>${project.build.directory}/jmeter/results/DoctorPatientCarExploration.jtl</inputFile>
-                    <graphs>
-                        <graph>
-                            <pluginType>ThreadsStateOverTime</pluginType>
-                            <width>800</width>
-                            <height>600</height>
-                            <outputFile>
-                                ${project.build.directory}/jmeter/results/DoctorPatientCarExploration-ThreadsStateOverTime.png
-                            </outputFile>
-                        </graph>
-                        <graph>
-                            <pluginType>ResponseTimesOverTime</pluginType>
-                            <width>800</width>
-                            <height>600</height>
-                            <outputFile>
-                                ${project.build.directory}/jmeter/results/DoctorPatientCarExploration-ResponseTimesOverTime.png
-                            </outputFile>
-                        </graph>
-                        <graph>
-                            <pluginType>TransactionsPerSecond</pluginType>
-                            <width>800</width>
-                            <height>600</height>
-                            <outputFile>
-                                ${project.build.directory}/jmeter/results/DoctorPatientCarExploration-TransactionsPerSecond.png
-                            </outputFile>
-                        </graph>
-                    </graphs>
-                </configuration>
             </plugin>
 
 

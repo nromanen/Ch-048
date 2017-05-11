@@ -45,6 +45,9 @@ public class SchedulerPageTest extends BaseTest {
     @AfterMethod(alwaysRun = true)
     public void afterMethod(){
             BaseNavigation.logout();
+//            if(BrowserWrapper.isAlertPresent()) {
+//                BrowserWrapper.confirmAlert();
+//            }
             logger.info("Test is over");
     }
 

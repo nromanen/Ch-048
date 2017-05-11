@@ -62,6 +62,7 @@ public class DoctorAddNewRecordToPatientCardSteps {
     @When("^i sign in as a Patient and go to Card Page$")
     public void iSignInAsAPatientAndGoToCardPage() throws Throwable {
         BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
+        BrowserWrapper.sleep(3);
         PatientHeader patientHeader = new PatientHeader();
         patientHeader.isActionsButtonPresent();
         patientHeader.goToCardPage();
