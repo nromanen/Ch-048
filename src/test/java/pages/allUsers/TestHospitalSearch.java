@@ -26,7 +26,8 @@ public class TestHospitalSearch extends BaseTest {
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalNotAuthorizedUser(String searchWord, int expected) throws Exception {
         HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
-        assertEquals(hospitalSearchResult.countOfHospital(), expected);
+        assertEquals(hospitalSearchResult.countOfHospital(), expected,
+                "Actual count of finded hospital's isn't as expected");
     }
 
     @Test(groups = "InputValidation")
@@ -35,7 +36,8 @@ public class TestHospitalSearch extends BaseTest {
         hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
         BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
         assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
-                properties.getProperty("search.validation.line.too.short")
+                properties.getProperty("search.validation.line.too.short"),
+                "Search word too short. Please enter at least 3 letters"
         );
     }
 
@@ -45,7 +47,8 @@ public class TestHospitalSearch extends BaseTest {
         hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
         BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
         assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
-                properties.getProperty("search.validation.line.too.short")
+                properties.getProperty("search.validation.line.too.short"),
+                "Search word too short. Please enter at least 3 letters"
         );
     }
 

@@ -27,7 +27,8 @@ public class TestHospitalSearchByPatient extends BaseTest {
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) throws Exception {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
-        assertEquals(hospitalSearchResult.countOfHospital(), expected);
+        assertEquals(hospitalSearchResult.countOfHospital(), expected,
+                "Actual count of finded hospital isn't as expected");
         BaseNavigation.logout();
     }
 
