@@ -26,6 +26,7 @@ public class WorkSchedulerDoctorSteps {
     @Given("^DOCTOR is on work scheduler page$")
     public void DOCTOR_is_on_work_scheduler_page() throws Throwable {
       HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsDoctor(DOCTOR_LOGIN,DOCTOR_PASSWORD);
+        workSchedulerPage = new WorkSchedulerPage();
         workSchedulerPage.header.scheduleButtonClick();
 
     }

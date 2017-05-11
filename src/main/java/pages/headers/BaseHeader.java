@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.allUsers.*;
+import pages.anonymous.DoctorSearchResultPage;
+import pages.anonymous.HospitalSearchResultPage;
 import utils.BrowserWrapper;
 
 /**

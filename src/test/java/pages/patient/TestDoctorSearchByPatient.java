@@ -3,8 +3,7 @@ package pages.patient;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.allUsers.DoctorSearchResultPage;
-import pages.allUsers.HospitalSearchResultPage;
+import pages.anonymous.DoctorSearchResultPage;
 import pages.allUsers.HospitalSeekerHomePage;
 import utils.BaseNavigation;
 import utils.BaseTest;
@@ -25,7 +24,7 @@ public class TestDoctorSearchByPatient extends BaseTest {
     }
 
     @Test(dataProvider = "SearchProvider")
-    public void testFindDoctorAuthorizedUser(String searchWord, int expected) throws Exception {
+    public void testFindDoctorAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected);

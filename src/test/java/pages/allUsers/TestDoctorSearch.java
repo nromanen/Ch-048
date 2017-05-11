@@ -3,6 +3,7 @@ package pages.allUsers;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import pages.anonymous.DoctorSearchResultPage;
 import utils.BaseTest;
 import utils.DriverInitializer;
 

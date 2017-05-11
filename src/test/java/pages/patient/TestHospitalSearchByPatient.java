@@ -3,7 +3,7 @@ package pages.patient;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.allUsers.HospitalSearchResultPage;
+import pages.anonymous.HospitalSearchResultPage;
 import pages.allUsers.HospitalSeekerHomePage;
 import utils.BaseNavigation;
 import utils.BaseTest;

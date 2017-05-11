@@ -5,6 +5,8 @@
     <test name="Hospitalseaker">
         <groups>
             <define name="All">
+                <include name="Add hospital"/>
+                <include name="Edit/Delete hospital"/>
                 <include name="Successfully"/>
                 <include name="smokeTest"/>
                 <include name="unSuccessfully"/>
@@ -25,6 +27,11 @@
             <class name="pages.allUsers.TestHospitalSearch"/>
             <class name="pages.allUsers.TestDoctorSearch"/>
             <class name="pages.admin.AllUsersPage"/>
+            <class name="pages.admin.AddHospitalTest" />
+            <class name="pages.admin.AddUserPageTest" />
+            <class name="pages.manager.SchedulerPageTest" />
+            <class name="pages.allUsers.TestHospitalSearch" />
+            <class name="pages.allUsers.TestDoctorSearch" />
         </classes>
 
     </test>
