@@ -1,8 +1,9 @@
-package pages.allUsers;
+package pages.anonymous;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
+import pages.allUsers.DoctorInfoPage;
 import pages.headers.headersByRole.NotAuthorizedHeader;
 import utils.BrowserWrapper;
 
