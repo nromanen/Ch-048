@@ -1,4 +1,4 @@
-package pages.allUsers;
+package pages.anonymous;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
