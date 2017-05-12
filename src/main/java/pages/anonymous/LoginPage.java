@@ -3,7 +3,7 @@ package pages.anonymous;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
-import pages.headers.BaseHeader;
+import pages.headers.headersByRole.NotAuthorizedHeader;
 import utils.BrowserWrapper;
 
 
@@ -11,7 +11,7 @@ import utils.BrowserWrapper;
  * Created by ytomktc on 07.04.2017.
  */
 public class LoginPage implements PageInitializer{
-    public BaseHeader baseHeader;
+    public NotAuthorizedHeader header;
 
     @FindBy(xpath = "//*[@id=\"loginForm\"]/fieldset/h2")
     private WebElement loginText;
@@ -59,7 +59,7 @@ public class LoginPage implements PageInitializer{
 
 
     public LoginPage() {
-        baseHeader = new BaseHeader();
+        header = new NotAuthorizedHeader();
         pageInitialization();
     }
 }

@@ -4,25 +4,9 @@ package stepDefinition;
  * Created by gregtar on 27.04.17.
  */
 
-import cucumber.api.java.en.And;
-import cucumber.api.java.en.Then;
-import cucumber.api.java.en.When;
-import org.testng.Assert;
-import pages.allUsers.DoctorInfoPage;
-import pages.allUsers.DoctorSearchResultPage;
-import pages.allUsers.HospitalSeekerHomePage;
-import pages.headers.BaseHeader;
-import pages.headers.headersByRole.ManagerHeader;
-import pages.manager.HospitalsPage;
-import pages.manager.ModerationFeedBackPage;
-import utils.BaseNavigation;
-import utils.BrowserWrapper;
-import utils.databaseutil.UserDAO;
-
-
 public class FeedbackCreatingSteps {
 
-    public static final String PATIENT_LOGIN = "patient.cd@hospitals.ua";
+    /*public static final String PATIENT_LOGIN = "patient.cd@hospitals.ua";
     public static final String PATIENT_PASSWORD = "1111";
 
     public static final String MANAGER_LOGIN = "manager.jh@hospitals.ua";
@@ -74,13 +58,13 @@ public class FeedbackCreatingSteps {
         moderationFeedBackPage.confirmFeedback();
     }
 
-  /*  @Then("^feedback field on manager page should disappear after page refresh$")
+  *//*  @Then("^feedback field on manager page should disappear after page refresh$")
     public void feedback_field_on_manager_page_should_disappear_after_page_refresh() throws Throwable {
         BrowserWrapper.sleep(2);
         ModerationFeedBackPage moderationFeedBackPage = new ModerationFeedBackPage();
         System.out.println("Is element Present");
         Assert.assertFalse(BrowserWrapper.isElementPresent(moderationFeedBackPage.patientOneFeedbackBody));
-    }*/
+    }*//*
 
 
 
@@ -100,7 +84,7 @@ public class FeedbackCreatingSteps {
         String expectedMessage = doctorInfoPage.feedbackText.getText();
         System.out.println("!"+expectedMessage+"!");
         Assert.assertEquals(expectedMessage,FEEDBACK_MESSAGE);
-    }
+    }*/
 
 
 }
