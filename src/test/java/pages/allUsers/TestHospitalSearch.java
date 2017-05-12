@@ -39,7 +39,7 @@ public class TestHospitalSearch extends BaseTest {
         BaseNavigation.logout();
     }
 
-    @Test(groups = "InputValidation")
+   /* @Test(groups = "InputValidation")
     public void testFindHospitalInputValidationUa() throws Exception {
         NotAuthorizedHeader notAuthorizedHeader = new NotAuthorizedHeader();
         notAuthorizedHeader.changeLanguageToUa();
@@ -60,7 +60,7 @@ public class TestHospitalSearch extends BaseTest {
                      properties.getProperty("search.validation.line.too.short")
                     );
     }
-
+*/
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {
         return new Object[][]{

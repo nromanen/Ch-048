@@ -61,6 +61,13 @@ public class TableParser {
         return getFieldFromTableRow(1, "@email");
     }
 
+
+    /**
+     *
+     * @param rowNumber
+     * @param buttonName
+     * @return
+     */
     public WebElement getButtonFromTableRow(int rowNumber, String buttonName) {
         WebElement row = getRowFromTable(rowNumber);
         if (row.findElements(By.cssSelector("span[title=\"" + buttonName + "\"]")).size() > 0)

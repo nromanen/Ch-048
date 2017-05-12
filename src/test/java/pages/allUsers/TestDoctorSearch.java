@@ -3,7 +3,6 @@ package pages.allUsers;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import pages.headers.headersByRole.NotAuthorizedHeader;
 import utils.BaseNavigation;
 import utils.BaseTest;
 import utils.DriverInitializer;
@@ -24,38 +23,38 @@ public class TestDoctorSearch extends BaseTest {
 
     @Test(dataProvider = "SearchProvider")
     public void testFindDoctorNotAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        DoctorSearchResultPage doctorSearchResult = header.findDoctor(searchWord);
+        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
+        DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected);
     }
 
     @Test(dataProvider = "SearchProvider")
     public void testFindDoctorAuthorizedUser(String searchWord, int expected) throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
+        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
         BaseNavigation.login(ADMIN_LOGIN, ADMIN_PASSWORD);
-        DoctorSearchResultPage doctorSearchResult = header.findDoctor(searchWord);
+        DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected);
         BaseNavigation.logout();
     }
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationEng() throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        header.changeLanguageToEn();
-        header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getDoctorSearchError().getText(),
+        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
+        hospitalSeekerHomePage.changeLanguageToEn();
+        hospitalSeekerHomePage.header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
+        assertEquals(hospitalSeekerHomePage.header.getDoctorSearchError().getText(),
                      properties.getProperty("search.validation.line.too.short")
                     );
     }
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationUa() throws Exception {
-        NotAuthorizedHeader header = new NotAuthorizedHeader();
-        header.changeLanguageToUa();
-        header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
-        BaseTest.checkLanguageAndLoadProperties(header);
-        assertEquals(header.getDoctorSearchError().getText(),
+        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
+        hospitalSeekerHomePage.changeLanguageToUa();
+        hospitalSeekerHomePage.header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
+        assertEquals(hospitalSeekerHomePage.header.getDoctorSearchError().getText(),
                      properties.getProperty("search.validation.line.too.short")
                     );
     }
