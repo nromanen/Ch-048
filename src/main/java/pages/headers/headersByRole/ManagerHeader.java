@@ -5,8 +5,6 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.manager.AddNewDoctorPage;
 import pages.manager.ManagerDashBordPage;
-import pages.manager.ModerationFeedBackPage;
-import utils.BrowserWrapper;
 
 
 /**
@@ -19,7 +17,7 @@ public class ManagerHeader extends AuthorizedHeader implements PageInitializer {
     }
 
     @FindBy(css ="div#bs-example-navbar-collapse-1 ul li:nth-child(4)")
-    private WebElement actions;
+    public WebElement actions;
 
     @FindBy(css = "a[href=\"/HospitalSeeker/manage/hospitals]")
     private WebElement hospitals;
@@ -28,10 +26,10 @@ public class ManagerHeader extends AuthorizedHeader implements PageInitializer {
     private WebElement addDoctor;
 
     @FindBy(css = "a[href=\"/HospitalSeeker/moderationFeedbacks]")
-    private WebElement feedbackManagePage;
+    public WebElement feedbackManagePage;
 
     @FindBy(xpath = "//*[@id=\"dropdawn\"]/li[3]/a")
-    private WebElement getFeedbackManagePageIco;
+    public WebElement getFeedbackManagePageIco;
 
 
 
@@ -44,13 +42,6 @@ public class ManagerHeader extends AuthorizedHeader implements PageInitializer {
     public ManagerDashBordPage managePage() {
         hospitals.click();
         return new ManagerDashBordPage();
-    }
-
-    public ModerationFeedBackPage  feedBackPage() {
-        actions.click();
-        BrowserWrapper.sleep(2);
-        getFeedbackManagePageIco.click();
-        return new ModerationFeedBackPage();
     }
 
 

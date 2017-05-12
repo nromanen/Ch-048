@@ -61,8 +61,10 @@ public class FeedbackCreatingSteps {
     public void i_sign_in_as_a_manager_and_move_to_the_feedbackManagePage() throws Throwable {
         HospitalsPage hospitalsPage = BaseNavigation.loginAsManager(MANAGER_LOGIN, MANAGER_PASSWORD);
         BrowserWrapper.sleep(3);
-        header = new ManagerHeader();
-        header.feedBackPage();
+       // ModerationFeedBackPage moderationFeedBackPage = ModerationFeedBackPage();
+     //   header = new ManagerHeader();
+      //  moderationFeedBackPage.feedBackPage();
+
 
     }
 

@@ -17,6 +17,8 @@ public class TestDoctorSearch extends BaseTest {
 
     public static final String TOO_SHORT_SEARCH_WORD = "ho";
 
+
+
     @AfterMethod(alwaysRun = true)
     public void afterMethod() throws Exception {
         DriverInitializer.deleteAllCookies();

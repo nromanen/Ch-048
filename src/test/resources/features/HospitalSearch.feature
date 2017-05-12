@@ -6,7 +6,7 @@ Feature: Test Hospital search by anonymous user
     Then I should see <expected_number> hospitals which name, description or address consist search word
 
     Examples:
-      | search_word | expected_number |
+      | r6search_word | expected_number |
       | polik       | 1               |
       | hosp        | 3               |
       | qwerty      | 0               |

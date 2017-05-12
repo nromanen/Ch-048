@@ -29,12 +29,14 @@ public class BaseTest {
 
     public static final String BASE_URL = "https://localhost:8443/HospitalSeeker/";
 
+
     @BeforeClass(alwaysRun = true)
     public void before() {
         DriverInitializer.getToUrl(BASE_URL);
-        String s = System.getProperty("test.language");
+      //  String s = System.getProperty("test.language");
         //BaseNavigation.changeLanguage(s);
     }
+
 
     @AfterClass(alwaysRun = true)
     public void after() {

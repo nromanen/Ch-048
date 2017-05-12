@@ -29,7 +29,7 @@ public class AddUserPageTest extends BaseTest {
     @BeforeMethod
     private void beforeMethod() throws InterruptedException {
         BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
-        BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
+      //  BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
     }
 
     @AfterMethod(alwaysRun = true)

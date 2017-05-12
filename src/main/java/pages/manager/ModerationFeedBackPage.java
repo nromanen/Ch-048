@@ -44,6 +44,13 @@ public class ModerationFeedBackPage implements PageInitializer {
     @FindBy(xpath = "/html/body/section/a")
     private WebElement backToTopButton;
 
+    public ModerationFeedBackPage feedBackPage() {
+        managerHeader.actions.click();
+        BrowserWrapper.sleep(2);
+        managerHeader.getFeedbackManagePageIco.click();
+        return new ModerationFeedBackPage();
+    }
+
 
 
     public ModerationFeedBackPage  confirmFeedback(){
