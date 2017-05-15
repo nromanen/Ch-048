@@ -63,7 +63,7 @@ public class FeedbackCreatingSteps {
         BrowserWrapper.sleep(3);
        // ModerationFeedBackPage moderationFeedBackPage = ModerationFeedBackPage();
      //   header = new ManagerHeader();
-      //  moderationFeedBackPage.feedBackPage();
+        moderationFeedBackPage.feedBackPage();
 
 
     }
