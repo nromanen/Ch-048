@@ -2,7 +2,7 @@ package stepDefinition;
 
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import pages.allUsers.HospitalSearchResultPage;
+import pages.anonymous.HospitalSearchResultPage;
 
 import static org.testng.Assert.assertEquals;
 
