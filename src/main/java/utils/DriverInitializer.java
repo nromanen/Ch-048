@@ -1,13 +1,21 @@
 package utils;
 
+import com.machinepublishers.jbrowserdriver.JBrowserDriver;
+import com.machinepublishers.jbrowserdriver.Settings;
+import com.machinepublishers.jbrowserdriver.Timezone;
+import com.machinepublishers.jbrowserdriver.UserAgent;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.firefox.FirefoxProfile;
 import org.openqa.selenium.firefox.internal.ProfilesIni;
+import org.openqa.selenium.phantomjs.PhantomJSDriver;
+import org.openqa.selenium.phantomjs.PhantomJSDriverService;
+import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 ;
@@ -19,8 +27,6 @@ public class DriverInitializer {
 
     private DriverInitializer() {
     }
-
-    private static final String FIREFOX_PROFILE_NAME = "default";
 
     private static final String FIREFOX_WEBDRIVER = "webdriver.gecko.driver";
     private static final String CHROME_WEBDRIVER = "webdriver.chrome.driver";
@@ -63,14 +69,16 @@ public class DriverInitializer {
         setSystemProperties();
 
         ProfilesIni profile = new ProfilesIni();
-        FirefoxProfile ffProfile = profile.getProfile(FIREFOX_PROFILE_NAME);
+        DesiredCapabilities dc = DesiredCapabilities.firefox();
+        dc.setCapability(FirefoxDriver.PROFILE, profile);
+        dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         String browserType = System.getProperty("browser.name");
         System.out.println(browserType);
 
         switch (browserType) {
             case "firefox":
-                driver = new FirefoxDriver(ffProfile);
+                driver = new FirefoxDriver(dc);
                 break;
             case "chrome":
                 driver = new ChromeDriver();
@@ -78,6 +86,33 @@ public class DriverInitializer {
             case "edge":
                 DesiredCapabilities desiredCapabilities = DesiredCapabilities.edge();
                 driver = new EdgeDriver(desiredCapabilities);
+                break;
+            case "phantomjs":
+                ArrayList<String> cliArgsCap = new ArrayList<>();
+                DesiredCapabilities capabilities = DesiredCapabilities.phantomjs();
+                cliArgsCap.add("--web-security=false");
+                cliArgsCap.add("--ssl-protocol=any");
+                cliArgsCap.add("--ignore-ssl-errors=true");
+                capabilities.setCapability("takesScreenshot", true);
+                capabilities.setCapability(
+                        PhantomJSDriverService.PHANTOMJS_CLI_ARGS, cliArgsCap);
+                capabilities.setCapability(
+                        PhantomJSDriverService.PHANTOMJS_GHOSTDRIVER_CLI_ARGS,
+                        new String[] { "--logLevel=2" });
+                driver = new PhantomJSDriver(capabilities);
+                driver.manage().window().setSize(new Dimension(1024,768));
+                break;
+            case "jBrowserDriver":
+                driver = new JBrowserDriver(Settings.builder().
+                        timezone(Timezone.EUROPE_KIEV)
+                        .ssl("trustanything")
+                        .javaOptions("-Djsse.enableSNIExtension=false")
+                        .hostnameVerification(false)
+                        .blockAds(false)
+                        .cache(true)
+                        .userAgent(UserAgent.TOR)
+                        .headless(true)
+                        .javascript(true).build());
                 break;
         }
 
