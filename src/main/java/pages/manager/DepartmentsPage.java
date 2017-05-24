@@ -9,7 +9,7 @@ import utils.DriverInitializer;
 
 
 /**
- * Created by ytomktc on 06.04.2017.
+ *
  */
 public class DepartmentsPage implements PageInitializer {
 
