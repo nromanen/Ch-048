@@ -9,7 +9,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pages.allUsers.DoctorInfoPage;
-import pages.allUsers.DoctorSearchResultPage;
+import pages.anonymous.DoctorSearchResultPage;
 import pages.allUsers.HospitalSeekerHomePage;
 import pages.headers.BaseHeader;
 import pages.headers.headersByRole.ManagerHeader;

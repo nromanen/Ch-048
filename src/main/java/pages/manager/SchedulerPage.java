@@ -188,7 +188,6 @@ public class SchedulerPage implements PageInitializer {
 
     public void saveEventClick(){
         BrowserWrapper.waitUntilElementVisible(saveButton);
-        BrowserWrapper.sleep(1);
         saveEvent.click();
     }
 

@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.allUsers.*;
+import pages.anonymous.DoctorSearchResultPage;
+import pages.anonymous.HospitalSearchResultPage;
 import utils.BrowserWrapper;
 
 /**
@@ -12,6 +14,10 @@ import utils.BrowserWrapper;
 public class BaseHeader implements PageInitializer {
 
     private static final int SLEEP_TIMEOUT = 2;
+
+    public BaseHeader(){
+        pageInitialization();
+    }
 
     @FindBy(css = "img.localization-flag")
     protected WebElement changeLanguageIco;
@@ -56,10 +62,6 @@ public class BaseHeader implements PageInitializer {
         return hospitalSearchError;
     }
 
-    public BaseHeader(){
-        pageInitialization();
-    }
-
     public BaseHeader changeLanguageToEn() {
         changeLanguageIco.click();
         enLanguage.click();
@@ -71,11 +73,6 @@ public class BaseHeader implements PageInitializer {
         uaLanguage.click();
         return new BaseHeader();
     }
-  
-    /*public MapSearchPage toMapOfHospitals() {
-        nearestHospital.click();
-        return new MapSearchPage();
-    }*/
 
       public void fillDoctorInput(String doctorName) {
         fillInput(doctorName, doctorSearchField);

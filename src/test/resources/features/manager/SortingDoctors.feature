@@ -3,7 +3,7 @@ Feature: Sorting doctors in particular hospital table
   So I can push a button at the header of row and sort users
 
   Background:
-    Given the manager is on dashboard of particular hospital in order to sort
+    Given the manager is on dashboard of particular hospital
 
   Scenario: Sorting by the email ascending
     When Manager click on the email sorting button one time
