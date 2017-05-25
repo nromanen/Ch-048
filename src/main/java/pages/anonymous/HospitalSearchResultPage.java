@@ -7,6 +7,12 @@ import pages.headers.headersByRole.NotAuthorizedHeader;
 
 import java.util.List;
 
+/**
+ * This class describes page with hospital's search result
+ *
+ * @author ybalatc
+ */
+
 public class HospitalSearchResultPage implements PageInitializer {
     public NotAuthorizedHeader notAuthorizedHeader;
 
@@ -35,6 +41,11 @@ public class HospitalSearchResultPage implements PageInitializer {
 
     @FindBy(className = "pagination pagination-lg")
     private WebElement pageNavigation;
+
+    /** Method is used for counting of searched hospitals by param
+     *
+     * @param hospitalNameAtList are names of searched hospitals
+    */
 
     public int countOfHospital() {
         return hospitalNameAtList.size();
