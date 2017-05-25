@@ -18,10 +18,16 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-;
+
 
 /**
- * Created by radgast on 4/20/17.
+ * This is class which is used for initialization webdriver of proper browser. It's design according to singleton
+ * pattern, which mean initialization of browser occurs only for the first calling
+ * It chose OS properties according to system properties. It chose proper browser according to properties
+ * which is passed from Maven. This class also provides ability to moving for page and cleaning cookies
+ *
+ * @author Yuri Tomko
+ * @version 1.0
  */
 public class DriverInitializer {
 
@@ -44,6 +50,9 @@ public class DriverInitializer {
 
     private static volatile WebDriver driver;
 
+    /**
+     * This is a method which is used for setting os properties according to Operation System
+     */
     private static void setSystemProperties() {
         String os = System.getProperty("os.name");
         switch (os) {
@@ -64,10 +73,12 @@ public class DriverInitializer {
 
     }
 
+    /**
+     * This is a method main goal of which is to initialize web driver with proper browser, name of which
+     * is passed from Maven CL. This method also set implicit wait for all framework
+     */
     public static void initialization() {
-
         setSystemProperties();
-
         ProfilesIni profile = new ProfilesIni();
         DesiredCapabilities dc = DesiredCapabilities.firefox();
         dc.setCapability(FirefoxDriver.PROFILE, profile);
@@ -120,6 +131,11 @@ public class DriverInitializer {
 
     }
 
+    /**
+     * This is a method which return instance of Web Driver. If it is a first call of method it create instance
+     * of webdriver, otherwise in return already created instance. This method is synchronized.
+     * @return
+     */
     public static synchronized WebDriver instance() {
         if (driver == null) {
             initialization();
@@ -128,10 +144,18 @@ public class DriverInitializer {
         return driver;
     }
 
+    /**
+     * This is a method which provide ability of moving to given url
+     *
+     * @param url string representation of target page url
+     */
     public static void getToUrl(String url) {
         instance().get(url);
     }
 
+    /**
+     * This is a method which is provide closing of browser after test execution
+     */
     public static void close() {
         if (driver != null) {
             driver.quit();
@@ -141,6 +165,9 @@ public class DriverInitializer {
         }
     }
 
+    /**
+     *  This is method which is used for cleaning cookies after closing browser window
+     */
     public static void deleteAllCookies() {
         instance().manage().deleteAllCookies();
     }
