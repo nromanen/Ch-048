@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * It chose OS properties according to system properties. It chose proper browser according to properties
  * which is passed from Maven. This class also provides ability to moving for page and cleaning cookies
  *
- * @author Yuri Tomko
+ * @author Yuri Tomko, Bogdan Rymar
  * @version 1.0
  */
 public class DriverInitializer {
@@ -132,7 +132,7 @@ public class DriverInitializer {
     }
 
     /**
-     * This is a method which return instance of Web Driver. If it is a first call of method it create instance
+     * This  method  return instance of Web Driver. If it is a first call of method it create instance
      * of webdriver, otherwise in return already created instance. This method is synchronized.
      * @return
      */
