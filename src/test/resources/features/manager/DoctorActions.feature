@@ -2,7 +2,7 @@ Feature: Using actions of particular doctor
   As a manager I can interact with particular doctor from list
 
   Background:
-    Given the manager is on dashboard of particular hospital in order to interact with doctor
+    Given the manager is on dashboard of particular hospital
 
   Scenario: Showing doctor details form
     When Manager click on the details button of particular doctor

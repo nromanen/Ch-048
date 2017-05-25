@@ -74,6 +74,11 @@
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
         </dependency>
+        <dependency>
+            <groupId>com.machinepublishers</groupId>
+            <artifactId>jbrowserdriver</artifactId>
+            <version>0.17.7</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -211,6 +216,18 @@
             <id>edge</id>
             <properties>
                 <browser.name>edge</browser.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>phantomjs</id>
+            <properties>
+                <browser.name>phantomjs</browser.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>jBrowserDriver</id>
+            <properties>
+                <browser.name>jBrowserDriver</browser.name>
             </properties>
         </profile>
     </profiles>
