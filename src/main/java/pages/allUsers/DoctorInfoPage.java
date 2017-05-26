@@ -57,7 +57,8 @@ public class DoctorInfoPage implements PageInitializer {
         sendFeedbackButton.sendKeys(value);
         BrowserWrapper.sleep(2);
         sendFeedbackButton.click();
-        BrowserWrapper.refreshPage();;
+        BrowserWrapper.refreshPage();
+        BrowserWrapper.refreshPage();
         BrowserWrapper.sleep(2);
     }
 

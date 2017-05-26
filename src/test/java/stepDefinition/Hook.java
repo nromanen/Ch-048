@@ -12,17 +12,29 @@ import utils.BaseTest;
 import utils.DriverInitializer;
 
 /**
- * Created by radgast on 22.04.17.
+ * This class provides ability of setting up browser before execution of tests and all actions after test execution,
+ *  that is to say: to take screenshot after test failing and close browser after test complete
+ *
+ *  @author Yuri Tomko
+ *  @version 1.0
  */
 
 public class Hook {
 
-
+    /**
+     * This method is used for going to main page of the hospital seeker site
+     */
     @Before
     public void setUp(){
         DriverInitializer.getToUrl(BaseTest.BASE_URL);
     }
 
+    /**
+     * This is a method which is execute after each scenario. It takes screenshots after test fail and
+     * after test execution it close browser window
+     *
+     * @param scenario It scenario on which test is fails
+     */
     @After
     public void embedScreenshot(Scenario scenario){
 

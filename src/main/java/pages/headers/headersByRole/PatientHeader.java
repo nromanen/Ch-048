@@ -32,6 +32,7 @@ public class PatientHeader extends AuthorizedHeader implements PageInitializer {
     private WebElement patientProfileName;
 
     public CardPage goToCardPage() {
+        BrowserWrapper.sleep(1);
         BrowserWrapper.waitUntilElementClickable(actions);
         actions.click();
 //        BrowserWrapper.waitUntilElementClickable(card);
