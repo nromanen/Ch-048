@@ -10,7 +10,9 @@ import utils.BrowserWrapper;
 import java.util.List;
 
 /**
- * Created by Yana on 06.04.2017.
+ * This class describes page with doctor's search result
+ *
+ * @author ybalatc
  */
 public class DoctorSearchResultPage implements PageInitializer {
 
@@ -51,6 +53,13 @@ public class DoctorSearchResultPage implements PageInitializer {
     public int countOfDoctors() {
         return doctorNameAtList.size();
     }
+
+    /**
+     * Method is used for going to Page with info of chosen Doctor
+     *
+     * @param firstDoctorImage is image of Doctor
+     * @return Page with info of chosen Doctor
+     */
 
     public DoctorInfoPage goToDoctorInfoPage() {
         BrowserWrapper.sleep(3);

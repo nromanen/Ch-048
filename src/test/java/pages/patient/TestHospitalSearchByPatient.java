@@ -12,23 +12,41 @@ import utils.DriverInitializer;
 import static org.testng.Assert.assertEquals;
 
 /**
- * Created by ybalatc on 5/10/2017.
+ * Class describes tests for testing of doctor's search by user Patient from project's home page
+ *
+ * @author ybalatc
  */
 public class TestHospitalSearchByPatient extends BaseTest {
 
     HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
+
+    /**
+     * Method is used for deleting all cookies after each method.
+     */
 
     @AfterMethod(alwaysRun = true)
     public void afterMethod() throws Exception {
         DriverInitializer.deleteAllCookies();
     }
 
+    /**
+     * Method is used for testing of hospital's search with DataProvider (name "SearchProvider").
+     * First it do login method using patient's login and password. Then it fills the hospital's search field with
+     * search word on a home page and compare expected result with actual count of hospitals that have been found on
+     * a page result. If results aren't equals there will be message about it. And it does logout.
+     *
+     * @param PATIENT_LOGIN is patient's login for testing
+     * @param PATIENT_PASSWORD is patient's password for testing
+     * @param searchWord is DataProvider's search word of hospital
+     * @param expected is DataProvider's expected count of hospitals that have been found
+     */
+
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) throws Exception {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected,
-                "Actual count of finded hospital isn't as expected");
+                "Actual count of hospitals that have been found isn't as expected");
         BaseNavigation.logout();
     }
 
