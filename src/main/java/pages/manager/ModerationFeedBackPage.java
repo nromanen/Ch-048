@@ -22,7 +22,7 @@ public class ModerationFeedBackPage implements PageInitializer {
     @FindBy(css = "input[value=\"NEW\"]")
     private WebElement newButton;
 
-    @FindBys(@FindBy(css = "input[value=\"OK\"]"))
+    @FindBy(css = "input[value=\"OK\"]")
     private List<WebElement> okButtons;
 
     @FindBy(css = "input[value=\"BAD\"]")
