@@ -16,18 +16,20 @@ import utils.DriverInitializer;
 public class AddUserPageTest extends BaseTest {
 
 
-    public static final String NEWUSERLOGIN = "ut5estadmin182@gmail.com.ua";
+    public static final String NEWUSERLOGIN = "t2estadmin182@gmail.com.ua";
     public static final String NEWUSERPASSWORD = "Q12345w";
     public static final String NEWUSERROLE = "ADMIN";
 
     public static final String IDFORWAITING = "searchButton";
     public static final String SUCCEFULYCREATEDUSERTEXT = " successfully registered!";
 
+    public static final String REQUIRED_FIELDS_TEXT = "This field is required.";
+
 
     @BeforeMethod
     private void beforeMethod() throws InterruptedException {
         BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
-        BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
+      //  BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
     }
 
     @AfterMethod(alwaysRun = true)
@@ -93,7 +95,7 @@ public class AddUserPageTest extends BaseTest {
         addUserPage.addNewUserWithotRole(NEWUSERLOGIN, NEWUSERPASSWORD);
 
         String actualErrorRolesLabelText = addUserPage.userRolesErrorLabel.getText();
-        String expectedErrorRolesLabelText = "This field is required.";
+        String expectedErrorRolesLabelText = REQUIRED_FIELDS_TEXT;
 
         Assert.assertEquals(actualErrorRolesLabelText, expectedErrorRolesLabelText);
 
@@ -108,23 +110,12 @@ public class AddUserPageTest extends BaseTest {
         addUserPage.addNewUserWithotPasswordConfirmation(NEWUSERLOGIN, NEWUSERPASSWORD);
 
         String actualErrorPasswordConfirmationLabelText = addUserPage.confirmPasswordErrorLabel.getText();
-        String expectedErrorPasswordConfirmationText = "This field is required.";
+        String expectedErrorPasswordConfirmationText = REQUIRED_FIELDS_TEXT;
 
         Assert.assertEquals(actualErrorPasswordConfirmationLabelText, expectedErrorPasswordConfirmationText);
 
     }
 
-    @DataProvider(name = "validInformation")
-    public static Object[][] emailDetails() {
-
-        return new Object[][]{
-                {"st1esdteh45tonemal@mail.ru", NEWUSERPASSWORD},
-                {"st1ewersttwomail@com.ru", NEWUSERPASSWORD},
-                {"st1estthrdfgdeemail@com.cv.ua", NEWUSERPASSWORD},
-                {"sn1ewon2etest1l@is.low.pass.case", NEWUSERPASSWORD}
-        };
-
-    }
 
 
     @Test(groups = {"unSuccessfully"})
@@ -134,11 +125,10 @@ public class AddUserPageTest extends BaseTest {
         addUserPage = addUserPage.header.goToAddUserPage();
         addUserPage.addNewUser("", NEWUSERPASSWORD, NEWUSERROLE);
 
-        String expectedEmailErrorLabelText = "This field is required.";
+        String expectedEmailErrorLabelText = REQUIRED_FIELDS_TEXT;
         String actualEmailErrorLabel = addUserPage.emailErrorLabel.getText();
 
         Assert.assertEquals(expectedEmailErrorLabelText, actualEmailErrorLabel);
-        System.out.println("Email field is required but empty");
     }
 
     @Test(groups = {"unSuccessfully"})
@@ -148,11 +138,10 @@ public class AddUserPageTest extends BaseTest {
         addUserPage = addUserPage.header.goToAddUserPage();
         addUserPage.addNewUser(NEWUSERLOGIN, "", NEWUSERROLE);
 
-        String expectedPasswordErrorLabelText = "This field is required.";
+        String expectedPasswordErrorLabelText = REQUIRED_FIELDS_TEXT;
         String actualPasswordErrorLabel = addUserPage.passwordErrorLabel.getText();
 
         Assert.assertEquals(expectedPasswordErrorLabelText, actualPasswordErrorLabel);
-        System.out.println("Password field is required but empty");
     }
 
 
@@ -206,7 +195,18 @@ public class AddUserPageTest extends BaseTest {
                 {"sdx@gmail.com", " "},
                 {"jdhjsnw@mail.ua", ""}
 
-
         };
+    }
+
+    @DataProvider(name = "validInformation")
+    public static Object[][] emailDetails() {
+
+        return new Object[][]{
+                {"st1esdteh45tonemal@mail.ru", NEWUSERPASSWORD},
+                {"st1ewersttwomail@com.ru", NEWUSERPASSWORD},
+                {"st1estthrdfgdeemail@com.cv.ua", NEWUSERPASSWORD},
+                {"sn1ewon2etest1l@is.low.pass.case", NEWUSERPASSWORD}
+        };
+
     }
 }

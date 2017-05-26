@@ -26,7 +26,7 @@ import java.util.concurrent.TimeUnit;
  * It chose OS properties according to system properties. It chose proper browser according to properties
  * which is passed from Maven. This class also provides ability to moving for page and cleaning cookies
  *
- * @author Yuri Tomko
+ * @author Yuri Tomko, Bogdan Rymar
  * @version 1.0
  */
 public class DriverInitializer {
@@ -39,7 +39,7 @@ public class DriverInitializer {
     private static final String WINDOWS_IE_WEBDRIVER = "webdriver.edge.driver";
 
     private static final String LINUX_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriverLinux";
-    private static final String MAC_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriver";
+    private static final String MAC_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriverMac";
     private static final String WINDOWS_FIREFOX_WEBDRIVER_PATH = "src/main/resources/drivers/geckodriver.exe";
 
     private static final String MAC_CHROME_WEBDRIVER_PATH = "src/main/resources/drivers/chromedriverMac";
@@ -132,7 +132,7 @@ public class DriverInitializer {
     }
 
     /**
-     * This is a method which return instance of Web Driver. If it is a first call of method it create instance
+     * This  method  return instance of Web Driver. If it is a first call of method it create instance
      * of webdriver, otherwise in return already created instance. This method is synchronized.
      * @return
      */

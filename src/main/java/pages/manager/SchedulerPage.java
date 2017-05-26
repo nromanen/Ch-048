@@ -83,16 +83,16 @@ public class SchedulerPage implements PageInitializer {
     @FindBy(css = "div.dhx_scale_holder")
     private WebElement tableColumn;
 
-    @FindAll(@FindBy(css = "div.dhx_scale_ignore"))
+    @FindBy(css = "div.dhx_scale_ignore")
     private List<WebElement> tableIgnoredColumns;
 
-    @FindAll(@FindBy(className = "div.dhx_scale_hour"))
+    @FindBy(className = "div.dhx_scale_hour")
     private List<WebElement> tableRows;
 
-    @FindAll(@FindBy(css = "div.dhx_body"))
+    @FindBy(css = "div.dhx_body")
     private List<WebElement> eventBodys;
 
-    @FindAll(@FindBy(css = "div.dhx_cal_event"))
+    @FindBy(css = "div.dhx_cal_event")
     private List<WebElement> events;
 
     @FindBy(css = "textarea.dhx_cal_editor")
@@ -141,7 +141,7 @@ public class SchedulerPage implements PageInitializer {
     public WebElement resizeButton;
 
 
-    @FindAll(@FindBy(css = "div.dhx_cal_event_line_start"))
+    @FindBy(css = "div.dhx_cal_event_line_start")
     private List<WebElement> monthElements;
 
     @FindBy(css = "div.dhx_month_body")
