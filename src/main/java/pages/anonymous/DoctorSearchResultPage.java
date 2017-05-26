@@ -23,32 +23,11 @@ public class DoctorSearchResultPage implements PageInitializer {
         pageInitialization();
     }
 
-    @FindBy(className = "filter-col")
-    private WebElement doctorsPerPage;
-
-    @FindBy(id = "perpage")
-    private WebElement numberOfDoctorsPerPage;
-
     @FindBy(css = ".card.panel.panel-default.text-xs-right")
     private List<WebElement> doctorNameAtList;
 
-    @FindBy(css = ".about-img")
-    private List<WebElement> doctorPhotoAtList;
-
-    @FindBy(css = ".img-responsive")
-    protected List<WebElement> doctorLogoAtList;
-
-    @FindBy(css = ".cd-top")
-    private WebElement onTop;
-
     @FindBy(css = "div.about-img > a > img.img-responsive")
     public WebElement firstDoctorImage;
-
-    @FindBy(css = "a[href=/HospitalSeeker/doctor/6]")
-    private WebElement testlink;
-
-    @FindBy(className = "pagination pagination-lg")
-    private WebElement pageNavigation;
 
     /** Method is used for counting of searched hospitals by param
      *
