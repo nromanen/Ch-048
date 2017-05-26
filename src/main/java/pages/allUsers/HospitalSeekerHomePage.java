@@ -10,10 +10,8 @@ import pages.headers.headersByRole.NotAuthorizedHeader;
  */
 public class HospitalSeekerHomePage implements PageInitializer {
 
-    //Temporary field
     public NotAuthorizedHeader notAuthorizedHeader;
 
-    //End of temporary
     @FindBy(xpath = "//*[@id=\"carouselHacked\"]/div[2]/div[3]/div/h1")
     private WebElement textHeader;
 

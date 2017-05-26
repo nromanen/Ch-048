@@ -9,7 +9,6 @@ import utils.DriverInitializer;
 
 import static org.testng.Assert.assertEquals;
 
-
 /**
  * Class describes tests for testing of hospital's search by not authorised user from project's home page.
  *
