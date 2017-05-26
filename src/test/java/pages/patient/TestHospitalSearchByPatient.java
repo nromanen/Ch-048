@@ -25,7 +25,7 @@ public class TestHospitalSearchByPatient extends BaseTest {
      */
 
     @AfterMethod(alwaysRun = true)
-    public void afterMethod() throws Exception {
+    public void afterMethod() {
         DriverInitializer.deleteAllCookies();
     }
 
@@ -35,20 +35,26 @@ public class TestHospitalSearchByPatient extends BaseTest {
      * search word on a home page and compare expected result with actual count of hospitals that have been found on
      * a page result. If results aren't equals there will be message about it. And it does logout.
      *
-     * @param PATIENT_LOGIN is patient's login for testing
-     * @param PATIENT_PASSWORD is patient's password for testing
+     * PATIENT_LOGIN is patient's login for testing
+     * PATIENT_PASSWORD is patient's password for testing
      * @param searchWord is DataProvider's search word of hospital
      * @param expected is DataProvider's expected count of hospitals that have been found
      */
 
     @Test(dataProvider = "SearchProvider")
-    public void testFindHospitalAuthorizedUser(String searchWord, int expected) throws Exception {
+    public void testFindHospitalAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected,
                 "Actual count of hospitals that have been found isn't as expected");
         BaseNavigation.logout();
     }
+
+    /**
+     * Method is used for using few value of search word and expected result of search
+     *
+     * @return object with 2 parameters: searchWord and expected result
+     * */
 
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {
