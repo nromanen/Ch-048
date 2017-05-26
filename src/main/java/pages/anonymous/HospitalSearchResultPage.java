@@ -42,10 +42,12 @@ public class HospitalSearchResultPage implements PageInitializer {
     @FindBy(className = "pagination pagination-lg")
     private WebElement pageNavigation;
 
-    /** Method is used for counting of searched hospitals by param
+    /**
+     * Method is used for counting of searched hospitals by param
      *
-     * @param hospitalNameAtList are names of searched hospitals
-    */
+     * hospitalNameAtList are names of hospitals that have been found
+     * @return count of hospitals that have been found
+     */
 
     public int countOfHospital() {
         return hospitalNameAtList.size();
