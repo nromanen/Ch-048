@@ -14,6 +14,7 @@
         <browser.drivers.path>src/main/resources/drivers</browser.drivers.path>
         <aspectj.version>1.8.10</aspectj.version>
         <allure.version>1.5.2</allure.version>
+        <spring.version>3.2.2.RELEASE</spring.version>
     </properties>
 
     <dependencies>
@@ -73,6 +74,29 @@
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
+        </dependency>
+        <dependency>
+            <groupId>com.machinepublishers</groupId>
+            <artifactId>jbrowserdriver</artifactId>
+            <version>0.17.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-beans</artifactId>
+            <version>4.2.7.RELEASE</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
@@ -202,6 +226,9 @@
         </profile>
 
         <profile>
+            <activation>
+            <activeByDefault>false</activeByDefault>
+        </activation>
             <id>chrome</id>
             <properties>
                 <browser.name>chrome</browser.name>
@@ -211,6 +238,24 @@
             <id>edge</id>
             <properties>
                 <browser.name>edge</browser.name>
+            </properties>
+        </profile>
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>phantomjs</id>
+            <properties>
+                <browser.name>phantomjs</browser.name>
+            </properties>
+        </profile>
+        <profile>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <id>jBrowserDriver</id>
+            <properties>
+                <browser.name>jBrowserDriver</browser.name>
             </properties>
         </profile>
     </profiles>

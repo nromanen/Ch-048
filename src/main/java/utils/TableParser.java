@@ -7,7 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Evgen on 19.04.2017.
+ * This class can work with table on page
+ * @author Evgen Korcheviy
  */
 public class TableParser {
 
