@@ -10,9 +10,7 @@ import pages.headers.headersByRole.AdminHeader;
 import utils.BrowserWrapper;
 
 
-/**
- * Created by Evgen on 06.04.2017.
- */
+
 public class AddUserPage implements PageInitializer {
 
     public static final String IDFORWAITING = "newUserSubmit";
@@ -103,6 +101,11 @@ public class AddUserPage implements PageInitializer {
 
     public boolean isPageReady() throws Exception {
 
+        /**
+         * This  method  check  if all element is present on the page.
+         *
+         */
+
         BrowserWrapper.waitUntilElementVisible(newUserButton);
         StringBuilder errors = new StringBuilder();
         if(!checkEmailInput()){
@@ -168,7 +171,12 @@ public class AddUserPage implements PageInitializer {
         enableButton.click();
     }
 
-
+    /**
+     * This is a method for creating user as admin.
+     * @param email
+     * @param password
+     * @param role
+     */
     public void addNewUser(String email, String password, String role) throws InterruptedException {
         BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
         enterEmail(email);
@@ -180,6 +188,15 @@ public class AddUserPage implements PageInitializer {
 
     }
 
+
+    /**
+     * This is a method for creating user as admin without role, this method was created specially for test, to check
+     * wicth will be result if user wont check the role.
+     * @param email
+     * @param password
+     */
+
+
     public void addNewUserWithotRole(String email, String password) throws InterruptedException {
         BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));
         enterEmail(email);
@@ -189,6 +206,13 @@ public class AddUserPage implements PageInitializer {
         submitAdding();
 
     }
+
+    /**
+     * This is a method for creating user as admin without password confirmation , this method was created specially for test, to check
+     * wicth will be result if user wont confirm  the password.
+     * @param email
+     * @param password
+     */
 
     public void addNewUserWithotPasswordConfirmation(String email, String password) throws InterruptedException {
         BrowserWrapper.waitUntilElementIsPresent(By.id(IDFORWAITING));

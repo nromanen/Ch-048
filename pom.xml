@@ -98,6 +98,11 @@
             <version>4.2.7.RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.machinepublishers</groupId>
+            <artifactId>jbrowserdriver</artifactId>
+            <version>0.17.7</version>
+        </dependency>
     </dependencies>
 
     <build>
@@ -226,9 +231,6 @@
         </profile>
 
         <profile>
-            <activation>
-            <activeByDefault>false</activeByDefault>
-        </activation>
             <id>chrome</id>
             <properties>
                 <browser.name>chrome</browser.name>
@@ -241,18 +243,12 @@
             </properties>
         </profile>
         <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <id>phantomjs</id>
             <properties>
                 <browser.name>phantomjs</browser.name>
             </properties>
         </profile>
         <profile>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <id>jBrowserDriver</id>
             <properties>
                 <browser.name>jBrowserDriver</browser.name>

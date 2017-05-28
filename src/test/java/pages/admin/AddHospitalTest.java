@@ -66,7 +66,7 @@ public class AddHospitalTest extends BaseTest {
             int hospitalsCountOfRowAfterAdding = hospitalListPage.getCountOfHospitalsInTable();
             System.out.println("How much row in the table after added new hospital: " + hospitalsCountOfRowAfterAdding);
 
-            Assert.assertNotEquals(hospitalsCountOfRow, hospitalsCountOfRowAfterAdding);
+            Assert.assertNotEquals(hospitalsCountOfRow, hospitalsCountOfRowAfterAdding, "Hospital don't add!");
             logger.info(TEST_PASSED);
     }
 
@@ -84,7 +84,7 @@ public class AddHospitalTest extends BaseTest {
             int hospitalCountOfRowAfterDelete = hospitalListPage.getCountOfHospitalsInTable();
             System.out.println("Hospital count of row after delete: " + hospitalCountOfRowAfterDelete);
 
-            Assert.assertNotEquals(hospitalCountOfRow, hospitalCountOfRowAfterDelete);
+            Assert.assertNotEquals(hospitalCountOfRow, hospitalCountOfRowAfterDelete, "Hospital don't delete!");
             logger.info(TEST_PASSED);
     }
 
@@ -109,7 +109,7 @@ public class AddHospitalTest extends BaseTest {
 
             String expected = hospitalListPage.getHospitalDataFromTableRow(hospitalCountForEdit).toString();
 
-            Assert.assertNotEquals(actual, expected);
+            Assert.assertNotEquals(actual, expected, "Hospital don't edit!");
             logger.info(TEST_PASSED);
     }
     
@@ -134,7 +134,7 @@ public class AddHospitalTest extends BaseTest {
         int hospitalsCountOfRowAfterAdding = hospitalListPage.getCountOfHospitalsInTable();
         System.out.println("How much row in the table after added new hospital: " + hospitalsCountOfRowAfterAdding);
 
-        Assert.assertEquals(hospitalsCountOfRow, hospitalsCountOfRowAfterAdding);
+        Assert.assertEquals(hospitalsCountOfRow, hospitalsCountOfRowAfterAdding, "Hospital don't add!");
         logger.info(TEST_PASSED);
     }
 
