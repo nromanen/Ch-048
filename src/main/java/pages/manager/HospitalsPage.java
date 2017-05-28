@@ -19,7 +19,7 @@ public class HospitalsPage implements PageInitializer{
     @FindBy(css = "div.team-heading")
     public WebElement hospitalText;
 
-    @FindAll(@FindBy(css = "div.single-member"))
+    @FindBy(css = "div.single-member")
     public List<WebElement> allHospitals;
 
     @FindBy(css = "back-to-top")

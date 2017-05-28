@@ -7,6 +7,12 @@ import pages.headers.headersByRole.NotAuthorizedHeader;
 
 import java.util.List;
 
+/**
+ * This class describes page with hospital's search result
+ *
+ * @author ybalatc
+ */
+
 public class HospitalSearchResultPage implements PageInitializer {
     public NotAuthorizedHeader notAuthorizedHeader;
 
@@ -15,26 +21,15 @@ public class HospitalSearchResultPage implements PageInitializer {
         pageInitialization();
     }
 
-    @FindBy(className = "filter-col")
-    private WebElement hospitalPerPage;
-
-    @FindBy(id = "perpage")
-    private WebElement numberOfHospitalsPerPage;
-
     @FindBy(css = ".card.panel.panel-default.text-xs-right")
     private List<WebElement> hospitalNameAtList;
 
-    @FindBy(className = "about-img")
-    private List<WebElement> hospitalPhotoAtList;
-
-    @FindBy(className = "img-responsive")
-    private List<WebElement> hospitalLogoAtList;
-
-    @FindBy(css = ".cd-top")
-    private WebElement onTop;
-
-    @FindBy(className = "pagination pagination-lg")
-    private WebElement pageNavigation;
+    /**
+     * Method is used for counting of searched hospitals by param
+     *
+     * hospitalNameAtList are names of hospitals that have been found
+     * @return count of hospitals that have been found
+     */
 
     public int countOfHospital() {
         return hospitalNameAtList.size();

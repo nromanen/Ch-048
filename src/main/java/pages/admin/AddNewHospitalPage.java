@@ -9,12 +9,16 @@ import utils.BrowserWrapper;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 /**
  * Created by Jeksonis on 06.04.2017.
  */
 public class AddNewHospitalPage implements PageInitializer {
-        public AdminHeader header;
+
+    private static final String HOSPITAL_IMAGE_PATH = "src/main/resources/RhodeIslandHosp14_360_360_90.jpg";
+
+    public AdminHeader header;
 
     public AddNewHospitalPage(){
         this.header = new AdminHeader();
@@ -63,16 +67,20 @@ public class AddNewHospitalPage implements PageInitializer {
     @FindBy(css = "body > section > div > h3")
     public WebElement pageLabel;
 
-    public void setClipboardData(String pathToPhoto) {
-        StringSelection stringSelection = new StringSelection(pathToPhoto);
+    @FindBy(id = "modalOK")
+    private WebElement buttonOkInUploadPhotoModalWindow;
+
+
+    public void setClipboardData() {
+        File file = new File(HOSPITAL_IMAGE_PATH);
+        String absolutePath = file.getAbsolutePath();
+        StringSelection stringSelection = new StringSelection(absolutePath);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
 
 
     public void addNewHospitalPhoto() throws AWTException {
-        //why you use hard path to image??
-        //may be setClipboardData("src/main/resources/RhodeIslandHosp14_360_360_90.jpg");
-        setClipboardData("D:\\RhodeIslandHosp14_360_360_90.jpg");
+        setClipboardData();
         Robot robot = new Robot();
         robot.delay(500);
         robot.keyPress(KeyEvent.VK_CONTROL);
@@ -155,15 +163,19 @@ public class AddNewHospitalPage implements PageInitializer {
         return new HospitalListPage();
    }
 
-   public void addNewHospital(String address, String name, String description) {
-       BrowserWrapper.sleep(2);
-        addressData(address);
-       BrowserWrapper.sleep(2);
+   public void addNewHospital(String address, String name, String description) throws AWTException {
+       pushAddPhotoButton();
+       addNewHospitalPhoto();
+       BrowserWrapper.waitUntilElementVisible(buttonOkInUploadPhotoModalWindow);
+       buttonOkInUploadPhotoModalWindow.click();
+       //BrowserWrapper.sleep(2);
+       addressData(address);
+       //BrowserWrapper.sleep(2);
+       //BrowserWrapper.sleep(2);
+       pushFillButton();
        addHospitalName(name);
        addHospitalDescription(description);
-       BrowserWrapper.sleep(2);
-       pushFillButton();
-       BrowserWrapper.sleep(2);
+       //BrowserWrapper.sleep(2);
        pushFindButton();
        BrowserWrapper.sleep(2);
        pushSaveButton();
