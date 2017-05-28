@@ -56,7 +56,7 @@ public class TestHospitalSearch extends BaseTest {
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationEng() {
-        hospitalSeekerHomePage.notAuthorizedHeader.changeLanguageToEn();
+        hospitalSeekerHomePage.changeLanguageToEn();
         hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
         BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
         assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
@@ -77,7 +77,7 @@ public class TestHospitalSearch extends BaseTest {
 
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationUa() {
-        hospitalSeekerHomePage.notAuthorizedHeader.changeLanguageToUa();
+        hospitalSeekerHomePage.changeLanguageToUa();
         hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
         BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
         assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
