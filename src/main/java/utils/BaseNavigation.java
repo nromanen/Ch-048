@@ -36,7 +36,6 @@ public class BaseNavigation {
      */
     public static HospitalSeekerHomePage logout() {
         AuthorizedHeader authorizedHeader = new AuthorizedHeader();
-
         authorizedHeader.profileButtonClick();
         HospitalSeekerHomePage hospitalSeekerHomePage = authorizedHeader.logoutButtonClick();
         return hospitalSeekerHomePage;
