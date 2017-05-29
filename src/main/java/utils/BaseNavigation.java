@@ -26,7 +26,7 @@ public class BaseNavigation {
      */
     public static void login(String email, String password) {
         HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
-        LoginPage loginPage = hospitalSeekerHomePage.notAuthorizedHeader.loginButton();
+        LoginPage loginPage = hospitalSeekerHomePage.header.loginButton();
         loginPage.authorization(email, password);
     }
 
@@ -92,11 +92,11 @@ public class BaseNavigation {
      * @param lang it's a string representation of language it which test will occure. Can be "eng" and "ukr"
      */
     public static void changeLanguage(String lang) {
-        BaseHeader baseHeader = new BaseHeader();
+        HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
         if (lang.equals("ukr")) {
-            baseHeader.changeLanguageToUa();
+            hospitalSeekerHomePage.changeLanguageToUa();
         } else {
-            baseHeader.changeLanguageToEn();
+            hospitalSeekerHomePage.changeLanguageToEn();
         }
     }
 }

@@ -44,7 +44,7 @@ public class TestDoctorSearchByPatient extends BaseTest {
     @Test(dataProvider = "SearchProvider")
     public void testFindDoctorAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
-        DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findDoctor(searchWord);
+        DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected,
                 "Actual count of doctors that have been found isn't as expected");
         BaseNavigation.logout();
