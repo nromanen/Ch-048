@@ -3,8 +3,9 @@ package pages.headers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
-import pages.allUsers.DoctorSearchResultPage;
-import pages.allUsers.HospitalSearchResultPage;
+import pages.anonymous.DoctorSearchResultPage;
+import pages.anonymous.HospitalSearchResultPage;
+
 import utils.BrowserWrapper;
 
 /**
