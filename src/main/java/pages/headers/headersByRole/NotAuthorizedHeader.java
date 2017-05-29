@@ -21,8 +21,8 @@ public class NotAuthorizedHeader extends BaseHeader implements PageInitializer {
 
     public LoginPage loginButton() {
         try {
-            BrowserWrapper.waitUntilElementNotStale(login);
-            BrowserWrapper.waitUntilElementVisible(login);
+            //BrowserWrapper.waitUntilElementVisible(login);
+            BrowserWrapper.waitUntilElementClickable(login);
             login.click();
         } catch (Exception e) {
             e.printStackTrace();
