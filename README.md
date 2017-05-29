@@ -25,7 +25,9 @@
 <b>Authorized Users</b>
 <ol>
 <li>Feedback Create Page</li>
-<li><b>Not Authorithed User</b></li>
+</ol>
+<b>Not Authorithed User</b>
+<ol>
 <li>Hospital Search Result Page</li>
 <li>Doctor Search Result Page</li>
 </ol>
@@ -36,10 +38,10 @@
 </ol>
 
 <p>To run this application you need:</p>
-<pre><code>
+<pre><code>Mozilla firefox v.52.0.2,
 Java 8,
-Maven 3.3.9
-PostgreSQL
+Maven 3.3.9,
+PostgreSQL 9.6
 </code></pre>
 
 <h1>Instalation</h1>
