@@ -3,30 +3,26 @@ package pages.headers;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
-import pages.allUsers.*;
 import pages.anonymous.DoctorSearchResultPage;
 import pages.anonymous.HospitalSearchResultPage;
+
 import utils.BrowserWrapper;
 
 /**
  * Created by Evgen on 05.04.2017.
  */
-public class BaseHeader implements PageInitializer {
+public abstract class BaseHeader implements PageInitializer {
 
     private static final int SLEEP_TIMEOUT = 2;
 
-    public BaseHeader(){
-        pageInitialization();
-    }
-
     @FindBy(css = "img.localization-flag")
-    protected WebElement changeLanguageIco;
+    public WebElement changeLanguageIco;
     @FindBy(id = "select_doctor_search_button")
     protected WebElement doctorSearchButton;
     @FindBy(id = "select_doctor_search")
     protected WebElement doctorSearchField;
     @FindBy(css = "a[href$='?lang=en']")
-    protected WebElement enLanguage;
+    public WebElement enLanguage;
     @FindBy(css = "a[href$='/HospitalSeeker/']")
     protected WebElement home;
     @FindBy(id = "select_hospital_search_button")
@@ -42,7 +38,7 @@ public class BaseHeader implements PageInitializer {
     @FindBy(css = "a[href=\"#toggle-search\"]")
     protected WebElement searchButton;
     @FindBy(css = "a[href$='?lang=ua']")
-    protected WebElement uaLanguage;
+    public WebElement uaLanguage;
     @FindBy(id = "select_doctor_search-error")
     private WebElement doctorSearchError;
     @FindBy(id = "select_doctor_search_button")
@@ -62,19 +58,20 @@ public class BaseHeader implements PageInitializer {
         return hospitalSearchError;
     }
 
-    public BaseHeader changeLanguageToEn() {
-        changeLanguageIco.click();
-        enLanguage.click();
-        return this;
+    public BaseHeader(){
+        pageInitialization();
     }
 
-    public BaseHeader changeLanguageToUa() {
-        changeLanguageIco.click();
-        uaLanguage.click();
-        return new BaseHeader();
-    }
 
-      public void fillDoctorInput(String doctorName) {
+    //Move it to page
+
+  
+    /*public MapSearchPage toMapOfHospitals() {
+        nearestHospital.click();
+        return new MapSearchPage();
+    }*/
+
+    public void fillDoctorInput(String doctorName) {
         fillInput(doctorName, doctorSearchField);
     }
 
@@ -106,8 +103,8 @@ public class BaseHeader implements PageInitializer {
         return new HospitalSearchResultPage();
     }
 
-    public HospitalSeekerHomePage toHomePage() {
+    /*public HospitalSeekerHomePage toHomePage() {
         home.click();
         return new HospitalSeekerHomePage();
-    }
+    }*/
 }

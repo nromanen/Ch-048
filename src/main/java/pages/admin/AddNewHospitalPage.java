@@ -163,21 +163,21 @@ public class AddNewHospitalPage implements PageInitializer {
         return new HospitalListPage();
    }
 
-   public void addNewHospital(String address, String name, String description) throws AWTException {
-       pushAddPhotoButton();
-       addNewHospitalPhoto();
-       BrowserWrapper.waitUntilElementVisible(buttonOkInUploadPhotoModalWindow);
-       buttonOkInUploadPhotoModalWindow.click();
-       //BrowserWrapper.sleep(2);
-       addressData(address);
-       //BrowserWrapper.sleep(2);
-       //BrowserWrapper.sleep(2);
-       pushFillButton();
-       addHospitalName(name);
-       addHospitalDescription(description);
-       //BrowserWrapper.sleep(2);
-       pushFindButton();
-       BrowserWrapper.sleep(2);
-       pushSaveButton();
+   public void addNewHospital(String address, String name, String description) {
+       try {
+           pushAddPhotoButton();
+           addNewHospitalPhoto();
+           BrowserWrapper.waitUntilElementVisible(buttonOkInUploadPhotoModalWindow);
+           buttonOkInUploadPhotoModalWindow.click();
+           addressData(address);
+           pushFillButton();
+           addHospitalName(name);
+           addHospitalDescription(description);
+           pushFindButton();
+           BrowserWrapper.sleep(2);
+           pushSaveButton();
+       } catch (AWTException ex) {
+           ex.printStackTrace();
+       }
    }
 }

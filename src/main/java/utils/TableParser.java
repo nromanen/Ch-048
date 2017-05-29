@@ -7,7 +7,8 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Evgen on 19.04.2017.
+ * This class can work with table on page
+ * @author Evgen Korcheviy
  */
 public class TableParser {
 
@@ -38,6 +39,16 @@ public class TableParser {
         return table.findElement(By.cssSelector("tbody tr:nth-child(" + rowNumber + ")"));
     }
 
+    public WebElement getRowFromTable(String fieldName, String value) {
+        List<WebElement> rows = table.findElements(By.cssSelector("tbody tr"));
+        int indexOfField = titleList.indexOf(fieldName);
+        for (WebElement row : rows) {
+            if (row.findElement(By.cssSelector("td:nth-child(" + indexOfField + ")")).equals(value))
+                return row;
+        }
+        return null;
+    }
+
     private List<String> getDataFromTableRow(int rowNumber) {
         List<WebElement> cells = getCellsFromTableRow(rowNumber);
         List<String> result = new LinkedList<>();
@@ -49,6 +60,11 @@ public class TableParser {
         List<String> allInfo = getDataFromTableRow(rowNumber);
         int indexOfField = titleList.indexOf(fieldName);
         return allInfo.get(indexOfField);
+    }
+
+    public String getFieldFromTableRow(WebElement row, String fieldName) {
+        int indexOfField = titleList.indexOf(fieldName);
+        return row.findElement(By.cssSelector("td:nth-child(" + indexOfField + ")")).getText();
     }
 
     public String getFieldFromFirstTableRow(String fieldName) {
@@ -92,5 +108,13 @@ public class TableParser {
         return button;
     }
 
-
+    public WebElement getButtonFromTableRowByButtonTitle(WebElement row, String buttonName) {
+        if (row.findElements(By.cssSelector("span[title=\"" + buttonName + "\"]")).size() > 0)
+            return row.findElement(By.cssSelector("span[title=\"" + buttonName + "\"]"));
+        if (row.findElements(By.cssSelector("button[title=\"" + buttonName + "\"]")).size() > 0)
+            return row.findElement(By.cssSelector("button[title=\"" + buttonName + "\"]"));
+        if (row.findElements(By.cssSelector("a[title=\"" + buttonName + "\"]")).size() > 0)
+            return row.findElement(By.cssSelector("a[title=\"" + buttonName + "\"]"));
+        return null;
+    }
 }
