@@ -51,5 +51,5 @@ PostgreSQL
 <pre><code>mvn clean test site</code></pre>
 <p>You can specifiy language of execution and browser name after -P. Supported languages: eng, ukr. Supported browsers: firefox, chrome</p>
 <pre><code>mvn -P eng,firefox test site</code></pre>
-<p>After executing <b>site</b> phase of maven you can get raports about test execution and screenshots of failed test by running target/site/allure-maven-plugin.html file
+<p>After executing <b>"site"</b> phase of maven you can get raports about test execution and screenshots of failed test by running target/site/allure-maven-plugin.html file
 </p>
