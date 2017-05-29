@@ -422,12 +422,12 @@ public class SchedulerPage implements PageInitializer {
     }
 
     public void monthTabButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(monthTabButton);
+        BrowserWrapper.waitUntilElementClickable(monthTabButton);
         monthTabButton.click();
     }
 
     public void miniCalendarButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(miniCalendarButton);
+        BrowserWrapper.waitUntilElementClickable(miniCalendarButton);
         miniCalendarButton.click();
     }
 
