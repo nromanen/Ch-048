@@ -174,7 +174,6 @@ public class AddNewHospitalPage implements PageInitializer {
            addHospitalName(name);
            pushFindButton();
            addHospitalDescription(description);
-           //BrowserWrapper.sleep(2);
            pushSaveButton();
        } catch (AWTException ex) {
            ex.printStackTrace();
