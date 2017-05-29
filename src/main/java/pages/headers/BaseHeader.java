@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.anonymous.DoctorSearchResultPage;
 import pages.anonymous.HospitalSearchResultPage;
+
 import utils.BrowserWrapper;
 
 /**

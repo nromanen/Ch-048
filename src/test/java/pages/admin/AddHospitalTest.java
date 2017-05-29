@@ -13,6 +13,13 @@ import utils.BaseTest;
 import utils.BrowserWrapper;
 import utils.DriverInitializer;
 
+/**
+ * This is a class which is collect all tests related to testing Add Hospital and Hospitals List Pages. On the top of this
+ * class there is all constant values which are used in tests. AddHospitalTest extends BaseTest what gives this
+ * class ability of initialization of browser and moving to main page of project. Tests in this class are divided
+ * into groups: Add hospital and Edit/Delete hospital. This page is also provided logging for
+ * tracing test results
+ */
 
 public class AddHospitalTest extends BaseTest {
 
@@ -36,8 +43,11 @@ public class AddHospitalTest extends BaseTest {
     private static final String TEST_PASSED = "Test passed!";
     private static final String TEST_FINISHED = "Test finished!";
 
-
     Logger logger = LoggerFactory.getLogger(HospitalListPage.class);
+
+    /**
+     * This is method which is executed before each method in this class
+     */
 
     @BeforeMethod
     public void beforeMethod() {
@@ -46,9 +56,15 @@ public class AddHospitalTest extends BaseTest {
         logger.info(TEST_STARTED);
     }
 
+    /**
+     * This method is for testing add new hospital with valid data
+     * @param hospitalAddress  Text which is typing into address field
+     * @param hospitalName     Text which is typing into hospital name field
+     * @param hospitalDescription       Text which is typing into hospital description field
+     */
 
     @Test(dataProvider = "validHospitalAddress", groups = {"Add hospital"})
-    public void addNewHospitalWithValidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) throws Exception {
+    public void addNewHospitalWithValidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) {
 
             HospitalListPage hospitalListPage = new HospitalListPage();
             hospitalListPage.header.goToAllHospitalsPage();
@@ -57,8 +73,9 @@ public class AddHospitalTest extends BaseTest {
             int hospitalsCountOfRow = hospitalListPage.getCountOfHospitalsInTable();
             System.out.println("How much row in the table: " + hospitalsCountOfRow);
             hospitalListPage.submitAddNewHospital();
-            BrowserWrapper.waitUntilElementClickableByLocator(By.id(ADD_HOSPITAL_PAGE_ID_IDENTIFICATION));
             AddNewHospitalPage addNewHospitalPage = new AddNewHospitalPage();
+            BrowserWrapper.waitUntilElementClickableByLocator(By.id(ADD_HOSPITAL_PAGE_ID_IDENTIFICATION));
+
 
             addNewHospitalPage.addNewHospital(hospitalAddress, hospitalName, hospitalDescription);
             BrowserWrapper.waitUntilElementClickableByLocator(By.xpath(ALL_HOSPITALS_PAGE_XPATH_IDENTIFICATION));
@@ -70,8 +87,13 @@ public class AddHospitalTest extends BaseTest {
             logger.info(TEST_PASSED);
     }
 
+    /**
+     * This method is for testing delete hospital from hospital list
+     * @param hospitalCountForDelete        Number of row which we want to delete
+     */
+
     @Test(dataProvider = "loginDataForDeleteHospital", groups = {"Edit/Delete hospital"})
-    public void deleteHospitalTest(String login, String password, int hospitalCountForDelete) throws Exception {
+    public void deleteHospitalTest(int hospitalCountForDelete) {
 
             HospitalListPage hospitalListPage = new HospitalListPage();
             hospitalListPage.header.goToAllHospitalsPage();
@@ -88,8 +110,16 @@ public class AddHospitalTest extends BaseTest {
             logger.info(TEST_PASSED);
     }
 
+    /**
+     *      This method is for testing edit hospital data
+     * @param hospitalName    Text which change hospital name field
+     * @param building      Text which change hospital building number field
+     * @param street        Text which change street name in hospital street field
+     * @param hospitalCountForEdit      Number of row which we want to edit
+     */
+
     @Test(dataProvider = "editHospitalBuildingAndStreet", groups = {"Edit/Delete hospital"})
-    public void editHospitalTest(String hospitalName, String building, String street, int hospitalCountForEdit) throws Exception {
+    public void editHospitalTest(String hospitalName, String building, String street, int hospitalCountForEdit) {
 
             HospitalListPage hospitalListPage = new HospitalListPage();
             hospitalListPage.header.goToAllHospitalsPage();
@@ -112,9 +142,16 @@ public class AddHospitalTest extends BaseTest {
             Assert.assertNotEquals(actual, expected, "Hospital don't edit!");
             logger.info(TEST_PASSED);
     }
+
+    /**
+     *      This method is for testing add new hospital with invalid data
+     * @param hospitalAddress       Text which is typing into address field
+     * @param hospitalName      Text which is typing into hospital name field
+     * @param hospitalDescription       Text which is typing into hospital description field
+     */
     
     @Test(dataProvider = "invalidHospitalAddress", groups = {"Add hospital"})
-    public void addNewHospitalWithInvalidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) throws Exception {
+    public void addNewHospitalWithInvalidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) {
 
         HospitalListPage hospitalListPage = new HospitalListPage();
         hospitalListPage.header.goToAllHospitalsPage();
@@ -148,7 +185,7 @@ public class AddHospitalTest extends BaseTest {
     @DataProvider
     public Object [] [] loginDataForDeleteHospital() {
             return new Object [] [] {
-                    {ADMIN_LOGIN, ADMIN_PASSWORD, HOSPITAL_ROW_FOR_DELETE}
+                    {HOSPITAL_ROW_FOR_DELETE}
             };
     }
 
@@ -165,6 +202,10 @@ public class AddHospitalTest extends BaseTest {
                 {INVALID_HOSPITAL_ADDRESS, HOSPITAL_NAME_FOR_INVALID_ADDRESS, NOTHING_INSIDE}
         };
     }
+
+    /**
+     * This is method which is used to clean workflow after test execution
+     */
 
     @AfterMethod
     public void afterMethod() {

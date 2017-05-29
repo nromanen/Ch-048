@@ -39,7 +39,7 @@ public class TestHospitalSearch extends BaseTest {
 
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalNotAuthorizedUser(String searchWord, int expected) {
-        HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
+        HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.header.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected,
                 "Actual count of hospitals that have been found isn't as expected");
     }
@@ -57,9 +57,9 @@ public class TestHospitalSearch extends BaseTest {
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationEng() {
         hospitalSeekerHomePage.changeLanguageToEn();
-        hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
-        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
-        assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
+        hospitalSeekerHomePage.header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
+        assertEquals(hospitalSeekerHomePage.header.getDoctorSearchError().getText(),
                 properties.getProperty("search.validation.line.too.short"),
                 "Search word too short. Please enter at least 3 letters"
         );
@@ -78,9 +78,9 @@ public class TestHospitalSearch extends BaseTest {
     @Test(groups = "InputValidation")
     public void testFindDoctorInputValidationUa() {
         hospitalSeekerHomePage.changeLanguageToUa();
-        hospitalSeekerHomePage.notAuthorizedHeader.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
-        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.notAuthorizedHeader);
-        assertEquals(hospitalSeekerHomePage.notAuthorizedHeader.getDoctorSearchError().getText(),
+        hospitalSeekerHomePage.header.fillDoctorInput(TOO_SHORT_SEARCH_WORD);
+        BaseTest.checkLanguageAndLoadProperties(hospitalSeekerHomePage.header);
+        assertEquals(hospitalSeekerHomePage.header.getDoctorSearchError().getText(),
                 properties.getProperty("search.validation.line.too.short"),
                 "Search word too short. Please enter at least 3 letters"
         );

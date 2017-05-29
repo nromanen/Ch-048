@@ -44,7 +44,7 @@ public class TestHospitalSearchByPatient extends BaseTest {
     @Test(dataProvider = "SearchProvider")
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
-        HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.notAuthorizedHeader.findHospital(searchWord);
+        HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.header.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected,
                 "Actual count of hospitals that have been found isn't as expected");
         BaseNavigation.logout();

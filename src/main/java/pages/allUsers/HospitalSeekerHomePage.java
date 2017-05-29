@@ -10,10 +10,8 @@ import pages.headers.headersByRole.NotAuthorizedHeader;
  */
 public class HospitalSeekerHomePage implements PageInitializer {
 
-    //Temporary field
-    public NotAuthorizedHeader notAuthorizedHeader;
+    public NotAuthorizedHeader header;
 
-    //End of temporary
     @FindBy(xpath = "//*[@id=\"carouselHacked\"]/div[2]/div[3]/div/h1")
     private WebElement textHeader;
 
@@ -34,19 +32,19 @@ public class HospitalSeekerHomePage implements PageInitializer {
     }
 
     public HospitalSeekerHomePage() {
-        notAuthorizedHeader = new NotAuthorizedHeader();
+        header = new NotAuthorizedHeader();
         pageInitialization();
     }
 
     public HospitalSeekerHomePage changeLanguageToEn() {
-        notAuthorizedHeader.changeLanguageIco.click();
-        notAuthorizedHeader.enLanguage.click();
+        header.changeLanguageIco.click();
+        header.enLanguage.click();
         return new HospitalSeekerHomePage();
     }
 
     public HospitalSeekerHomePage changeLanguageToUa() {
-        notAuthorizedHeader.changeLanguageIco.click();
-        notAuthorizedHeader.uaLanguage.click();
+        header.changeLanguageIco.click();
+        header.uaLanguage.click();
         return new HospitalSeekerHomePage();
     }
 
