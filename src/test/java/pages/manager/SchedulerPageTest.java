@@ -249,7 +249,7 @@ public class SchedulerPageTest extends BaseTest {
     /**
      * This is method for testing pop up when manager close windows after making some changes without saving
      */
-    @Test(groups = "miscellaneous")
+    //@Test(groups = "miscellaneous")
     public void testAlertIfNotSaved(){
         schedulerPage.nextButtonClick();
         schedulerPage.createAppointmentWithoutSave(TEST_APPOINTMENT_TEXT);

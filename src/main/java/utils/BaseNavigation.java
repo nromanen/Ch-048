@@ -3,7 +3,6 @@ package utils;
 import pages.admin.AllUsersPage;
 import pages.allUsers.HospitalSeekerHomePage;
 import pages.anonymous.LoginPage;
-import pages.headers.BaseHeader;
 import pages.headers.headersByRole.AuthorizedHeader;
 import pages.manager.HospitalsPage;
 
