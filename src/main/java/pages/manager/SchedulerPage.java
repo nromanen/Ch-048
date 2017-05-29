@@ -156,10 +156,10 @@ public class SchedulerPage implements PageInitializer {
 
 
    public void nextButtonClick(){
-        while(notActiveRows.size()>0){
-            BrowserWrapper.waitUntilElementVisible(nextButton);
+        do{
+            BrowserWrapper.waitUntilElementClickable(nextButton);
             nextButton.click();
-        }
+        } while(notActiveRows.size()>0);
    }
 
     public void createAppointment(String text)  {
@@ -213,9 +213,10 @@ public class SchedulerPage implements PageInitializer {
 
     public void createEventCalendar(String text){
         nextButtonClick();
-        BrowserWrapper.waitUntilElementClickable(monthElement);
+        nextButtonClick();
+        BrowserWrapper.waitUntilElementVisible(monthElement);
         BrowserWrapper.doubleClickJs(monthElement);
-        BrowserWrapper.waitUntilElementClickable(detailedEditorField);
+        BrowserWrapper.waitUntilElementVisible(detailedEditorField);
         detailedEditorField.sendKeys(text);
         saveDetailedChanges.click();
         saveButtonClick();

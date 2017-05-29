@@ -221,6 +221,7 @@ public class SchedulerPageTest extends BaseTest {
         schedulerPage = managerDashBordPage.scheduleButtonClick(DOCTOR_NAME);
         schedulerPage.monthTabButtonClick();
         schedulerPage.nextButtonClick();
+        schedulerPage.nextButtonClick();
         Assert.assertTrue( schedulerPage.isEventsPresentOnCalendar() && schedulerPage.isEventOnCalendarTab(EXPECTED_APPOINTMENT_TEXT),"Can't create event on month tab" );
         logger.info("Test pass");
     }
@@ -249,7 +250,7 @@ public class SchedulerPageTest extends BaseTest {
     /**
      * This is method for testing pop up when manager close windows after making some changes without saving
      */
-    //@Test(groups = "miscellaneous")
+    @Test(groups = "miscellaneous")
     public void testAlertIfNotSaved(){
         schedulerPage.nextButtonClick();
         schedulerPage.createAppointmentWithoutSave(TEST_APPOINTMENT_TEXT);
