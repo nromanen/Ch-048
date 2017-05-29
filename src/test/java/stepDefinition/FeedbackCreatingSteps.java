@@ -43,7 +43,7 @@ public class FeedbackCreatingSteps {
         UserDAO.deleteAllFeedbacks();
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
         BrowserWrapper.sleep(2);
-        hospitalSeekerHomePage.notAuthorizedHeader.findDoctor(CURRENT_DOCTOR_SURNAME);
+        hospitalSeekerHomePage.header.findDoctor(CURRENT_DOCTOR_SURNAME);
         doctorInfoPage = doctorSearchResultPage.goToDoctorInfoPage();
     }
 
@@ -88,7 +88,6 @@ public class FeedbackCreatingSteps {
     @When("^i sign in as a patient and move to the current doctorInfoPage$")
     public void i_sign_in_as_a_patient_and_move_to_the_current_doctorInfoPage() throws Throwable {
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
-        BaseHeader header = new BaseHeader();
         DoctorSearchResultPage doctorSearchResultPage = header.findDoctor(CURRENT_DOCTOR_SURNAME);
         doctorSearchResultPage.goToDoctorInfoPage();
     }
