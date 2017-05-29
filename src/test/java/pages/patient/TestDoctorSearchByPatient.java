@@ -25,7 +25,7 @@ public class TestDoctorSearchByPatient extends BaseTest {
      */
 
     @AfterMethod(alwaysRun = true)
-    public void afterMethod() throws Exception {
+    public void afterMethod() {
         DriverInitializer.deleteAllCookies();
     }
 
@@ -35,8 +35,8 @@ public class TestDoctorSearchByPatient extends BaseTest {
      * search word on a home page and compare expected result with actual count of doctors that have been found on
      * a page result. If results aren't equals there will be message about it. And it does logout.
      *
-     * @param PATIENT_LOGIN is patient's login for testing
-     * @param PATIENT_PASSWORD is patient's password for testing
+     * PATIENT_LOGIN is patient's login for testing
+     * PATIENT_PASSWORD is patient's password for testing
      * @param searchWord is DataProvider's search word of doctors
      * @param expected is DataProvider's expected count of doctors that have been found
      */
@@ -52,7 +52,9 @@ public class TestDoctorSearchByPatient extends BaseTest {
 
     /**
      * Method is used for using few value of search word and expected result of search
-     */
+     *
+     * @return object with 2 parameters: searchWord and expected result
+     * */
 
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {

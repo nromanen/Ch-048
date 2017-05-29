@@ -9,7 +9,6 @@ import utils.DriverInitializer;
 
 import static org.testng.Assert.assertEquals;
 
-
 /**
  * Class describes tests for testing of hospital's search by not authorised user from project's home page.
  *
@@ -52,8 +51,7 @@ public class TestHospitalSearch extends BaseTest {
      * compare this error message with message that is shown on web-site. If results aren't equals there will be message
      * about it.
      *
-     * @param TOO_SHORT_SEARCH_WORD is search word that contains 2 letters
-     * @param expected is expected count of hospitals that have been found
+     * TOO_SHORT_SEARCH_WORD is search word that contains 2 letters
      */
 
     @Test(groups = "InputValidation")
@@ -74,8 +72,7 @@ public class TestHospitalSearch extends BaseTest {
      * compare this error message with message that is shown on web-site. If results aren't equals there will be message
      * about it.
      *
-     * @param TOO_SHORT_SEARCH_WORD is search word that contains 2 letters
-     * @param expected is expected count of hospitals that have been found
+     * TOO_SHORT_SEARCH_WORD is search word that contains 2 letters
      */
 
     @Test(groups = "InputValidation")
@@ -91,6 +88,8 @@ public class TestHospitalSearch extends BaseTest {
 
     /**
      * Method is used for using few value of search word and expected result of search
+     *
+     * @return object with 2 parameters: searchWord and expected result
      */
 
     @DataProvider(name = "SearchProvider")

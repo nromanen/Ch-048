@@ -9,7 +9,6 @@ import utils.BrowserWrapper;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
 
 /**
  * Created by Jeksonis on 06.04.2017.

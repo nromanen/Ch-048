@@ -1,15 +1,13 @@
 package pages.allUsers;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
-import pages.headers.BaseHeader;
 import utils.BrowserWrapper;
 
 
 public class DoctorInfoPage implements PageInitializer {
-    BaseHeader baseHeader;
+    //BaseHeader header;
 
     @FindBy(css = "img.img-thumbnail")
     private WebElement avatarImage;
@@ -65,7 +63,7 @@ public class DoctorInfoPage implements PageInitializer {
 
 
     public DoctorInfoPage() {
-        baseHeader = new BaseHeader();
+        //header = new BaseHeader();
         pageInitialization();
     }
 }
