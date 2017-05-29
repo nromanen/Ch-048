@@ -126,9 +126,10 @@ public class BrowserWrapper {
      * @return return true if alert present otherwise return false
      */
     public static boolean isAlertPresent() {
+        WebDriverWait waitLocal = new WebDriverWait(DriverInitializer.instance(), 1);
         boolean foundAlert;
         try {
-            wait.until(ExpectedConditions.alertIsPresent());
+            waitLocal.until(ExpectedConditions.alertIsPresent());
             foundAlert = true;
         } catch (TimeoutException e) {
             foundAlert = false;
