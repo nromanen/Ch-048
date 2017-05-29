@@ -9,6 +9,7 @@ import utils.BrowserWrapper;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 /**
  * Created by Jeksonis on 06.04.2017.
@@ -171,9 +172,9 @@ public class AddNewHospitalPage implements PageInitializer {
            addressData(address);
            pushFillButton();
            addHospitalName(name);
-           addHospitalDescription(description);
            pushFindButton();
-           BrowserWrapper.sleep(2);
+           addHospitalDescription(description);
+           //BrowserWrapper.sleep(2);
            pushSaveButton();
        } catch (AWTException ex) {
            ex.printStackTrace();
