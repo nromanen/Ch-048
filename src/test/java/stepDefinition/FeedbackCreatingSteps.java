@@ -9,8 +9,8 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import pages.allUsers.DoctorInfoPage;
-import pages.allUsers.DoctorSearchResultPage;
 import pages.allUsers.HospitalSeekerHomePage;
+import pages.anonymous.DoctorSearchResultPage;
 import pages.headers.BaseHeader;
 import pages.headers.headersByRole.ManagerHeader;
 import pages.manager.HospitalsPage;
@@ -43,8 +43,7 @@ public class FeedbackCreatingSteps {
         UserDAO.deleteAllFeedbacks();
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
         BrowserWrapper.sleep(2);
-        BaseHeader header = new BaseHeader();
-        DoctorSearchResultPage doctorSearchResultPage = header.findDoctor(CURRENT_DOCTOR_SURNAME);
+        hospitalSeekerHomePage.header.findDoctor(CURRENT_DOCTOR_SURNAME);
         doctorInfoPage = doctorSearchResultPage.goToDoctorInfoPage();
     }
 
@@ -62,8 +61,10 @@ public class FeedbackCreatingSteps {
     public void i_sign_in_as_a_manager_and_move_to_the_feedbackManagePage() throws Throwable {
         HospitalsPage hospitalsPage = BaseNavigation.loginAsManager(MANAGER_LOGIN, MANAGER_PASSWORD);
         BrowserWrapper.sleep(3);
-        header = new ManagerHeader();
-        header.feedBackPage();
+    //   ModerationFeedBackPage moderationFeedBackPage = ModerationFeedBackPage();
+       header = new ManagerHeader();
+       moderationFeedBackPage.feedBackPage();
+
 
     }
 
@@ -87,7 +88,6 @@ public class FeedbackCreatingSteps {
     @When("^i sign in as a patient and move to the current doctorInfoPage$")
     public void i_sign_in_as_a_patient_and_move_to_the_current_doctorInfoPage() throws Throwable {
         HospitalSeekerHomePage hospitalSeekerHomePage = BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
-        BaseHeader header = new BaseHeader();
         DoctorSearchResultPage doctorSearchResultPage = header.findDoctor(CURRENT_DOCTOR_SURNAME);
         doctorSearchResultPage.goToDoctorInfoPage();
     }

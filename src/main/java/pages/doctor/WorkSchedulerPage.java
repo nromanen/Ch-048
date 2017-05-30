@@ -10,6 +10,13 @@ import utils.BrowserWrapper;
 
 import java.util.List;
 
+/**
+ * This class represent the page to view doctor scheduler
+ * It's constructed using POM pattern.
+ * @author Natalia Shtick
+ * @version 1.0
+ */
+
 public class WorkSchedulerPage implements PageInitializer {
 
     public DoctorHeader header;
@@ -29,7 +36,7 @@ public class WorkSchedulerPage implements PageInitializer {
     @FindBy(className="div.hx_cal_date")
     private WebElement dateLabel;
 
-    @FindBy(className = "div.dhx_cal_today_button")
+    @FindBy(css = "div.dhx_cal_today_button")
     private WebElement todayButton;
 
     @FindBy(className = "div.dhx_cal_prev_button")
@@ -38,18 +45,20 @@ public class WorkSchedulerPage implements PageInitializer {
     @FindBy(css = "div.dhx_cal_next_button")
     private WebElement nextDateButton;
 
-    @FindAll(@FindBy(css = "div.dhx_scale_holder"))
+    @FindBy(css = "div.dhx_scale_holder")
     private List<WebElement> tabelColomns;
 
-    @FindAll(@FindBy(className = "dhx_scale_hour"))
+    @FindBy(className = "dhx_scale_hour")
     private List<WebElement> tabelRows;
 
     @FindAll({@FindBy(css = "div.dhx_scale_holder"),
             @FindBy(css = "div.dhx_scale_holder_now")})
     private List<WebElement> tableColumns;
 
-    @FindAll(@FindBy(css = "div.dhx_scale_ignore"))
+    @FindBy(css = "div.dhx_scale_ignore")
     private List<WebElement> tableIgnoredColumns;
+    @FindBy(css = "div.dhx_scale_holder_now")
+    private WebElement nowColumn;
 
 
     public WorkSchedulerPage( ) {
@@ -83,4 +92,8 @@ public class WorkSchedulerPage implements PageInitializer {
         return tableColumns.size() - tableIgnoredColumns.size() - 1;
     }
 
+
+    public boolean checkTodayPresence(){
+        return BrowserWrapper.isElementPresent(nowColumn);
+    }
 }

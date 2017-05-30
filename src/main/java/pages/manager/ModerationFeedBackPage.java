@@ -2,7 +2,6 @@ package pages.manager;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.FindBys;
 import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
 import utils.BrowserWrapper;
@@ -22,7 +21,7 @@ public class ModerationFeedBackPage implements PageInitializer {
     @FindBy(css = "input[value=\"NEW\"]")
     private WebElement newButton;
 
-    @FindBys(@FindBy(css = "input[value=\"OK\"]"))
+    @FindBy(css = "input[value=\"OK\"]")
     private List<WebElement> okButtons;
 
     @FindBy(css = "input[value=\"BAD\"]")
@@ -43,6 +42,13 @@ public class ModerationFeedBackPage implements PageInitializer {
 
     @FindBy(xpath = "/html/body/section/a")
     private WebElement backToTopButton;
+
+    public ModerationFeedBackPage feedBackPage() {
+        managerHeader.actions.click();
+        BrowserWrapper.sleep(2);
+        managerHeader.getFeedbackManagePageIco.click();
+        return new ModerationFeedBackPage();
+    }
 
 
 

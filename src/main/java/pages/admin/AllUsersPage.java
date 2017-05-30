@@ -14,9 +14,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by Evgen on 06.04.2017.
+ * This class represent page where admin can moderate users
+ * @author Evgen Korcheviy
  */
-public class AllUsersPage implements PageInitializer {
+public class  AllUsersPage implements PageInitializer {
 
     public AdminHeader header;
 
@@ -109,25 +110,24 @@ public class AllUsersPage implements PageInitializer {
         pageInitialization();
     }
 
-
-
-
-    public AllUsersPage getCreatedTableText(){
-        createdLabel.getText();
-        return new AllUsersPage();
-    }
-
-
+    /**
+     * @return AllUsers page where admin can see all users
+     */
     public AllUsersPage showAllUsers() {
         ((JavascriptExecutor) DriverInitializer.instance()).executeScript("arguments[0].click();" , enableButton);
         return new AllUsersPage();
     }
 
+
+    /**
+     * @return AllUsersPage where admin can see only enable users
+     */
     public AllUsersPage showEnableUsers() {
         ((JavascriptExecutor) DriverInitializer.instance()).executeScript("arguments[0].click();" , enableButton);
         BrowserWrapper.sleep(2);
         return new AllUsersPage();
     }
+
 
     public AllUsersPage showDisableUsers() {
         ((JavascriptExecutor) DriverInitializer.instance()).executeScript("arguments[0].click();" , disableButton);

@@ -6,6 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.headers.headersByRole.DoctorHeader;
 
+/**
+ * This class represent the page that give us the ability to add new records to the card
+ * It's constructed using POM pattern.
+ * @author Natalia Shtick
+ * @version 1.0
+ */
+
 public class CreateNewRecordPage implements PageInitializer {
 
     public DoctorHeader header;
@@ -40,21 +47,42 @@ public class CreateNewRecordPage implements PageInitializer {
         pageInitialization();
     }
 
+    /**
+     * This method is used for filling field complaint
+     *
+     * @param value It's a string representation of complaint
+     */
     public void inputComplaint(String value){
         complaint.clear();
         complaint.sendKeys(value);
     }
 
+    /**
+     * This method is used for filling field resalt
+     *
+     * @param value It's a string representation of result
+     */
     public void inputResult(String value){
         result.clear();
         result.sendKeys(value);
     }
-
+    /**
+     * This method is used for filling field prescription
+     *
+     * @param value It's a string representation of prescription
+     */
     public void inputPrescription(String value){
         prescription.clear();
         prescription.sendKeys(value);
     }
 
+    /**
+     * This method is used to fill three String fields
+     *
+     * @param complaint It's a string representation of complaint
+     * @param result It's a string representation of result
+     * @param prescription It's a string representation of prescription
+     */
     public void inputRecord(String complaint, String result, String prescription ){
         inputComplaint(complaint);
         inputResult(result);
@@ -62,6 +90,11 @@ public class CreateNewRecordPage implements PageInitializer {
         submitButtonClick();
     }
 
+    /**
+     * This method is used for pressing submit
+     *
+     * @return Its a page patient card.
+     */
     public PatientsCardPage submitButtonClick(){
         submitButton.click();
         return new PatientsCardPage();

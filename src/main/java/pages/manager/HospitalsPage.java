@@ -2,7 +2,6 @@ package pages.manager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import pages.PageInitializer;
 import pages.headers.headersByRole.ManagerHeader;
@@ -19,7 +18,7 @@ public class HospitalsPage implements PageInitializer{
     @FindBy(css = "div.team-heading")
     public WebElement hospitalText;
 
-    @FindAll(@FindBy(css = "div.single-member"))
+    @FindBy(css = "div.single-member")
     public List<WebElement> allHospitals;
 
     @FindBy(css = "back-to-top")

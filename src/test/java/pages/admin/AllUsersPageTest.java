@@ -30,7 +30,7 @@ public class AllUsersPageTest extends BaseTest {
     @BeforeMethod
     public void beforeMethod() {
         DriverInitializer.getToUrl(BASE_URL);
-        DatabaseOperations.restore("hospital_database.backup");
+        DatabaseOperations.restore("test_backup.backup");
         allUsersPage = BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
         tableParser = new TableParser(allUsersPage.table);
         logger.info("Test is initialized");
@@ -47,7 +47,7 @@ public class AllUsersPageTest extends BaseTest {
     public void enableUsersViewTest() {
         allUsersPage = allUsersPage.showEnableUsers();
         boolean actual = UserDAO.getStatusByEmail(tableParser.getEmailFromFirstTableRow());
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "It isn't only enable users");
         logger.info("Test pass");
     }
 
@@ -56,7 +56,7 @@ public class AllUsersPageTest extends BaseTest {
     public void disableUsersViewTest() {
         allUsersPage = allUsersPage.showDisableUsers();
         boolean actual = UserDAO.getStatusByEmail(tableParser.getEmailFromFirstTableRow());
-        Assert.assertFalse(actual);
+        Assert.assertFalse(actual, "It isn't only disable users");
         logger.info("Test pass");
     }
 
@@ -66,7 +66,7 @@ public class AllUsersPageTest extends BaseTest {
         List<String> actual = allUsersPage.getFirstUserDataFromInfoWindow();
         List<String> expected = UserDAO.getWindowDataFromDatabase(
                 tableParser.getEmailFromFirstTableRow(), "userInfoWindow");
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected, "Info isn't correct");
         logger.info("Test pass");
     }
 
@@ -76,7 +76,7 @@ public class AllUsersPageTest extends BaseTest {
         String expected = role;
         allUsersPage = allUsersPage.changeRoleInEditWindow(role);
         String actual = tableParser.getFieldFromFirstTableRow("role");
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected, "Role not changed");
         logger.info("Test pass");
     }
 
@@ -86,7 +86,7 @@ public class AllUsersPageTest extends BaseTest {
         int expected = Integer.parseInt(count);
         allUsersPage = allUsersPage.changeCountOfUsersOnPage(expected);
         int actual = allUsersPage.getCountOfUsersInTable();
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected, "Count not changed");
         logger.info("Test pass");
     }
 
@@ -96,7 +96,7 @@ public class AllUsersPageTest extends BaseTest {
         String expected = role;
         allUsersPage = allUsersPage.changeRole(expected);
         String actual = tableParser.getFieldFromFirstTableRow("role");
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected, "Searching isn't correct");
         logger.info("Test pass");
     }
 
@@ -110,7 +110,7 @@ public class AllUsersPageTest extends BaseTest {
         if (tableParser.getFieldFromFirstTableRow("@email").contains(valueOfField)) actual.add(valueOfField);
             else actual.add("noSame");
         actual.add(tableParser.getFieldFromFirstTableRow("role"));
-        Assert.assertEquals(actual, expected);
+        Assert.assertEquals(actual, expected ,"Searching isn't correct");
         logger.info("Test pass");
     }
 
@@ -118,7 +118,7 @@ public class AllUsersPageTest extends BaseTest {
     @Test
     public void nextPageButtonTest() {
         AllUsersPage allUsersPage1 = allUsersPage.toNextPage();
-        Assert.assertNotEquals(allUsersPage, allUsersPage1);
+        Assert.assertNotEquals(allUsersPage, allUsersPage1, "Next page isn't present");
         logger.info("Test pass");
     }
 
@@ -132,7 +132,7 @@ public class AllUsersPageTest extends BaseTest {
         int compareResult = tableParser.getEmailFromFirstTableRow().
                 compareToIgnoreCase(tableParser.getEmailFromTableRow(2));
         boolean actual = compareResult < 0;
-        Assert.assertTrue(actual);
+        Assert.assertTrue(actual, "Sorting by email don't work");
         logger.info("Test pass");
     }
 

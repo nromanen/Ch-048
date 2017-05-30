@@ -14,7 +14,16 @@ import utils.BaseTest;
 import utils.BrowserWrapper;
 import utils.databaseutil.UserDAO;
 
-
+/**
+ * This is a class which is collect all tests related to testing Manager's Scheduler Page. On the top of this
+ * class there is all constant values which are used in tests. SchedulerPageTest extends BaseTest what gives this
+ * class ability of initialization of browser and moving to main page of project. Tests in this class are divided
+ * into groups: smokeTest,  schedulerSetting, eventCreation, miscellaneous. This page is also provided loggin for
+ * tracing test results
+ *
+ * @author Yuri Tomko
+ * @version 1.0
+ */
 
 public class SchedulerPageTest extends BaseTest {
 
@@ -33,6 +42,11 @@ public class SchedulerPageTest extends BaseTest {
     private SchedulerPage schedulerPage;
     Logger logger = LoggerFactory.getLogger(SchedulerPage.class);
 
+    /**
+     * This is method which is executed before each method in this class
+     * It's provide cleaning event table of project database, and then move to the scheduler page
+     *
+     */
     @BeforeMethod(alwaysRun = true)
     public void beforeMethod()  {
         UserDAO.deleteAllEvents();
@@ -42,16 +56,20 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test is initialized");
     }
 
+    /**
+     * This is method which is used to clean workflow after test execution
+     *
+     */
     @AfterMethod(alwaysRun = true)
     public void afterMethod(){
             BaseNavigation.logout();
-            if(BrowserWrapper.isAlertPresent()) {
-                BrowserWrapper.confirmAlert();
-            }
             logger.info("Test is over");
     }
 
-
+    /**
+     * This is a method for checking presence of all essential elements of page
+     * @exception AssertionError This exception throws when not element presence
+     */
     @Test(groups = {"smokeTest"})
     public void testElementPresence() {
         try{
@@ -64,6 +82,10 @@ public class SchedulerPageTest extends BaseTest {
         logger.debug("All element present");
     }
 
+    /**
+     * This is a method for checking whether all selectors and elements are set to default values
+     * @exception AssertionError This exception throws when elements not set to default
+     */
     @Test(groups = {"smokeTest"})
     public void testDefaultSchedulerValues(){
         try{
@@ -76,7 +98,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.error("Table set to default values");
     }
 
-
+    /**
+     *  This method is for testing ability of changing amount of working days
+     */
     @Test(groups = "scheduleSetting")
     public void testWeekSize(){
         schedulerPage.workWeekSizeSelector(TEST_WEEK_SIZE);
@@ -85,6 +109,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
+    /**
+     * This method is for testing ability of setting hours in which day is begin and end
+     */
     @Test(groups = "scheduleSetting")
     public void testWorkingDayDuration(){
         schedulerPage.setDayDuration(TEST_BEGIN_AT_HOUR, TEST_END_AT_HOUR);
@@ -94,7 +121,13 @@ public class SchedulerPageTest extends BaseTest {
     }
 
 
-
+    /**
+     * This is a method for checking ability of creating events for doctor. It is use data provider for checking
+     * ability of using latin and cyrillic symbols and empty string.
+     *
+     * @param actualText Text which is typing into event creation field
+     * @param expectedText Text which is expected to appear in table
+     */
     @Test(dataProvider = "eventCreation",groups = "eventCreation")
     public void testEventCreation(String actualText, String expectedText){
         schedulerPage.createAppointment(actualText);
@@ -107,6 +140,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
+    /**
+     * This is a method for checking ability of deletion event from table
+     */
     @Test(groups = "eventCreation")
     public void testEventDeletion(){
         schedulerPage.createAppointment(TEST_APPOINTMENT_TEXT);
@@ -122,6 +158,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
+    /**
+     * This is a method for checking ability of edition event in the table
+     */
     @Test(groups = "eventCreation")
     public void testEventEdition(){
         schedulerPage.createAppointment(TEST_APPOINTMENT_TEXT);
@@ -136,6 +175,10 @@ public class SchedulerPageTest extends BaseTest {
         Assert.assertTrue( schedulerPage.isEventsPresent() && schedulerPage.isEventOnWeekTab(EXPECTED_EDITABLE_APPOINTMENT_TEXT), "Can't edit event");
         logger.info("Test pass");
     }
+
+    /**
+     * This is a method for checking ability of canceling event creation
+     */
     @Test(groups = "eventCreation")
     public void testEventCancel(){
         schedulerPage.nextButtonClick();
@@ -148,6 +191,9 @@ public class SchedulerPageTest extends BaseTest {
 
     }
 
+    /**
+     * This is a method for checking ability of creating event on day tab of table
+     */
     @Test(groups = "eventCreation")
     public void testCreateEventDayTab() {
         schedulerPage.dayTabButtonClick();
@@ -162,6 +208,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
+    /**
+     * This is a method for checking ability of creating event on month tab of table
+     */
     @Test(groups = "eventCreation")
     public void testCreateEventMonthTab(){
         schedulerPage.monthTabButtonClick();
@@ -172,11 +221,14 @@ public class SchedulerPageTest extends BaseTest {
         schedulerPage = managerDashBordPage.scheduleButtonClick(DOCTOR_NAME);
         schedulerPage.monthTabButtonClick();
         schedulerPage.nextButtonClick();
+        schedulerPage.nextButtonClick();
         Assert.assertTrue( schedulerPage.isEventsPresentOnCalendar() && schedulerPage.isEventOnCalendarTab(EXPECTED_APPOINTMENT_TEXT),"Can't create event on month tab" );
         logger.info("Test pass");
     }
 
-
+    /**
+     * This is method for checking proper behavior of mini calendar button
+     */
     @Test(groups = "miscellaneous")
     public void testMiniCalendar(){
         schedulerPage.miniCalendarButtonClick();
@@ -184,6 +236,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
+    /**
+     * This is method for checking proper behavior of today button
+     */
     @Test(groups = "miscellaneous")
     public void testTodayButton(){
         schedulerPage.nextButtonClick();
@@ -192,7 +247,9 @@ public class SchedulerPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
-
+    /**
+     * This is method for testing pop up when manager close windows after making some changes without saving
+     */
     @Test(groups = "miscellaneous")
     public void testAlertIfNotSaved(){
         schedulerPage.nextButtonClick();

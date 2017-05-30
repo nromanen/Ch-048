@@ -83,16 +83,16 @@ public class SchedulerPage implements PageInitializer {
     @FindBy(css = "div.dhx_scale_holder")
     private WebElement tableColumn;
 
-    @FindAll(@FindBy(css = "div.dhx_scale_ignore"))
+    @FindBy(css = "div.dhx_scale_ignore")
     private List<WebElement> tableIgnoredColumns;
 
-    @FindAll(@FindBy(className = "div.dhx_scale_hour"))
+    @FindBy(className = "div.dhx_scale_hour")
     private List<WebElement> tableRows;
 
-    @FindAll(@FindBy(css = "div.dhx_body"))
+    @FindBy(css = "div.dhx_body")
     private List<WebElement> eventBodys;
 
-    @FindAll(@FindBy(css = "div.dhx_cal_event"))
+    @FindBy(css = "div.dhx_cal_event")
     private List<WebElement> events;
 
     @FindBy(css = "textarea.dhx_cal_editor")
@@ -141,7 +141,7 @@ public class SchedulerPage implements PageInitializer {
     public WebElement resizeButton;
 
 
-    @FindAll(@FindBy(css = "div.dhx_cal_event_line_start"))
+    @FindBy(css = "div.dhx_cal_event_line_start")
     private List<WebElement> monthElements;
 
     @FindBy(css = "div.dhx_month_body")
@@ -156,10 +156,10 @@ public class SchedulerPage implements PageInitializer {
 
 
    public void nextButtonClick(){
-        while(notActiveRows.size()>0){
-            BrowserWrapper.waitUntilElementVisible(nextButton);
+        do{
+            BrowserWrapper.waitUntilElementClickable(nextButton);
             nextButton.click();
-        }
+        } while(notActiveRows.size()>0);
    }
 
     public void createAppointment(String text)  {
@@ -188,7 +188,6 @@ public class SchedulerPage implements PageInitializer {
 
     public void saveEventClick(){
         BrowserWrapper.waitUntilElementVisible(saveButton);
-        BrowserWrapper.sleep(1);
         saveEvent.click();
     }
 
@@ -213,6 +212,7 @@ public class SchedulerPage implements PageInitializer {
 
 
     public void createEventCalendar(String text){
+        nextButtonClick();
         nextButtonClick();
         BrowserWrapper.waitUntilElementVisible(monthElement);
         BrowserWrapper.doubleClickJs(monthElement);
@@ -409,7 +409,7 @@ public class SchedulerPage implements PageInitializer {
     }
 
     public void saveButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(saveButton);
+        BrowserWrapper.waitUntilVisibleAndClickableAndNotStale(saveButton);
         saveButton.click();
     }
 
@@ -423,12 +423,12 @@ public class SchedulerPage implements PageInitializer {
     }
 
     public void monthTabButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(monthTabButton);
+        BrowserWrapper.waitUntilElementClickable(monthTabButton);
         monthTabButton.click();
     }
 
     public void miniCalendarButtonClick(){
-        BrowserWrapper.waitUntilElementVisible(miniCalendarButton);
+        BrowserWrapper.waitUntilElementClickable(miniCalendarButton);
         miniCalendarButton.click();
     }
 

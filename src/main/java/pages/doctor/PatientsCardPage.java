@@ -8,6 +8,13 @@ import pages.PageInitializer;
 import pages.headers.headersByRole.DoctorHeader;
 import utils.BrowserWrapper;
 
+/**
+ * This class represent the page to view patient cards
+ * It's constructed using POM pattern.
+ * @author Natalia Shtick
+ * @version 1.0
+ */
+
 public class PatientsCardPage implements PageInitializer {
     public DoctorHeader header;
 
@@ -31,13 +38,16 @@ public class PatientsCardPage implements PageInitializer {
         pageInitialization();
     }
 
+
     public boolean checkAddNewRecordButton() {
        return BrowserWrapper.isElementPresent(addNewRecord);
     }
 
+
     public String getDoctorNameFromRecord() {
         return patientRecords.getText();
     }
+
 
     public boolean checkRecord(){
         return BrowserWrapper.isElementPresent(patientRecords);
