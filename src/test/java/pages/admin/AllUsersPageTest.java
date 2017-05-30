@@ -30,7 +30,7 @@ public class AllUsersPageTest extends BaseTest {
     @BeforeMethod
     public void beforeMethod() {
         DriverInitializer.getToUrl(BASE_URL);
-        DatabaseOperations.restore("test_backup.backup");
+//        DatabaseOperations.restore("test_backup.backup");
         allUsersPage = BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
         tableParser = new TableParser(allUsersPage.table);
         logger.info("Test is initialized");
