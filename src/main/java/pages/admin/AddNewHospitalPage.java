@@ -170,6 +170,7 @@ public class AddNewHospitalPage implements PageInitializer {
            BrowserWrapper.waitUntilElementVisible(buttonOkInUploadPhotoModalWindow);
            buttonOkInUploadPhotoModalWindow.click();
            addressData(address);
+           BrowserWrapper.sleep(2);
            pushFillButton();
            addHospitalName(name);
            addHospitalDescription(description);
