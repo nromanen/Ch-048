@@ -1,6 +1,7 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -101,6 +102,10 @@ public class BrowserWrapper {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void waitUntilVisibleAndClicable(WebElement element){
+        wait.until(ExpectedConditions.and(ExpectedConditions.elementToBeClickable(element),ExpectedConditions.visibilityOf(element)));
     }
 
     /**
