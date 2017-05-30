@@ -104,8 +104,8 @@ public class BrowserWrapper {
         }
     }
 
-    public static void waitUntilVisibleAndClicable(WebElement element){
-        wait.until(ExpectedConditions.and(ExpectedConditions.elementToBeClickable(element),ExpectedConditions.visibilityOf(element)));
+    public static void waitUntilVisibleAndClickableAndNotStale(WebElement element){
+        wait.until(ExpectedConditions.and(ExpectedConditions.elementToBeClickable(element),ExpectedConditions.visibilityOf(element),ExpectedConditions.not(ExpectedConditions.stalenessOf(element))));
     }
 
     /**
