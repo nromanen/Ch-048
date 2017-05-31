@@ -95,11 +95,14 @@ public class DatabaseOperations {
             while ((ll = br.readLine()) != null) {
                 logger.info(ll);
             }
+            process.waitFor();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
