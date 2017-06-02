@@ -104,6 +104,15 @@ public class BrowserWrapper {
     }
 
     /**
+     * This method is wrapper for explicit wait until web element to be present text in element value
+     * @param webElement    It is a selector in web element form
+     * @param text  It is a value which will be presented
+     */
+    public static void waitUntilTextToBePresentInElementValue( WebElement webElement, String text) {
+        wait.until(ExpectedConditions.textToBePresentInElementValue(webElement, text));
+    }
+
+    /**
      * This is wrapper for wait until page is load. It takes amount of time for wait
      *
      * @param time number of seconds for wait
