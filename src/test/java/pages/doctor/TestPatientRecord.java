@@ -8,9 +8,13 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import utils.*;
 
-
 /**
- * Created by Natasha on 18.04.2017.
+ *This is a class which is collect all tests related to testing Doctor's role.On the top of this
+ * class there is all constant values which are used in tests. Tests in this class are: createNewRecord, checkPatientsSearchByEmail, testPatientsSortingByFirstName,
+ * testPatientsSortingByLastName, testPatientsSortingByEmail.
+ *
+ * @author Natalia Shtick
+ * @version 1.0
  */
 public class TestPatientRecord extends BaseTest {
     public static final String COMPLAIN = "New complaint";
@@ -23,13 +27,17 @@ public class TestPatientRecord extends BaseTest {
 
 
     Logger logger = LoggerFactory.getLogger(ListPatientPage.class);
-
+    /**
+     * This is method which is executed before each method in this class.
+     */
     @BeforeMethod
     public void beforeMethod() throws InterruptedException{
         BaseNavigation.loginAsDoctor(DOCTOR_LOGIN,DOCTOR_PASSWORD);
         logger.info("Test is initialized");
     }
-
+    /**
+     * This is method which is used to clean workflow after test execution.
+     */
     @AfterMethod
     public void after() {
         DriverInitializer.instance().manage().deleteAllCookies();
@@ -37,9 +45,11 @@ public class TestPatientRecord extends BaseTest {
         logger.info("Test is over");
     }
 
-
+    /**
+     * It is a method to check the possibility of creating a record in the patient's card.
+     */
     @Test
-    public void createNewRecord() throws Exception {
+    public void createNewRecord()  {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.getPatientsCardClick();
@@ -51,17 +61,25 @@ public class TestPatientRecord extends BaseTest {
         logger.debug("Create new record");
     }
 
+    /**
+     * It is a method to test the ability to find a patient by email
+     */
     @Test
-    public void checkPatientsSearch() throws Exception {
+    public void checkPatientsSearchByEmail() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.searchPatients(PATIENT);
-        Assert.assertTrue(listPatientPage.checkResultSearch());
+        String searchPatient = listPatientPage.getDataFromTable(1, 2);
+        Assert.assertNotEquals(searchPatient, PATIENT);
         logger.info("Test pass");
     }
 
+    /**
+     * This is a method for verification of sorting of patients by first name.
+     */
+
     @Test
-    public void testPatientsSortingByFirstName() throws Exception {
+    public void testPatientsSortingByFirstName()  {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.sortByFirstNameButton();
@@ -69,8 +87,12 @@ public class TestPatientRecord extends BaseTest {
         Assert.assertEquals(first_patient_after_sort, FIRST_PATIENT);
         logger.info("Test pass");
     }
+
+    /**
+     * This is a method for verification of sorting of patients by last name.
+     */
     @Test
-    public void testPatientsSortingByLastName() throws Exception {
+    public void testPatientsSortingByLastName() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.sortByLastNameButton();
@@ -78,8 +100,12 @@ public class TestPatientRecord extends BaseTest {
         Assert.assertEquals(first_patient_after_sort, SECOND_PATIENT);
         logger.info("Test pass");
     }
+
+    /**
+     * This is a method for verification of sorting of patients by email.
+     */
     @Test
-    public void testPatientsSortingByEmail() throws Exception {
+    public void testPatientsSortingByEmail() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
         listPatientPage.sortByEmailButton();

@@ -3,7 +3,6 @@ package utils;
 import pages.admin.AllUsersPage;
 import pages.allUsers.HospitalSeekerHomePage;
 import pages.anonymous.LoginPage;
-import pages.headers.BaseHeader;
 import pages.headers.headersByRole.AuthorizedHeader;
 import pages.manager.HospitalsPage;
 
@@ -39,9 +38,6 @@ public class BaseNavigation {
         AuthorizedHeader authorizedHeader = new AuthorizedHeader();
         authorizedHeader.profileButtonClick();
         HospitalSeekerHomePage hospitalSeekerHomePage = authorizedHeader.logoutButtonClick();
-        if(BrowserWrapper.isAlertPresent()) {
-            BrowserWrapper.confirmAlert();
-        }
         return hospitalSeekerHomePage;
     }
 

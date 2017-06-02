@@ -1,6 +1,7 @@
 package utils;
 
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -103,6 +104,10 @@ public class BrowserWrapper {
         }
     }
 
+    public static void waitUntilVisibleAndClickableAndNotStale(WebElement element){
+        wait.until(ExpectedConditions.and(ExpectedConditions.elementToBeClickable(element),ExpectedConditions.visibilityOf(element),ExpectedConditions.not(ExpectedConditions.stalenessOf(element))));
+    }
+
     /**
      * This method is wrapper for explicit wait until web element to be present text in element value
      * @param webElement    It is a selector in web element form
@@ -135,9 +140,10 @@ public class BrowserWrapper {
      * @return return true if alert present otherwise return false
      */
     public static boolean isAlertPresent() {
+        WebDriverWait waitLocal = new WebDriverWait(DriverInitializer.instance(), 1);
         boolean foundAlert;
         try {
-            wait.until(ExpectedConditions.alertIsPresent());
+            waitLocal.until(ExpectedConditions.alertIsPresent());
             foundAlert = true;
         } catch (TimeoutException e) {
             foundAlert = false;

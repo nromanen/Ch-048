@@ -9,6 +9,13 @@ import pages.headers.headersByRole.DoctorHeader;
 import utils.BrowserWrapper;
 import utils.DriverInitializer;
 
+/**
+ * This class represent the page that give us the ability to view the patient list
+ * It's constructed using POM pattern.
+ * @author Natalia Shtick
+ * @version 1.0
+ */
+
 public class ListPatientPage implements PageInitializer {
     public DoctorHeader header;
 
@@ -54,14 +61,13 @@ public class ListPatientPage implements PageInitializer {
     @FindBy(partialLinkText = "patient.sf@hospitals.ua")
     private WebElement patientsf;
 
+
     public void searchPatients(String value){
         searchTextField.clear();
         searchTextField.sendKeys(value);
         searchButtonClick();
     }
-    public boolean checkResultSearch(){
-        return BrowserWrapper.isElementPresent(patientsf);
-    }
+
 
     public ListPatientPage sortByEmailButton(){
         BrowserWrapper.waitUntilElementClickable(sortEmailPatients);
@@ -69,9 +75,7 @@ public class ListPatientPage implements PageInitializer {
         return new ListPatientPage();
     }
 
-    public WebElement getEmailPatients(){
-        return patientsf;
-    }
+
 
     public void sortByFirstNameButton(){
         BrowserWrapper.waitUntilElementClickable(sortByFirstName);
@@ -79,12 +83,15 @@ public class ListPatientPage implements PageInitializer {
         BrowserWrapper.sleep(3);
 
     }
+
     public void sortByLastNameButton(){
         BrowserWrapper.waitUntilElementClickable(sortByLastName);
         sortByLastName.click();
         BrowserWrapper.sleep(3);
 
     }
+
+
     public WebDriver getDriver(){
         return DriverInitializer.instance();
     }
@@ -97,20 +104,26 @@ public class ListPatientPage implements PageInitializer {
     }
 
 
+    public WebElement getEmailPatients(){
+        return patientsf;
+    }
+
+
     public void searchButtonClick(){
         buttonSearch.click();
     }
 
+
     public void searchRefresh(){
         searchRefresh.click();
     }
+
 
     public PatientsCardPage getPatientsCardClick(){
         BrowserWrapper.waitUntilElementClickable(patientsf);
         patientta.click();
         return new PatientsCardPage();
     }
-
 
 
     public ListPatientPage() {
