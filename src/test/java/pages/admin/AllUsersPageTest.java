@@ -17,7 +17,9 @@ import java.util.List;
 
 
 /**
- * Created by Evgen on 10.04.2017.
+ * This is a class which is collect of test related to testing ALL USERS page.
+ *
+ * @author Evgen Korcheviy
  */
 public class AllUsersPageTest extends BaseTest {
 
@@ -26,7 +28,10 @@ public class AllUsersPageTest extends BaseTest {
 
     Logger logger = LoggerFactory.getLogger(AllUsersPage.class);
 
-
+    /**
+     * This is method which is executed before each method in this class
+     * It's provide restoring database before test and then move to ALL USERS page
+     */
     @BeforeMethod
     public void beforeMethod() {
         DriverInitializer.getToUrl(BASE_URL);
@@ -36,6 +41,10 @@ public class AllUsersPageTest extends BaseTest {
         logger.info("Test is initialized");
     }
 
+    /**
+     * This is method is executed after each method in this class
+     * It's provide logout and closing browser after test
+     */
     @AfterMethod
     public void afterMethod() {
         BaseNavigation.logout();
@@ -43,6 +52,9 @@ public class AllUsersPageTest extends BaseTest {
         DriverInitializer.close();
     }
 
+    /**
+     * This is test of functionality "enable" button
+     */
     @Test
     public void enableUsersViewTest() {
         allUsersPage = allUsersPage.showEnableUsers();
@@ -52,7 +64,9 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-
+    /**
+     * This is test of functionality of "disable" button
+     */
     @Test
     public void disableUsersViewTest() {
         allUsersPage = allUsersPage.showDisableUsers();
@@ -62,6 +76,9 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     * This is method for checking functionality of "view user info"
+     */
     @Test
     public void viewWindowTest() {
         List<String> actual = allUsersPage.getFirstUserDataFromInfoWindow();
@@ -72,6 +89,10 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     * This is method for checking functionality of "edit user info"
+     * @param role Selected role
+     */
     @Test(dataProvider = "roles")
     public void changeRoleTest(String role) {
         String expected = role;
@@ -82,6 +103,10 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     *This is method for checking functionality of changing count of users on one page
+     * @param count Count of users in one page
+     */
     @Test(dataProvider = "count")
     public void changeCountOfUsersOnPageTest(String count) {
         int expected = Integer.parseInt(count);
@@ -92,6 +117,10 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     * This is test for checking correct search by role
+     * @param role Role for searching
+     */
     @Test(dataProvider = "roles")
     public void searchByRoleTest(String role) {
         String expected = role;
@@ -102,6 +131,12 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     * This is test for checking functionality of complex search
+     * @param role Role for searching
+     * @param valueOfField Text which is typing into search field
+     * @param count Count of users on one page
+     */
     @Test(dataProvider = "searchParams")
     public void searchTest(String role, String valueOfField, String count) {
         allUsersPage = allUsersPage.search(Integer.parseInt(count), role, "firstName", valueOfField);
@@ -116,6 +151,9 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
+    /**
+     * This is test for checking page navigation
+     */
     @Test
     public void nextPageButtonTest() {
         AllUsersPage allUsersPage1 = allUsersPage.toNextPage();
@@ -123,7 +161,10 @@ public class AllUsersPageTest extends BaseTest {
         logger.info("Test pass");
     }
 
-
+    /**
+     * This is test for check sorting by email with selected role
+     * @param role Selected role
+     */
     @Test(dataProvider = "roles")
     public void sortByEmailTest(String role) {
         allUsersPage.changeRole(role);
