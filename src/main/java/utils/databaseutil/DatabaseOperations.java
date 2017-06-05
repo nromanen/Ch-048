@@ -129,6 +129,7 @@ public class DatabaseOperations {
                     "--verbose", "--file", filepath, properties.getProperty("db.name"));
 
             processBuilder.redirectErrorStream(true);
+            processBuilder.environment().put("PGPASSWORD", properties.getProperty("db.password"));
             Process process = processBuilder.start();
 
             Logger logger = LoggerFactory.getLogger(DatabaseOperations.class);
