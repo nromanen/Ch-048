@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AdminSuite">
+    <test name="AdminTests">
+        <groups>
+            <run>
+                <include name="smokeTest"/>
+                <include name="eventCreation"/>
+                <include name="miscellaneous"/>
+            </run>
+        </groups>
+
+        <classes>
+            <class name="pages.manager.SchedulerPageTest"/>
+        </classes>
+    </test>
+</suite>

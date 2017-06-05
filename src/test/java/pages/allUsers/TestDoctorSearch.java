@@ -20,15 +20,6 @@ public class TestDoctorSearch extends BaseTest {
     HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
 
     /**
-     * Method is used for deleting all cookies after each method
-     */
-
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod() {
-        DriverInitializer.deleteAllCookies();
-    }
-
-    /**
      * Method is used for testing of hospital's search with DataProvider (name "SearchProvider").
      * It fills the hospital's search field with search word on a home page and compare expected result with actual count
      * of hospitals that have been found on a page result. If results aren't equals there will be message about it.
@@ -37,7 +28,7 @@ public class TestDoctorSearch extends BaseTest {
      * @param expected is DataProvider's expected count of doctors that have been found
      */
 
-    @Test(dataProvider = "SearchProvider")
+    @Test(dataProvider = "SearchProvider", groups = {"SearchTest"})
     public void testFindDoctorNotAuthorizedUser(String searchWord, int expected) {
         DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);
         assertEquals(doctorSearchResult.countOfDoctors(), expected,

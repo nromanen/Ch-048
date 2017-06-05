@@ -209,7 +209,6 @@ public class AddHospitalTest extends BaseTest {
 
     @AfterMethod
     public void afterMethod() {
-        DriverInitializer.instance().manage().deleteAllCookies();
         BaseNavigation.logout();
         logger.info(TEST_FINISHED);
     }

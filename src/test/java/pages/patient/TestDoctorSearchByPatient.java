@@ -21,15 +21,6 @@ public class TestDoctorSearchByPatient extends BaseTest {
     HospitalSeekerHomePage hospitalSeekerHomePage = new HospitalSeekerHomePage();
 
     /**
-     * Method is used for deleting all cookies after each method.
-     */
-
-    @AfterMethod(alwaysRun = true)
-    public void afterMethod() {
-        DriverInitializer.deleteAllCookies();
-    }
-
-    /**
      * Method is used for testing of doctor's search with DataProvider (name "SearchProvider").
      * First it do login method using patient's login and password. Then it fills the doctor's search field with
      * search word on a home page and compare expected result with actual count of doctors that have been found on
@@ -40,8 +31,7 @@ public class TestDoctorSearchByPatient extends BaseTest {
      * @param searchWord is DataProvider's search word of doctors
      * @param expected is DataProvider's expected count of doctors that have been found
      */
-
-    @Test(dataProvider = "SearchProvider")
+    @Test(dataProvider = "SearchProvider", groups = {"SearchTest"})
     public void testFindDoctorAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);
@@ -55,7 +45,6 @@ public class TestDoctorSearchByPatient extends BaseTest {
      *
      * @return object with 2 parameters: searchWord and expected result
      * */
-
     @DataProvider(name = "SearchProvider")
     public static Object[][] parametrizedData() {
         return new Object[][]{

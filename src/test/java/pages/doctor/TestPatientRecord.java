@@ -40,7 +40,6 @@ public class TestPatientRecord extends BaseTest {
      */
     @AfterMethod
     public void after() {
-        DriverInitializer.instance().manage().deleteAllCookies();
         BaseNavigation.logout();
         logger.info("Test is over");
     }
