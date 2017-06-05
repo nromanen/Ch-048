@@ -202,6 +202,17 @@
     </reporting>
 
     <profiles>
+        <!--<profile>-->
+            <!--<id>if-suite-exists</id>-->
+            <!--<activation>-->
+                <!--<property>-->
+                    <!--<name>!env.SUITES</name>-->
+                <!--</property>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<suites>global.suites</suites>-->
+            <!--</properties>-->
+        <!--</profile>-->
         <profile>
             <activation>
                 <activeByDefault>false</activeByDefault>

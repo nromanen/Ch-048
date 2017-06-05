@@ -28,7 +28,8 @@ public class BaseTest {
     public static final String PATIENT_LOGIN = "patient.cd@hospitals.ua";
     public static final String PATIENT_PASSWORD = "1111";
 
-    public static final String BASE_URL = "https://localhost:8443/HospitalSeeker/";
+//    public static final String BASE_URL = "https://localhost:8443/HospitalSeeker/";
+    public static final String BASE_URL = "http://localhost:8080/HospitalSeeker/";
 
     /**
      * Method is used for opening browser at BASE_URL and change language
