@@ -130,7 +130,7 @@ public class DriverInitializer {
                 break;
             case "grid" :
                 try {
-                    driver = new RemoteWebDriver(new URL("http://192.168.99.100:4444/wd/hub"),dc);
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),dc);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -138,7 +138,7 @@ public class DriverInitializer {
             case "gridChrome" :
                 try{
                     DesiredCapabilities dcCr = DesiredCapabilities.chrome();
-                    driver = new RemoteWebDriver(new URL("http://192.168.99.100:4444/wd/hub"),dcCr);
+                    driver = new RemoteWebDriver(new URL("http://localhost:4444/wd/hub"),dcCr);
                 } catch(MalformedURLException e) {
                     e.printStackTrace();
                 }
