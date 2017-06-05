@@ -18,12 +18,6 @@
                 <include name="sort"/>
             </define>
 
-            <define name="AllUsersPageTest">
-                <include name="search"/>
-                <include name="users"/>
-                <include name="sort"/>
-            </define>
-
             <run>
                 <include name="All"/>
             </run>

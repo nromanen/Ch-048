@@ -1,6 +1,5 @@
 package pages.admin;
 
-import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
@@ -26,14 +25,13 @@ public class AllUsersPageTest extends BaseTest {
 
     Logger logger = LoggerFactory.getLogger(AllUsersPage.class);
 
-    public WebDriver driver;
 
     /**
      * This is method which is executed before each method in this class
      * It's provide restoring database before test and then move to ALL USERS page
      */
-    @BeforeTest
-    public void beforeMethod(String browser) throws MalformedURLException {
+    @BeforeMethod
+    public void beforeMethod() throws MalformedURLException {
         DriverInitializer.getToUrl(BASE_URL);
         DatabaseOperations.restore("test_backup.backup");
         allUsersPage = BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
