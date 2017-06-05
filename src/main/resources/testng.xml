@@ -13,6 +13,15 @@
                 <include name="eventCreation"/>
                 <include name="miscellaneous"/>
                 <include name="InputValidation"/>
+                <include name="search"/>
+                <include name="users"/>
+                <include name="sort"/>
+            </define>
+
+            <define name="AllUsersPageTest">
+                <include name="search"/>
+                <include name="users"/>
+                <include name="sort"/>
             </define>
 
             <run>

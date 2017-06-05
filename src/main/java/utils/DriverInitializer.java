@@ -15,9 +15,9 @@ import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
 
 
 /**
@@ -77,7 +77,7 @@ public class DriverInitializer {
      * This is a method main goal of which is to initialize web driver with proper browser, name of which
      * is passed from Maven CL. This method also set implicit wait for all framework
      */
-    public static void initialization() {
+    public static void initialization() throws MalformedURLException {
         setSystemProperties();
         ProfilesIni profile = new ProfilesIni();
         DesiredCapabilities dc = DesiredCapabilities.firefox();
@@ -138,7 +138,11 @@ public class DriverInitializer {
      */
     public static synchronized WebDriver instance() {
         if (driver == null) {
-            initialization();
+            try {
+                initialization();
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            }
             return driver;
         }
         return driver;
