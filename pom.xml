@@ -16,7 +16,7 @@
         <allure.version>1.5.2</allure.version>
         <spring.version>3.2.2.RELEASE</spring.version>
         <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
-        <threads>5</threads>
+        <!--<threads>5</threads>-->
         <file>src/test/resources/testng.xml</file>
     </properties>
 
@@ -123,17 +123,22 @@
                         <test.language>${test.language}</test.language>
                         <browser.name>${browser.name}</browser.name>
                     </systemPropertyVariables>
-                    <!--<suiteXmlFiles>-->
-                        <!--&lt;!&ndash;<suiteXmlFile>testng.xml</suiteXmlFile>&ndash;&gt;-->
-                        <!--<suiteXmlFile>allUsersSuite.xml</suiteXmlFile>-->
-                        <!--&lt;!&ndash;<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>&ndash;&gt;-->
-                    <!--</suiteXmlFiles>-->
-                <properties>
-                    <property>
-                        <name>suitethreadpoolsize</name>
-                        <value>${threads}</value>
-                    </property>
-                </properties>
+                    <suiteXmlFiles>
+                        <!--<suiteXmlFile>src/test/resources/suites/${suites}.xml</suiteXmlFile>-->
+                        <!--<file>testng.xml</file>-->
+                        <!--<suiteXmlFile>src/test/resources/allUsersSuite.xml</suiteXmlFile>-->
+                        <suiteXmlFile>src/test/resources/patientSuite.xml</suiteXmlFile>
+                        <!--<suiteXmlFile>src/test/resources/adminSuite.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/doctorSuite.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>src/test/resources/manageSuite.xml</suiteXmlFile>-->
+                        <!--<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>-->
+                    </suiteXmlFiles>
+                <!--<properties>-->
+                    <!--<property>-->
+                        <!--<name>suitethreadpoolsize</name>-->
+                        <!--<value>${threads}</value>-->
+                    <!--</property>-->
+                <!--</properties>-->
                 </configuration>
                 <dependencies>
                     <dependency>
@@ -214,6 +219,17 @@
     </reporting>
 
     <profiles>
+        <!--<profile>-->
+            <!--<id>if-suite-exists</id>-->
+            <!--<activation>-->
+                <!--<property>-->
+                    <!--<name>!env.SUITES</name>-->
+                <!--</property>-->
+            <!--</activation>-->
+            <!--<properties>-->
+                <!--<suites>global.suites</suites>-->
+            <!--</properties>-->
+        <!--</profile>-->
         <profile>
             <activation>
                 <activeByDefault>false</activeByDefault>
