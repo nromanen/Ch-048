@@ -1,6 +1,7 @@
 package utils;
 
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Listeners;
 import pages.headers.BaseHeader;
@@ -29,7 +30,9 @@ public class BaseTest {
 
     public static final String BASE_URL = "https://localhost:8443/HospitalSeeker/";
 
-
+    /**
+     * Method is used for opening browser at BASE_URL and change language
+     */
     @BeforeClass(alwaysRun = true)
     public void before() {
         DriverInitializer.getToUrl(BASE_URL);
@@ -38,11 +41,23 @@ public class BaseTest {
     }
 
 
+    /**
+     * Method is used for deleting all cookies after each method.
+     */
+    @AfterMethod(alwaysRun = true)
+    public void afterMethod() {DriverInitializer.instance().manage().deleteAllCookies();}
+
+    /**
+     * Method is used for closing browser
+     */
     @AfterClass(alwaysRun = true)
     public void after() {
         DriverInitializer.close();
     }
 
+    /**
+     * Method is used for checking current language and choose right localisation file
+     */
     public static void checkLanguageAndLoadProperties(BaseHeader header) {
         properties = new Properties();
         try {
