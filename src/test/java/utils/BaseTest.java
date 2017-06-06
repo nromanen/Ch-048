@@ -27,7 +27,7 @@ public class BaseTest {
     public static final String PATIENT_LOGIN = "patient.cd@hospitals.ua";
     public static final String PATIENT_PASSWORD = "1111";
 
-    public static final String BASE_URL = "http://localhost:8080/HospitalSeeker/";
+    public static final String BASE_URL = "https://tomcat:8443/HospitalSeeker/";
 
 
     @BeforeClass(alwaysRun = true)

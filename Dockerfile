@@ -10,7 +10,7 @@ WORKDIR /code
 ADD pom.xml /code/pom.xml
 RUN ["mvn", "dependency:resolve"]
 
-# Adding source, compile and package into a fat jar
+# Adding source, compile and execut testing
 ADD src /code/src
 EXPOSE 9999
 CMD mvn -Dtest=SchedulerPageTest#testWeekSize test site jetty:run
