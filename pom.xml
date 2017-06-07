@@ -122,6 +122,9 @@
                         <browser.name>${browser.name}</browser.name>
                     </systemPropertyVariables>
                         <suiteXmlFiles>${suiteXmlFile}</suiteXmlFiles>
+                    <includes>
+                        <includesFile>**/*Test.java</includesFile>
+                    </includes>
                 </configuration>
                 <dependencies>
                     <dependency>

@@ -33,7 +33,7 @@ public class TestHospitalSearchByPatient extends BaseTest {
      */
     @Test(dataProvider = "SearchProvider", groups = {"PatientSearchTest"})
     public void testFindHospitalAuthorizedUser(String searchWord, int expected) {
-        BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
+        BaseNavigation.loginAsPatient(PATIENT_LOGIN, PATIENT_PASSWORD);
         HospitalSearchResultPage hospitalSearchResult = hospitalSeekerHomePage.header.findHospital(searchWord);
         assertEquals(hospitalSearchResult.countOfHospital(), expected,
                 "Actual count of hospitals that have been found isn't as expected");
@@ -50,7 +50,7 @@ public class TestHospitalSearchByPatient extends BaseTest {
         return new Object[][]{
                 {"polik", 1},
                 {"hosp", 3},
-                {"qwerty", 0}
+//                {"qwerty", 0}
         };
     }
 }
