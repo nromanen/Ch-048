@@ -15,9 +15,7 @@
         <aspectj.version>1.8.10</aspectj.version>
         <allure.version>1.5.2</allure.version>
         <spring.version>3.2.2.RELEASE</spring.version>
-        <!--<suiteXmlFile>testng.xml</suiteXmlFile>-->
-        <threads>5</threads>
-        <file>src/test/resources/testng.xml</file>
+        <suiteXmlFile>C:\Users\ybalatc\Documents\IdeaProject\Ch-048\src\test\resources\testng.xml</suiteXmlFile>
     </properties>
 
     <dependencies>
@@ -123,17 +121,7 @@
                         <test.language>${test.language}</test.language>
                         <browser.name>${browser.name}</browser.name>
                     </systemPropertyVariables>
-                    <!--<suiteXmlFiles>-->
-                        <!--&lt;!&ndash;<suiteXmlFile>testng.xml</suiteXmlFile>&ndash;&gt;-->
-                        <!--<suiteXmlFile>allUsersSuite.xml</suiteXmlFile>-->
-                        <!--&lt;!&ndash;<suiteXmlFile>${suiteXmlFile}</suiteXmlFile>&ndash;&gt;-->
-                    <!--</suiteXmlFiles>-->
-                <properties>
-                    <property>
-                        <name>suitethreadpoolsize</name>
-                        <value>${threads}</value>
-                    </property>
-                </properties>
+                        <suiteXmlFiles>${suiteXmlFile}</suiteXmlFiles>
                 </configuration>
                 <dependencies>
                     <dependency>

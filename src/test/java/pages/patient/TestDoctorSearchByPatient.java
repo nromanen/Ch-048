@@ -31,7 +31,7 @@ public class TestDoctorSearchByPatient extends BaseTest {
      * @param searchWord is DataProvider's search word of doctors
      * @param expected is DataProvider's expected count of doctors that have been found
      */
-    @Test(dataProvider = "SearchProvider", groups = {"SearchTest"})
+    @Test(dataProvider = "SearchProvider", groups = {"PatientSearchTest"})
     public void testFindDoctorAuthorizedUser(String searchWord, int expected) {
         BaseNavigation.login(PATIENT_LOGIN, PATIENT_PASSWORD);
         DoctorSearchResultPage doctorSearchResult = hospitalSeekerHomePage.header.findDoctor(searchWord);

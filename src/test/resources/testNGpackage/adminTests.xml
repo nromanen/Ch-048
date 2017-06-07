@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="AdminSuite">
+<suite name="AdminTests" verbose="1">
     <test name="AdminTests">
         <groups>
             <run>
-                <include name="Add hospital"/>
-                <include name="Edit/Delete hospital"/>
-                <include name="Successfully"/>
-                <include name="unSuccessfully"/>
+            <include name="Add hospital"/>
+            <include name="Edit/Delete hospital"/>
+            <include name="Successfully"/>
+            <include name="unSuccessfully"/>
             </run>
         </groups>
 
