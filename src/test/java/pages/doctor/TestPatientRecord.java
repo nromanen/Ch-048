@@ -48,7 +48,7 @@ public class TestPatientRecord extends BaseTest {
     /**
      * It is a method to check the possibility of creating a record in the patient's card.
      */
-    @Test
+    @Test(groups = {"Doctor"})
     public void createNewRecord()  {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
@@ -64,7 +64,7 @@ public class TestPatientRecord extends BaseTest {
     /**
      * It is a method to test the ability to find a patient by email
      */
-    @Test
+    @Test(groups = {"Doctor"})
     public void checkPatientsSearchByEmail() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
@@ -78,7 +78,7 @@ public class TestPatientRecord extends BaseTest {
      * This is a method for verification of sorting of patients by first name.
      */
 
-    @Test
+    @Test(groups = {"Doctor"})
     public void testPatientsSortingByFirstName()  {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
@@ -91,7 +91,7 @@ public class TestPatientRecord extends BaseTest {
     /**
      * This is a method for verification of sorting of patients by last name.
      */
-    @Test
+    @Test(groups = {"Doctor"})
     public void testPatientsSortingByLastName() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
@@ -104,7 +104,7 @@ public class TestPatientRecord extends BaseTest {
     /**
      * This is a method for verification of sorting of patients by email.
      */
-    @Test
+    @Test(groups = {"Doctor"})
     public void testPatientsSortingByEmail() {
         ListPatientPage listPatientPage = new ListPatientPage();
         listPatientPage.header.patientsButtonClick();
