@@ -27,6 +27,6 @@ RUN ["mvn", "compiler:compile"]
 
 EXPOSE 9999
 
-CMD mvn -Dtest=SchedulerPageTest test && \
+CMD mvn -P grid -Dtest=AllUsersPageTest test && \
     allure generate /code/target/allure-results && \
     allure report open -p 9999

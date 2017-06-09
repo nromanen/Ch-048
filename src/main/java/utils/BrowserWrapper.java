@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class BrowserWrapper {
 
-    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 30, 250);
+    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 50, 250);
 
     /**
      *  This is a method which is used for getting title of the page

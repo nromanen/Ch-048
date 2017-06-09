@@ -172,6 +172,9 @@
         </profile>
 
         <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <id>firefox</id>
             <properties>
                 <browser.name>firefox</browser.name>
@@ -203,9 +206,6 @@
             </properties>
         </profile>
         <profile>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>            
             <id>grid</id>
             <properties>
                 <browser.name>grid</browser.name>

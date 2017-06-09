@@ -65,7 +65,7 @@ public class AddHospitalTest extends BaseTest {
      * @param hospitalDescription       Text which is typing into hospital description field
      */
 
-  //  @Test(dataProvider = "validHospitalAddress", groups = {"Add hospital"})
+   // @Test(dataProvider = "validHospitalAddress", groups = {"Add hospital"})
     public void addNewHospitalWithValidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) {
 
             HospitalListPage hospitalListPage = new HospitalListPage();
