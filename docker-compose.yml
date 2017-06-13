@@ -18,11 +18,11 @@ services:
     image: radgast/postgres
     expose:
       - "5432"
-    # ports:
-    #   - "5432:5432"  
+    ports:
+      - "5433:5432"  
     healthcheck:
       test: ["CMD-SHELL", "psql -h 'localhost' -U 'postgres' --dbname=hospital -c 'SELECT * FROM events'"]
-      interval: 25s
+      interval: 40s
       timeout: 8s
       retries: 6
     logging:
@@ -72,7 +72,7 @@ services:
   #       driver: none
 
   maven:
-    image: radgast/maven
+    image: radgast/scmaven
     ports:
       - "9999:9999"
     links:
