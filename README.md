@@ -44,6 +44,12 @@ Maven 3.3.9,
 PostgreSQL 9.6
 </code></pre>
 
+<h1>Run Hospital Seeker as a docker containers</h1>
+<p>In order to set up Hospital Seeker project in a docker container you need Docker with version 17.03.1-ce or higher and Docker-Compose version 1.14.0-rc1 or higher(All instructions of how todownload docker are <a href = "https://docs.docker.com/engine/installation/">here</a>). Download <a href="https://github.com/nromanen/Ch-048/blob/master/HospitalSeeker/docker-compose.yml">this file</a> and put in any folder on your local disk. In order to run this container make sure you've got free port http://localhost:5432, if it's busy try to turn off your Postgresql service. To run containers, using Command Line mover to folder with docker-compose.yml. Run command:</p>
+<pre><code>docker-compose up</code></pre>
+<p>After executing of this command you should wait for 3-4 minutes for postgres and tomcat to be up. After this Hospital Seeker will be available on the url https://localhost:8443/HospitalSeeker/ and it's database will be available on the url http://localhost:5432/ . In oder to stop this app you shuld press combination ctrl+C in the terminal window of docker compose.</p>
+
+
 <h1>Instalation</h1>
 <pre><code>git clone https://github.com/nromanen/Ch-048.git</code></pre>
 <p>In src/main/resources/database.propertise you should set name and password of databes of Hospital Seeker application</p>
