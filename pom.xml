@@ -62,22 +62,11 @@
             <groupId>ru.yandex.qatools.allure</groupId>
             <artifactId>allure-testng-adaptor</artifactId>
             <version>${allure.version}</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>junit</groupId>
-                    <artifactId>junit</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
             <version>1.2.3</version>
-        </dependency>
-        <dependency>
-            <groupId>com.machinepublishers</groupId>
-            <artifactId>jbrowserdriver</artifactId>
-            <version>0.17.7</version>
         </dependency>
         <dependency>
             <groupId>com.machinepublishers</groupId>
@@ -110,25 +99,6 @@
                     </dependency>
                 </dependencies>
             </plugin>
-
-            <!--Needed only to show reports locally. Run jetty:run and
-            open localhost:8080 to show the report-->
-            <plugin>
-                <groupId>org.eclipse.jetty</groupId>
-                <artifactId>jetty-maven-plugin</artifactId>
-                <version>9.2.10.v20150310</version>
-                <configuration>
-                    <webAppSourceDirectory>${project.build.directory}/site/allure-maven-plugin</webAppSourceDirectory>
-                    <stopKey>stop</stopKey>
-                    <stopPort>1234</stopPort>
-                    <httpConnector>
-                        <port>9999</port>
-                    </httpConnector>
-                </configuration>
-            </plugin>
-
-
-
 
             <plugin>
                 <groupId>com.lazerycode.jmeter</groupId>
@@ -233,6 +203,18 @@
             <id>jBrowserDriver</id>
             <properties>
                 <browser.name>jBrowserDriver</browser.name>
+            </properties>
+        </profile>
+        <profile>
+            <id>grid</id>
+            <properties>
+                <browser.name>grid</browser.name>
+            </properties>
+        </profile>
+         <profile>
+            <id>gridChrome</id>
+            <properties>
+                <browser.name>gridChrome</browser.name>
             </properties>
         </profile>
     </profiles>

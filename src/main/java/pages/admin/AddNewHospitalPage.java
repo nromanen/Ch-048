@@ -9,14 +9,14 @@ import utils.BrowserWrapper;
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
-import java.io.File;
+
 
 /**
  * Created by Jeksonis on 06.04.2017.
  */
 public class AddNewHospitalPage implements PageInitializer {
 
-    private static final String HOSPITAL_IMAGE_PATH = "src/main/resources/RhodeIslandHosp14_360_360_90.jpg";
+    private static final String HOSPITAL_IMAGE_PATH = "http://cache.golocalworcester.com.s3.amazonaws.com/cache/images/cached/cache/images/remote/http_s3.amazonaws.com/media.golocalprov.com/NE%20HOSPITALS/RhodeIslandHosp14_360_360_90.jpg";
 
     public AdminHeader header;
 
@@ -72,9 +72,7 @@ public class AddNewHospitalPage implements PageInitializer {
 
 
     public void setClipboardData() {
-        File file = new File(HOSPITAL_IMAGE_PATH);
-        String absolutePath = file.getAbsolutePath();
-        StringSelection stringSelection = new StringSelection(absolutePath);
+        StringSelection stringSelection = new StringSelection(HOSPITAL_IMAGE_PATH);
         Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
     }
 
@@ -82,7 +80,7 @@ public class AddNewHospitalPage implements PageInitializer {
     public void addNewHospitalPhoto() throws AWTException {
         setClipboardData();
         Robot robot = new Robot();
-        robot.delay(500);
+        robot.delay(1000);
         robot.keyPress(KeyEvent.VK_CONTROL);
         robot.keyPress(KeyEvent.VK_V);
         robot.keyRelease(KeyEvent.VK_V);
@@ -90,7 +88,7 @@ public class AddNewHospitalPage implements PageInitializer {
         robot.delay(1000);
         robot.keyPress(KeyEvent.VK_ENTER);
         robot.keyRelease(KeyEvent.VK_ENTER);
-        robot.delay(500);
+        robot.delay(1000);
     }
 
     public void pushAddPhotoButton() {
@@ -165,16 +163,18 @@ public class AddNewHospitalPage implements PageInitializer {
 
    public void addNewHospital(String address, String name, String description) {
        try {
+           addressData(address);
+           BrowserWrapper.waitUntilTextToBePresentInElementValue(addressInputField, address);
+           addHospitalName(name);
+           addHospitalDescription(description);
+           pushFillButton();
+           BrowserWrapper.sleep(2);
+           pushFindButton();
            pushAddPhotoButton();
            addNewHospitalPhoto();
            BrowserWrapper.waitUntilElementVisible(buttonOkInUploadPhotoModalWindow);
            buttonOkInUploadPhotoModalWindow.click();
-           addressData(address);
-           pushFillButton();
-           addHospitalName(name);
-           addHospitalDescription(description);
-           pushFindButton();
-           BrowserWrapper.sleep(2);
+           BrowserWrapper.sleep(1);
            pushSaveButton();
        } catch (AWTException ex) {
            ex.printStackTrace();
