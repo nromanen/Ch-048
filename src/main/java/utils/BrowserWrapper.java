@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class BrowserWrapper {
 
-    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 30, 250);
+    private static WebDriverWait wait = new WebDriverWait(DriverInitializer.instance(), 50, 250);
 
     /**
      *  This is a method which is used for getting title of the page
@@ -106,6 +106,15 @@ public class BrowserWrapper {
 
     public static void waitUntilVisibleAndClickableAndNotStale(WebElement element){
         wait.until(ExpectedConditions.and(ExpectedConditions.elementToBeClickable(element),ExpectedConditions.visibilityOf(element),ExpectedConditions.not(ExpectedConditions.stalenessOf(element))));
+    }
+
+    /**
+     * This method is wrapper for explicit wait until web element to be present text in element value
+     * @param webElement    It is a selector in web element form
+     * @param text  It is a value which will be presented
+     */
+    public static void waitUntilTextToBePresentInElementValue( WebElement webElement, String text) {
+        wait.until(ExpectedConditions.textToBePresentInElementValue(webElement, text));
     }
 
     /**

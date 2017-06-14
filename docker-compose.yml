@@ -1,0 +1,90 @@
+version: '2.1'
+services:
+  tomcat:  
+    image: radgast/tomcat
+    expose:
+      - "8443"
+    ports:
+      - "8443:8443"     
+    links:
+      - postgres  
+    depends_on: 
+      postgres:
+        condition: service_healthy
+    logging:
+      driver: none  
+  
+  postgres:  
+    image: radgast/postgres
+    expose:
+      - "5432"
+    ports:
+      - "5433:5432"  
+    healthcheck:
+      test: ["CMD-SHELL", "psql -h 'localhost' -U 'postgres' --dbname=hospital -c 'SELECT * FROM events'"]
+      interval: 40s
+      timeout: 8s
+      retries: 6
+    logging:
+      driver: none
+
+ 
+  zalenium:
+    image: "dosel/zalenium"
+    volumes:
+      #change line belowe for folder where videos will be stored
+      - /d/tmp/videos:/home/seluser/videos
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /usr/bin/docker:/usr/bin/docker
+    expose:
+      - "4444"
+      - "5555"
+    ports:
+      - "4444:4444"
+      - "5555:5555"
+    command: >
+      start --chromeContainers 0
+            --firefoxContainers 1
+            --maxDockerSeleniumContainers 8
+            --screenWidth 1024 --screenHeight 768
+            --timeZone "Europe/Berlin"
+            --videoRecordingEnabled true
+            --sauceLabsEnabled false
+            --browserStackEnabled false
+            --testingBotEnabled false
+            --startTunnel false
+    healthcheck:  
+      test: ["CMD-SHELL", "curl -f http://localhost:4444/grid/console || exit 1"]
+      interval: 25s
+      timeout: 8s
+      retries: 6
+    links:
+        - tomcat
+    depends_on:
+      tomcat:
+        condition: service_healthy
+
+        
+
+  elgalu:
+    image: "elgalu/selenium"
+    logging:
+      driver: none
+
+  maven:
+    image: radgast/maven
+    ports:
+      - "9999:9999"
+    links:
+      - zalenium
+      - postgres
+    depends_on:
+      tomcat:
+        condition: service_healthy
+      zalenium:
+        condition: service_healthy
+
+  
+   
+
+    

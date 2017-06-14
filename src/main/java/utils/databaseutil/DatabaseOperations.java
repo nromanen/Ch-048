@@ -48,8 +48,11 @@ public class DatabaseOperations {
             driver = properties.getProperty("db.driver");
             username = properties.getProperty("db.username");
             password = properties.getProperty("db.password");
-            url = properties.getProperty("db.url");
-
+            if(System.getProperty("browser.name").equals("grid")){
+                url = properties.getProperty("db.urldocker");
+            }else {
+                url = properties.getProperty("db.url");
+            }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -73,9 +76,15 @@ public class DatabaseOperations {
             properties.load(inputStream);
 
             Runtime runtime = Runtime.getRuntime();
+            String host;
+            if(System.getProperty("browser.name").equals("grid")){
+                host = properties.getProperty("db.hostdocker");
+            }else {
+                host = properties.getProperty("db.host");
+            }
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "pg_restore",
-                    "--host=" + properties.getProperty("db.host"),
+                    "--host=" + host,
                     "--port=" + properties.getProperty("db.port"),
                     "--username=postgres",
                     "--dbname=" + properties.getProperty("db.name"),
@@ -84,6 +93,7 @@ public class DatabaseOperations {
                     "--verbose",
                     filepath);
             processBuilder.redirectErrorStream(true);
+            processBuilder.environment().put("PGPASSWORD", properties.getProperty("db.password"));
             Process process = processBuilder.start();
 
             Logger logger = LoggerFactory.getLogger(DatabaseOperations.class);
@@ -95,11 +105,15 @@ public class DatabaseOperations {
             while ((ll = br.readLine()) != null) {
                 logger.info(ll);
             }
+            process.waitFor();
+            process.destroy();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -108,20 +122,29 @@ public class DatabaseOperations {
     public static void backup(String filename) {
         try {
             Properties properties = new Properties();
-            String filepath = "src/ main/resources/" + filename;
+            String filepath = "src/main/resources/" + filename;
             InputStream inputStream = new FileInputStream("src/main/resources/database.properties");
             properties.load(inputStream);
 
-            Runtime runtime = Runtime.getRuntime();;
+            Runtime runtime = Runtime.getRuntime();
+            String host;
+            if(System.getProperty("browser.name").equals("grid")){
+                host = properties.getProperty("db.hostdocker");
+            }else {
+                host = properties.getProperty("db.host");
+            }
             ProcessBuilder processBuilder = new ProcessBuilder(
                     "pg_dump",
-                    "--host", properties.getProperty("db.host"),
+                    "--host", host,
                     "--port", properties.getProperty("db.port"),
                     "--username", properties.getProperty("db.username"),
                     "--no-password",
                     "--format", "custom",
                     "--blobs",
                     "--verbose", "--file", filepath, properties.getProperty("db.name"));
+
+            processBuilder.redirectErrorStream(true);
+            processBuilder.environment().put("PGPASSWORD", properties.getProperty("db.password"));
             Process process = processBuilder.start();
 
             Logger logger = LoggerFactory.getLogger(DatabaseOperations.class);
@@ -133,10 +156,15 @@ public class DatabaseOperations {
             while ((ll = br.readLine()) != null) {
                 logger.info(ll);
             }
+            process.waitFor();
+            process.destroy();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
 }

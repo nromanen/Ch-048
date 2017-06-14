@@ -26,7 +26,11 @@ public class Hook {
      */
     @Before
     public void setUp(){
-        DriverInitializer.getToUrl(BaseTest.BASE_URL);
+        if(System.getProperty("browser.name").equals("grid")) {
+            DriverInitializer.getToUrl(BaseTest.BASE_URL_DOCKER);
+        }else {
+            DriverInitializer.getToUrl(BaseTest.BASE_URL);
+        }
     }
 
     /**

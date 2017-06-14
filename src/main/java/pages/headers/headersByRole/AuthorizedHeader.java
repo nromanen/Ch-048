@@ -33,9 +33,6 @@ public class AuthorizedHeader extends BaseHeader implements PageInitializer {
     public HospitalSeekerHomePage logoutButtonClick() {
         BrowserWrapper.waitUntilElementClickable(logoutButton);
         logoutButton.click();
-        if(BrowserWrapper.isAlertPresent()) {
-            BrowserWrapper.confirmAlert();
-        }
         return new HospitalSeekerHomePage();
     }
 }
