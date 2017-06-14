@@ -61,3 +61,11 @@ PostgreSQL 9.6
 <pre><code>mvn -P eng,firefox test site</code></pre>
 <p>After executing <b>"site"</b> phase of maven you can get raports about test execution and screenshots of failed test by running target/site/allure-maven-plugin.html file
 </p>
+
+<h1>Run project using docker</h1>
+<p>You can ran full test project using Docker. In order to do so you should have Docker and Docker compose installed. You can download either <a href= "https://github.com/nromanen/Ch-048/blob/master/ProjectOnDocker/docker-compose.yml">full test version</a>(partly working) or <a href="https://github.com/nromanen/Ch-048/blob/master/ProjectOnDockerScheduler/docker-compose.yml">manager test</a>(completely working) and put it into folder on your local disck. This project require additional image, that you can download with this command:</p>
+<pre><code>docker pull elgalu/selenium</code></pre>
+<p>If you using Windows you should specify in the downloaded file path to folder in which videos of test execution will be saved. You can allso be given error about access to local disk, it's can be fixed in stting of Docker.</p>
+<p>Then using command line you should move to folder with downloaded file. In that folder you should execute command:</p>
+<pre><code>docker-compose up</code></pre>
+<p>After this in command line tool you will see information about test execution. When all tests over in command line tool you will that server with reports is up. You can reach these reports by addres http://localhost:9999.</p>
