@@ -28,14 +28,15 @@ public class BaseTest {
     public static final String PATIENT_PASSWORD = "1111";
 
     public static  String BASE_URL = "https://localhost:8443/HospitalSeeker/";
-
+    public static String BASE_URL_DOCKER = "https://tomcat:8443/HospitalSeeker/";
 
     @BeforeClass(alwaysRun = true)
     public void before() {
         if(System.getProperty("browser.name").equals("grid")){
-            BASE_URL = "https://tomcat:8443/HospitalSeeker/";
+            DriverInitializer.getToUrl(BASE_URL_DOCKER);
+        }else {
+            DriverInitializer.getToUrl(BASE_URL);
         }
-        DriverInitializer.getToUrl(BASE_URL);
         String language = System.getProperty("test.language");
         BaseNavigation.changeLanguage(language);
     }
