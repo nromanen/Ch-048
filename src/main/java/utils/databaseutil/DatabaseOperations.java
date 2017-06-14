@@ -93,6 +93,7 @@ public class DatabaseOperations {
                     "--verbose",
                     filepath);
             processBuilder.redirectErrorStream(true);
+            processBuilder.environment().put("PGPASSWORD", properties.getProperty("db.password"));
             Process process = processBuilder.start();
 
             Logger logger = LoggerFactory.getLogger(DatabaseOperations.class);
@@ -104,11 +105,15 @@ public class DatabaseOperations {
             while ((ll = br.readLine()) != null) {
                 logger.info(ll);
             }
+            process.waitFor();
+            process.destroy();
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
             e.printStackTrace();
         }
     }
@@ -117,7 +122,7 @@ public class DatabaseOperations {
     public static void backup(String filename) {
         try {
             Properties properties = new Properties();
-            String filepath = "src/ main/resources/" + filename;
+            String filepath = "src/main/resources/" + filename;
             InputStream inputStream = new FileInputStream("src/main/resources/database.properties");
             properties.load(inputStream);
 
@@ -137,6 +142,9 @@ public class DatabaseOperations {
                     "--format", "custom",
                     "--blobs",
                     "--verbose", "--file", filepath, properties.getProperty("db.name"));
+
+            processBuilder.redirectErrorStream(true);
+            processBuilder.environment().put("PGPASSWORD", properties.getProperty("db.password"));
             Process process = processBuilder.start();
 
             Logger logger = LoggerFactory.getLogger(DatabaseOperations.class);
@@ -148,10 +156,15 @@ public class DatabaseOperations {
             while ((ll = br.readLine()) != null) {
                 logger.info(ll);
             }
+            process.waitFor();
+            process.destroy();
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
+
 }
