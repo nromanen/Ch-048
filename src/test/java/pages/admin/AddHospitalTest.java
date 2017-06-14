@@ -1,5 +1,6 @@
 package pages.admin;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,6 +52,7 @@ public class AddHospitalTest extends BaseTest {
 
     @BeforeMethod
     public void beforeMethod() {
+        DriverInitializer.instance().manage().window().maximize();
         BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
         BrowserWrapper.waitUntilElementIsPresent(By.id(ALL_USERS_PAGE_ID_IDENTIFICATION));
         logger.info(TEST_STARTED);
@@ -63,7 +65,7 @@ public class AddHospitalTest extends BaseTest {
      * @param hospitalDescription       Text which is typing into hospital description field
      */
 
-    @Test(dataProvider = "validHospitalAddress", groups = {"Add hospital"})
+   // @Test(dataProvider = "validHospitalAddress", groups = {"Add hospital"})
     public void addNewHospitalWithValidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) {
 
             HospitalListPage hospitalListPage = new HospitalListPage();
@@ -150,7 +152,7 @@ public class AddHospitalTest extends BaseTest {
      * @param hospitalDescription       Text which is typing into hospital description field
      */
     
-    @Test(dataProvider = "invalidHospitalAddress", groups = {"Add hospital"})
+ //   @Test(dataProvider = "invalidHospitalAddress", groups = {"Add hospital"})
     public void addNewHospitalWithInvalidDataTest(String hospitalAddress, String hospitalName, String hospitalDescription) {
 
         HospitalListPage hospitalListPage = new HospitalListPage();

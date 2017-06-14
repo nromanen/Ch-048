@@ -14,7 +14,10 @@ import org.openqa.selenium.phantomjs.PhantomJSDriver;
 import org.openqa.selenium.phantomjs.PhantomJSDriverService;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -125,9 +128,24 @@ public class DriverInitializer {
                         .headless(true)
                         .javascript(true).build());
                 break;
+            case "grid" :
+                try {
+                    driver = new RemoteWebDriver(new URL("http://zalenium:4444/wd/hub"),dc);
+                } catch (MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;
+            case "gridChrome" :
+                try{
+                    DesiredCapabilities dcCr = DesiredCapabilities.chrome();
+                    driver = new RemoteWebDriver(new URL("http://zalenium:4444/wd/hub"),dcCr);
+                } catch(MalformedURLException e) {
+                    e.printStackTrace();
+                }
+                break;    
         }
 
-        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
 
     }
 

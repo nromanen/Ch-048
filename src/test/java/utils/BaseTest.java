@@ -27,14 +27,18 @@ public class BaseTest {
     public static final String PATIENT_LOGIN = "patient.cd@hospitals.ua";
     public static final String PATIENT_PASSWORD = "1111";
 
-    public static final String BASE_URL = "https://localhost:8443/HospitalSeeker/";
-
+    public static  String BASE_URL = "https://localhost:8443/HospitalSeeker/";
+    public static String BASE_URL_DOCKER = "https://tomcat:8443/HospitalSeeker/";
 
     @BeforeClass(alwaysRun = true)
     public void before() {
-        DriverInitializer.getToUrl(BASE_URL);
-        String s = System.getProperty("test.language");
-        BaseNavigation.changeLanguage(s);
+        if(System.getProperty("browser.name").equals("grid")){
+            DriverInitializer.getToUrl(BASE_URL_DOCKER);
+        }else {
+            DriverInitializer.getToUrl(BASE_URL);
+        }
+        String language = System.getProperty("test.language");
+        BaseNavigation.changeLanguage(language);
     }
 
 
