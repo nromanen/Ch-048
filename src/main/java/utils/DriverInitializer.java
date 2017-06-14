@@ -50,6 +50,7 @@ public class DriverInitializer {
     private static final String WINDOWS_CHROME_WEBDRIVER_PATH = "src/main/resources/drivers/chromedriver.exe";
 
     private static final String WINDOWS_IE_WEBDRIVER_PATH = "src/main/resources/drivers/MicrosoftWebDriver.exe";
+    private static final String REMOTE_URL = "http://zalenium:4444/wd/hub";
 
     private static volatile WebDriver driver;
 
@@ -88,7 +89,6 @@ public class DriverInitializer {
         dc.setCapability(CapabilityType.ACCEPT_SSL_CERTS, true);
 
         String browserType = System.getProperty("browser.name");
-        System.out.println(browserType);
 
         switch (browserType) {
             case "firefox":
@@ -130,7 +130,7 @@ public class DriverInitializer {
                 break;
             case "grid" :
                 try {
-                    driver = new RemoteWebDriver(new URL("http://zalenium:4444/wd/hub"),dc);
+                    driver = new RemoteWebDriver(new URL(REMOTE_URL),dc);
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -138,7 +138,7 @@ public class DriverInitializer {
             case "gridChrome" :
                 try{
                     DesiredCapabilities dcCr = DesiredCapabilities.chrome();
-                    driver = new RemoteWebDriver(new URL("http://zalenium:4444/wd/hub"),dcCr);
+                    driver = new RemoteWebDriver(new URL(REMOTE_URL),dcCr);
                 } catch(MalformedURLException e) {
                     e.printStackTrace();
                 }
@@ -178,8 +178,6 @@ public class DriverInitializer {
         if (driver != null) {
             driver.quit();
             driver = null;
-        } else {
-            System.out.println("Cant close session");
         }
     }
 
