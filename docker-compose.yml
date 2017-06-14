@@ -33,7 +33,7 @@ services:
     image: "dosel/zalenium"
     volumes:
       #change line belowe for folder where videos will be stored
-      - /tmp/videos:/home/seluser/videos
+      - /d/tmp/videos:/home/seluser/videos
       - /var/run/docker.sock:/var/run/docker.sock
       - /usr/bin/docker:/usr/bin/docker
     expose:
@@ -72,7 +72,7 @@ services:
       driver: none
 
   maven:
-    image: radgast/scmaven
+    image: radgast/maven
     ports:
       - "9999:9999"
     links:
