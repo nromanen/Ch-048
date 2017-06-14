@@ -3,21 +3,20 @@ package pages.admin;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import utils.*;
 import utils.databaseutil.DatabaseOperations;
 import utils.databaseutil.UserDAO;
 
+import java.net.MalformedURLException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
 
 /**
- * Created by Evgen on 10.04.2017.
+ * This is a class which is collect of test related to testing ALL USERS page.
+ * @author Evgen Korcheviy
  */
 public class AllUsersPageTest extends BaseTest {
 
@@ -27,8 +26,12 @@ public class AllUsersPageTest extends BaseTest {
     Logger logger = LoggerFactory.getLogger(AllUsersPage.class);
 
 
+    /**
+     * This is method which is executed before each method in this class
+     * It's provide restoring database before test and then move to ALL USERS page
+     */
     @BeforeMethod
-    public void beforeMethod() {
+    public void beforeMethod() throws MalformedURLException {
         DriverInitializer.getToUrl(BASE_URL);
         DatabaseOperations.restore("test_backup.backup");
         allUsersPage = BaseNavigation.loginAsAdmin(ADMIN_LOGIN, ADMIN_PASSWORD);
@@ -36,6 +39,10 @@ public class AllUsersPageTest extends BaseTest {
         logger.info("Test is initialized");
     }
 
+    /**
+     * This is method is executed after each method in this class
+     * It's provide logout and closing browser after test
+     */
     @AfterMethod
     public void afterMethod() {
         BaseNavigation.logout();
@@ -43,7 +50,10 @@ public class AllUsersPageTest extends BaseTest {
         DriverInitializer.close();
     }
 
-    @Test
+    /**
+     * This is test of functionality "enable" button
+     */
+    @Test(groups = "search")
     public void enableUsersViewTest() {
         allUsersPage = allUsersPage.showEnableUsers();
         boolean actual = UserDAO.getStatusByEmail(tableParser.getEmailFromFirstTableRow());
@@ -52,8 +62,10 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-
-    @Test
+    /**
+     * This is test of functionality of "disable" button
+     */
+    @Test(groups = "search")
     public void disableUsersViewTest() {
         allUsersPage = allUsersPage.showDisableUsers();
         boolean actual = UserDAO.getStatusByEmail(tableParser.getEmailFromFirstTableRow());
@@ -62,7 +74,10 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test
+    /**
+     * This is method for checking functionality of "view user info"
+     */
+    @Test(groups = "users")
     public void viewWindowTest() {
         List<String> actual = allUsersPage.getFirstUserDataFromInfoWindow();
         List<String> expected = UserDAO.getWindowDataFromDatabase(
@@ -72,7 +87,11 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "roles")
+    /**
+     * This is method for checking functionality of "edit user info"
+     * @param role Selected role
+     */
+    @Test(dataProvider = "roles", groups = "users")
     public void changeRoleTest(String role) {
         String expected = role;
         allUsersPage = allUsersPage.changeRoleInEditWindow(role);
@@ -82,7 +101,11 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "count")
+    /**
+     *This is method for checking functionality of changing count of users on one page
+     * @param count Count of users in one page
+     */
+    @Test(dataProvider = "count", groups = "search")
     public void changeCountOfUsersOnPageTest(String count) {
         int expected = Integer.parseInt(count);
         allUsersPage = allUsersPage.changeCountOfUsersOnPage(expected);
@@ -92,7 +115,11 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "roles")
+    /**
+     * This is test for checking correct search by role
+     * @param role Role for searching
+     */
+    @Test(dataProvider = "roles", groups = "search")
     public void searchByRoleTest(String role) {
         String expected = role;
         allUsersPage = allUsersPage.changeRole(expected);
@@ -102,7 +129,13 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test(dataProvider = "searchParams")
+    /**
+     * This is test for checking functionality of complex search
+     * @param role Role for searching
+     * @param valueOfField Text which is typing into search field
+     * @param count Count of users on one page
+     */
+    @Test(dataProvider = "searchParams", groups = "search")
     public void searchTest(String role, String valueOfField, String count) {
         allUsersPage = allUsersPage.search(Integer.parseInt(count), role, "firstName", valueOfField);
         List<String> expected = new LinkedList<>();
@@ -116,15 +149,21 @@ public class AllUsersPageTest extends BaseTest {
     }
 
 
-    @Test
+    /**
+     * This is test for checking page navigation
+     */
+    @Test(groups = "search")
     public void nextPageButtonTest() {
         AllUsersPage allUsersPage1 = allUsersPage.toNextPage();
         Assert.assertNotEquals(allUsersPage, allUsersPage1, "Next page isn't present");
         logger.info("Test pass");
     }
 
-
-    @Test(dataProvider = "roles")
+    /**
+     * This is test for check sorting by email with selected role
+     * @param role Selected role
+     */
+    @Test(dataProvider = "roles", groups = "sort")
     public void sortByEmailTest(String role) {
         allUsersPage.changeRole(role);
         allUsersPage.searchButton.click();
