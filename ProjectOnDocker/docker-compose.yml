@@ -64,13 +64,6 @@ services:
       tomcat:
         condition: service_healthy
 
-        
-
-  elgalu:
-    image: "elgalu/selenium"
-    logging:
-      driver: none
-
   maven:
     image: radgast/maven
     ports:
